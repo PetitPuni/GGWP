@@ -1,0 +1,9 @@
+<h1>User League</h1>
+
+<p><strong>User:</strong> <%= @user_league.user.name %></p>
+<p><strong>League:</strong> <%= @user_league.league.name %></p>
+
+<p>
+  <%= link_to 'Edit', edit_user_league_path(@user_league) %> |
+  <%= link_to 'Back', user_leagues_path %>
+</p>
