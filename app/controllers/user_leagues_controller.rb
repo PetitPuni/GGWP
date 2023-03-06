@@ -1,7 +1,5 @@
 class UserLeaguesController < ApplicationController
   before_action :authenticate_user!
-  validates :user_id, :league_id, presence: true
-  validates :user_id, uniqueness: { scope: :league_id }
   belongs_to :user
   belongs_to :league
 
