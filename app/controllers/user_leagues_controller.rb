@@ -1,7 +1,5 @@
 class UserLeaguesController < ApplicationController
   before_action :authenticate_user!
-  belongs_to :user
-  belongs_to :league
 
   def index
     @user_leagues = UserLeague.all
