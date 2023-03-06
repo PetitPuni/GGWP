@@ -13,38 +13,10 @@ class UserLeaguesController < ApplicationController
     @user_league = UserLeague.find(params[:id])
   end
 
-  def new
-    @user_league = UserLeague.new
-  end
-
-  def create
-    @user_league = UserLeague.new(user_league_params)
-    if @user_league.save
-      redirect_to user_league_path(@user_league)
-    else
-      render :new
-    end
-  end
-
-  def edit
-    @user_league = UserLeague.find(params[:id])
-  end
-
-  def update
-    @user_league = UserLeague.find(params[:id])
-    @user_league.update(user_league_params)
-    redirect_to user_league_path(@user_league)
-  end
-
-  def destroy
-    @user_league = UserLeague.find(params[:id])
-    @user_league.destroy
-    redirect_to user_leagues_path
-  end
-
   private
 
   def user_league_params
     params.require(:user_league).permit(:user_id, :league_id)
   end
 end
+# Path: app/controllers/leagues_controller.rb
