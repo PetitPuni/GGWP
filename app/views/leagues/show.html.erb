@@ -10,4 +10,5 @@
 
 
     <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
+    <%= link_to 'Delete your league', league_path(@league), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </div>
