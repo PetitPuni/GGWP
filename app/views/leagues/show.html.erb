@@ -4,8 +4,8 @@
 
     <div data-controller="share" data-share-url-value="<%= @url %>">
       <div class="mobile" data-share-target="mobile">
-          <p >Invite your friends to join your league <span data-share-target="name"><%= @league.name %></span></p>
-          <button data-share-target="share" data-action="click->share#send" class="btn btn-primary">Invite</button>
+          <p ><span data-share-target="name"><%= @league.name %></span></p>
+          <button data-share-target="share" data-action="click->share#send" class="btn btn-primary">Invite your friends</button>
       </div>
       <div class="orid" data-share-target="ordi">
         <div data-controller="clipboard">
@@ -17,9 +17,23 @@
     </div>
 
     <%#<p><%= @league.description %></p>
-    <p> Created: <%= @league.start_on.in_time_zone("Europe/Paris").strftime('%B %d, %Y %H:%M') %></p>
-    <p> Ends: <%= @league.end_on.strftime('%B %d, %Y %H:%M')  %></p>
-    <p>Game: <%= @league.game.name %></p>
+
+    <div>
+      <p>The league start on <%= @league.start_on.in_time_zone("Europe/Paris").strftime('%B %d, %Y %H:%M') %>.</p>
+      <p>The league ends on <%= @league.end_on.strftime('%B %d, %Y %H:%M')  %>.</p>
+    </div>
+
+    <div data-controller="timer"
+        data-timer-start-value=<%= @league.end_on %>>
+
+      <p>
+        <span data-timer-target="days"></span>
+        <span data-timer-target="hours"></span>
+        <span data-timer-target="minutes"></span>
+        <span data-timer-target="seconds"></span>
+      </p>
+    </div>
+
     <%#<p><%= @league.game.genre %></p>
     <%#<p><%= @league.game.description %></p>
 
@@ -59,7 +73,7 @@
 
  -----------------------------------
 
-    <h1><%= @league.name %> Challenges</h1>
+    <h1>Your <%= @league.name %> Challenges</h1>
 
     <table>
     <thead>
@@ -69,8 +83,7 @@
         </tr>
     </thead>
     <tbody>
-        <% @challenges.each do |user_league_challenge| %>
-            <% challenge = user_league_challenge.challenge %>
+        <% @challenges.each do |challenge| %>
         <tr>
             <td class><%= link_to challenge.name, league_challenge_path(@league, challenge) %></td>
             <td><%= challenge.points %></td>
@@ -79,6 +92,29 @@
     </tbody>
     </table>
 
+    <div>
+    <% @values.each do |value| %>
+      <p>Challenge name<%= @value.challenge.name %></p>
+      <p>Init Stat user<%= @value.init_user_stat %></p>
+    <% end %>
+
+    </div>
+
+ <% @challenges.each do |challenge| %>
+    <div class="card">
+      <%#= image_tag challenge.photo %>
+      <h3><%= challenge.name %></h3>
+      <p><%= challenge.description %></p>
+      <div class="progress">
+        <div class="progress-bar <%#= challenge.progress >= 75 ? "progress-high" : challenge.progress >= 50 ? "progress-medium" : "progress-low" %>" style="width: <%#= challenge.progress %>%;"></div>
+      </div>
+      <div class="card-details">
+        <div>
+          <%= challenge.points %> points
+        </div>
+      </div>
+    </div>
+  <% end %>
 
 
     -----------------------------------
@@ -88,7 +124,7 @@
         <%= link_to 'Delete your league', league_path(@league), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>
         <%= button_to 'Start the league by generating Challenges !', start_league_path(@league), method: :post, class: "btn btn-primary" %>
-        <%= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
+        <%#= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
 
     </div>
 

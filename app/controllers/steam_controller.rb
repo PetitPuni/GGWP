@@ -20,10 +20,8 @@ class SteamController < ApplicationController
   def index
     @stats = nil
   end
-
-  def get_stats
-    steam_id = params[:steam_id]
-    @stats = SteamService.get_user_stats(steam_id)
-    render :get_stats
-  end
 end
+
+
+# pour chaque enter dans la table stat avec pgsearch si une entrée contient le current_user et stat['name'] alors update la valeur de la stat
+# sinon créer une nouvelle entrée dans la table stat avec le current_user et la stat['name'] et la valeur de la stat['value']
