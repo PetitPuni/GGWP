@@ -50,7 +50,6 @@ gem "sassc-rails"
 
 gem 'awesome_print', '~> 1.8'
 
-gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
