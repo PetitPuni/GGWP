@@ -6,7 +6,7 @@ class ChallengesController < ApplicationController
     end
 
     def show
-      @challenge = @league.challenges.find(params[:id])
+      @challenge = Challenge.find(params[:id])
     end
 
     private 
