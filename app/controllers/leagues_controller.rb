@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-    before_action :set_league, only: %i[show edit update delete]
+    before_action :set_league, only: %i[show edit update destroy]
 
     def index
         @leagues = League.all
@@ -10,10 +10,17 @@ class LeaguesController < ApplicationController
 
     def new
         @league = League.new
+        @games = Game.all
     end
     
     def create
-        League.create(league_params)
+        @league = League.new(league_params)
+        if @league.save!
+            user_league = UserLeague.new(user: current_user, league: @league)
+            redirect_to league_path(@league)
+        else
+            render :new, status: :unrpocessable_entity
+        end
     end
     
     
@@ -24,14 +31,15 @@ class LeaguesController < ApplicationController
         @league.update(league_params)
     end
 
-    def delete
+    def destroy
         @league.destroy
+        redirect_to leagues_path
     end
 
     private
 
     def league_params
-        params.require(:league).permit(:name, :description, :start_on, :end_on)
+        params.require(:league).permit(:name, :description, :start_on, :end_on, :game_id)
     end
 
     def set_league

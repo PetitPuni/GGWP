@@ -1,8 +1,13 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :user_leagues
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  before_create :set_steam_attributes
+
+  private
+
+  def set_steam_attributes
+    data = FetchSteamAttributesFromSteamId.call(steam_id)
+    self.steam_username = data[:username]
+    self.steam_image = data[:image]
+  end
 end

@@ -1,0 +1,14 @@
+<div class="container">
+
+    <h2><%= @league.name %></h2>
+    <p><%= @league.description %></p>
+    <p><%= @league.start_on %></p>
+    <p><%= @league.end_on %></p>
+    <p><%= @league.game.name %></p>
+    <p><%= @league.game.genre %></p>
+    <p><%= @league.game.description %></p>
+
+
+    <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
+    <%= link_to 'Delete your league', league_path(@league), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+</div>

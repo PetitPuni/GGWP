@@ -6,18 +6,22 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts 'destroying all users'
+puts 'destroying all'
 
 User.destroy_all
+Game.destroy_all
+League.destroy_all
+Challenge.destroy_all
+UserLeague.destroy_all
+UserLeagueChallenge.destroy_all
 
 puts 'creating user, league, challenge, user_league, user_league_challenge'
 
 user1 = User.create!(
-    email: "tata@example.com",
-    password: "azerty",
-    steam_id: 76561197981067382,
-    steam_token: "547F78F8B5B70F2ACE2628433996EE06"
+  steam_id: '76561197981067382'
 )
+
+ap User.all
 
 ap 'user created'
 
