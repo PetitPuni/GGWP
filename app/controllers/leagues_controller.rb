@@ -10,7 +10,6 @@ class LeaguesController < ApplicationController
 
     def new
         @league = League.new
-        # @games = Game.all.map { |game| game.name }
         @games = Game.all
     end
     
