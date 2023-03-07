@@ -1,0 +1,20 @@
+<h1><%= @league.name %> Challenges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @challenges.each do |challenge| %>
+      <tr>
+        <td><%= link_to challenge.name, league_challenge_path(@league, challenge) %></td>
+        <td><%= challenge.description %></td>
+        <td><%= challenge.points %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
