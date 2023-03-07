@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>Acces your Leagues here</h1>
+   <ul> 
+   <% @leagues.each do |league| %>
+      <li><%= league.name %></li>
+      <li><%= league.start_on %></li>
+      <li><%= league.end_on %></li>
+      <li><%= league.description %></li>
+      <li><%= league.game.name %></li>
+    <% end %>
+    </ul>
+    <%= link_to 'Create your League', new_league_path, class: "btn btn-primary" %>
+
+</div>

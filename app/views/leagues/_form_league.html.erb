@@ -1,0 +1,10 @@
+<div class="container">
+    <%= simple_form_for(league) do |f| %>
+    <%= f.input :name %>
+    <%= f.association :game%>
+    <%= f.input :description %>
+    <%= f.input :start_on %>
+    <%= f.input :end_on %>
+    <%= f.submit 'Save your league', class: 'btn btn-primary' %>
+    <% end %>
+</div>
