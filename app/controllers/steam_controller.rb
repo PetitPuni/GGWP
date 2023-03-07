@@ -9,6 +9,6 @@ class SteamController < ApplicationController
     steam_id = params['openid.claimed_id'].split('/').last
     user = User.create_or_find_by(steam_id: steam_id)
     session['user_id'] = user.id
-    redirect_to root_path
+    redirect_to leagues_path
   end
 end
