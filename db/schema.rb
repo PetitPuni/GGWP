@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_144724) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_144728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +25,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_144724) do
     t.string "photo"
     t.integer "progress"
     t.index ["game_id"], name: "index_challenges_on_game_id"
+  end
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "create_chat_rooms", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "create_messages", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "chat_room_id"
+    t.datetime "timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "games", force: :cascade do |t|
@@ -47,6 +71,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_144724) do
     t.datetime "updated_at", null: false
     t.string "token"
     t.index ["game_id"], name: "index_leagues_on_game_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "chat_room_id"
+    t.datetime "timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_league_challenges", force: :cascade do |t|
