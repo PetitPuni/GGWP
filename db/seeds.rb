@@ -48,6 +48,22 @@ challenge = Challenge.create!(
   game: game
 )
 
+challenge1 = Challenge.create!(
+  name: "defuse the bomb",
+  description: "defuse the bomb",
+  points: 10,
+  key: 2,
+  game: game
+)
+
+challenge2 = Challenge.create!(
+  name: "plant the bomb",
+  description: "plant the bomb",
+  points: 10,
+  key: 3,
+  game: game
+)
+
 ap 'challenge created'
 
 user_league = UserLeague.create!(
@@ -58,11 +74,24 @@ user_league = UserLeague.create!(
 
 ap 'user_league created'
 
-user_league_challenge = UserLeagueChallenge.create!(
+UserLeagueChallenge.create!(
   succes: false,
   challenge: challenge,
   user_league: user_league
 )
+
+UserLeagueChallenge.create!(
+  succes: false,
+  challenge: challenge1,
+  user_league: user_league
+)
+
+UserLeagueChallenge.create!(
+  succes: false,
+  challenge: challenge2,
+  user_league: user_league
+)
+
 
 ap 'user_league_challenge created'
 
