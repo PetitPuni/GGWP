@@ -1,7 +1,7 @@
 <div class="container">
     <%= simple_form_for(league) do |f| %>
     <%= f.input :name %>
-    <%= f.input :game, collection: [@games] %>
+    <%= f.association :game%>
     <%= f.input :description %>
     <%= f.input :start_on %>
     <%= f.input :end_on %>
