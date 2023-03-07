@@ -1,0 +1,39 @@
+<!-- Path: app/views/user_leagues/my_stats.html.erb -->
+
+<h1>Steam User Stats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Stat Name</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @stats.present? %>
+      <% @stats.each do |game_stats| %>
+        <% if game_stats.present? %>
+          <% game_name = game_stats['gameName'] %>
+          <% if game_stats['stats'].present? %>
+            <% game_stats['stats'].each do |stat| %>
+              <tr>
+                <td><%= game_name %></td>
+                <td><%= stat['name'] %></td>
+                <td><%= stat['value'] %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="3">No stats found for <%= game_name %>.</td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="3">No stats found for this Steam ID.</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
