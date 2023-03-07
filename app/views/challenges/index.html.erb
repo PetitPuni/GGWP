@@ -1,22 +1,42 @@
-<h1><%= @league.name %> Challenges</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Points</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @challenges.each do |challenge| %>
-      <tr>
-        <td><%= link_to challenge.name, league_challenge_path(@league, challenge) %></td>
-        <td><%= challenge.description %></td>
-        <td><%= challenge.points %></td>
-      </tr>
+<div class="container">
+  <h1><%= @league.name %> Challenges</h1>
+
+  <% [@fake_challenge, @fake_challenge1, @fake_challenge2].each do |fc| %>
+    <% if fc %>
+      <div class="card">
+        <%= image_tag fc.photo %>
+        <h3><%= fc.name %></h3>
+        <div class="progress">
+          <div class="progress-bar <%= fc.progress >= 75 ? "progress-high" : fc.progress >= 50 ? "progress-medium" : "progress-low" %>" style="width: <%= fc.progress %>%;"></div>
+        </div>
+        <div class="card-details">
+          <div>
+            <%= fc.points %> points
+            <div class="sticky-button">
+              <%= link_to league_path(@league), class: "sticky-image" do %>
+                <%= image_tag "back.png", class: "sticky-image" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
 
-<%= link_to "Back to my League", league_path(@league) %>
+  <% @challenges.each do |challenge| %>
+    <div class="card">
+      <%= image_tag challenge.photo %>
+      <h3><%= challenge.name %></h3>
+      <p><%= challenge.description %></p>
+      <div class="progress">
+        <div class="progress-bar <%= challenge.progress >= 75 ? "progress-high" : challenge.progress >= 50 ? "progress-medium" : "progress-low" %>" style="width: <%= challenge.progress %>%;"></div>
+      </div>
+      <div class="card-details">
+        <div>
+          <%= challenge.points %> points
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
