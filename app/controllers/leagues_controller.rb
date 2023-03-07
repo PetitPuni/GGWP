@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-    before_action :set_league, only: %i[show edit update delete]
+    before_action :set_league, only: %i[show edit update destroy]
 
     def index
         @leagues = League.all
@@ -10,7 +10,6 @@ class LeaguesController < ApplicationController
 
     def new
         @league = League.new
-        # @games = Game.all.map { |game| game.name }
         @games = Game.all
     end
     
@@ -32,8 +31,9 @@ class LeaguesController < ApplicationController
         @league.update(league_params)
     end
 
-    def delete
+    def destroy
         @league.destroy
+        redirect_to leagues_path
     end
 
     private

@@ -2,7 +2,7 @@
     <h1>Acces your Leagues here</h1>
    <ul> 
    <% @leagues.each do |league| %>
-      <li><%= league.name %></li>
+      <li><%= link_to league.name, league_path(league) %></li>
       <li><%= league.start_on %></li>
       <li><%= league.end_on %></li>
       <li><%= league.description %></li>
