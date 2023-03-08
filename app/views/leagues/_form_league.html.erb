@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container" data-controller="flatpickr" >
     <%= simple_form_for(league) do |f| %>
-    <%= f.input :name %>
-    <%= f.association :game%>
-    <%= f.input :description %>
-    <%= f.input :start_on %>
-    <%= f.input :end_on %>
-    <%= f.submit 'Save your league', class: 'btn btn-primary' %>
+    <%= f.input :name, label: 'League name', placeholder: 'Enter the name of your league here' %>
+    <%= f.association :game, label: 'The game of you want to be challenged on 💪'%>
+    <%= f.input :description, label: 'League description', placeholder: 'Try a funky description'%>
+    <%= f.input :start_on, label: 'Your League start on',  as: :string, input_html: { data: { flatpickr_target: "startOn" } }, placeholder: 'Select Date..' %>
+    <%= f.input :end_on, label: 'Your League ends on', as: :string, input_html: { data: { flatpickr_target: "endOn" } }, placeholder: 'Select Date..' %>
+    <%= f.submit "Let's Gooo 🚀", class: 'btn btn-primary' %>
     <% end %>
 </div>
