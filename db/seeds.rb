@@ -98,4 +98,41 @@ ap User.all
 
  ap 'user_league_challenge created'
 
+#  VARIABLE USED FOR THE CHALLENGE GENERATOR
+
+guns = ['ak47', 'aug', 'awp', 'axe', 'bizon', 'c4', 'cz75a', 'deagle', 'decoy', 'elite', 'famas', 'fists', 'fiveseven', 'flashbang', 'g3sg1', 'galilar', 'glock', 'hammer', 'hkp2000', 'incgrenade', 'knifegg', 'm249', 'm4a1', 'm4a1_silencer', 'mac10', 'mag7', 'melee', 'molotov', 'mp5sd', 'mp7', 'mp9', 'negev', 'nova', 'p250', 'p90', 'revolver', 'breachcharge', 'bumpmine', 'sawedoff', 'scar20', 'sg556', 'smokegrenade', 'snowball', 'spanner', 'ssg08', 'tagrenade', 'taser', 'tec9', 'ump45', 'usp_silencer', 'xm1014', 'zone_repulsor'].sample
+
+action1 = ['hit', 'shot', 'kill' ].sample
+actions = ['hits', 'shots', 'kills', 'deaths' ]
+
+ennemies = [1..50].sample
+
+# CHALLENGES GENERATOR
+
+challenges3 = 
+actions.each do |action|
+  guns.each do |gun|
+    Challenge.create!(
+      name: "You need to #{action} #{ennemies} ennemies with this #{translate_weapon(gun)} !",
+      description: , 
+      points: [1..100].sample,
+      game: game
+    )
+  end
+end
+
+ap 'CHALLENGES GENERATOR CREATED'
+
+
+# challenges3 = Challenge.create!(name: "You need to #{action1} with this #{translate_weapon(gun)} ! " )
+# challenges2 = "You need to kill #{kill} before the end of the league ! "
+
+challenge2 = Challenge.create!(
+  name: "plant the bomb",
+  description: "plant the bomb",
+  points: 10,
+  key: 3,
+  game: game
+)
+
   puts 'done'
