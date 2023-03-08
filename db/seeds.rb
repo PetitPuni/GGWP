@@ -99,3 +99,4 @@ UserLeagueChallenge.create!(
 ap 'user_league_challenge created'
 
 puts 'done'
+#ici tout va bien
