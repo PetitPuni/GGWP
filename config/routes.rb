@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   get 'steam/connect', to: 'steam#connect'
   get 'steam/callback', to: 'steam#callback'
+  get 'user_leagues/my_stats', to: 'user_leagues#my_stats'
+  get 'steam/get_stats', to: 'steam#get_stats'
+  get '/user_leagues', to: 'user_leagues#index'
+
 
   # Defines the root path route ("/")
   # root "articles#index"

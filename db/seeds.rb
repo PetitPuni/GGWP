@@ -71,7 +71,6 @@ challenge2 = Challenge.create!(
 ap 'challenge created'
 
 user_league = UserLeague.create!(
-  score: 0,
   user: user1,
   league: league
 )
@@ -79,19 +78,16 @@ user_league = UserLeague.create!(
 ap 'user_league created'
 
 UserLeagueChallenge.create!(
-  succes: true,
   challenge: challenge,
   user_league: user_league
 )
 
 UserLeagueChallenge.create!(
-  succes: true,
   challenge: challenge1,
   user_league: user_league
 )
 
 UserLeagueChallenge.create!(
-  succes: true,
   challenge: challenge2,
   user_league: user_league
 )
@@ -100,3 +96,4 @@ UserLeagueChallenge.create!(
 ap 'user_league_challenge created'
 
 puts 'done'
+
