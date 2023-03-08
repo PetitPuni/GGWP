@@ -1,12 +1,30 @@
 <div class="container">
 
     <h2><%= @league.name %></h2>
+
+    <div data-controller="share">
+      <div class="invite">
+          <p >Invite your friends to join your league with this token <span data-share-target="token"><%= @league.token %></span></p>
+          <%= @url %>
+          <button data-share-target="share" data-action="click->share#send" class="btn btn-primary">Share</button>
+      </div>
+    </div>
+
     <p><%= @league.description %></p>
     <p><%= @league.start_on.strftime('%B %d, %Y') %></p>
     <p><%= @league.end_on.strftime('%B %d, %Y')  %></p>
     <p><%= @league.game.name %></p>
     <p><%= @league.game.genre %></p>
     <p><%= @league.game.description %></p>
+
+
+    <p>---------------------------------------------------</p>
+    <h3>Player List</h3>
+    <% @users.each do |user| %>
+      <p><%= user.steam_username.capitalize %></p>
+    <% end %>
+    <p>---------------------------------------------------</p>
+
 
 
     <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
