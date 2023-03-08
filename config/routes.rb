@@ -5,7 +5,10 @@ Rails.application.routes.draw do
     resources :challenges, only: [:show, :index]
     resources :user_leagues, only: [:index, :show]
   end
+
   resources :users, only: [:show, :edit, :update, :destroy]
+
+  get 'leagues/:id/join', to: 'leagues#join', as: 'join_league'
 
   get 'steam/connect', to: 'steam#connect'
   get 'steam/callback', to: 'steam#callback'
