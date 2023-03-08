@@ -18,6 +18,15 @@
     <p><%= @league.game.description %></p>
 
 
+    <p>---------------------------------------------------</p>
+    <h3>Player List</h3>
+    <% @users.each do |user| %>
+      <p><%= user.steam_username.capitalize %></p>
+    <% end %>
+    <p>---------------------------------------------------</p>
+
+
+
     <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
     <%= link_to 'Delete your league', league_path(@league), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
 </div>

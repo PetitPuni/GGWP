@@ -7,6 +7,7 @@ class LeaguesController < ApplicationController
 
   def show
     @url = "#{join_league_url}?token=#{@league.token}"
+    @users = @league.users
   end
 
   def new
@@ -38,8 +39,9 @@ class LeaguesController < ApplicationController
   end
 
   def join
-    @user_league = UserLeague.new
+    session[:url] = request.url
     if League.where('token like ?', params[:token]).exists?
+      @user_league = UserLeague.new
       @user_league.league = @league
       @user_league.user = current_user
       @user_league.save
