@@ -12,22 +12,22 @@ class LeaguesController < ApplicationController
         @league = League.new
         @games = Game.all
     end
-    
+
     def create
         @league = League.new(league_params)
         if @league.save!
-            user_league = UserLeague.new(user: current_user, league: @league)
+          user_league = UserLeague.new(user: current_user, league: @league)
             redirect_to league_path(@league)
         else
             render :new, status: :unrpocessable_entity
         end
     end
-    
-    
+
+
     def edit
     end
-    
-    def update 
+
+    def update
         @league.update(league_params)
     end
 
