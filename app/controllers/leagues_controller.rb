@@ -36,6 +36,15 @@ class LeaguesController < ApplicationController
         redirect_to leagues_path
     end
 
+    def start
+        @challenges = @league.game.challenges.shuffle()
+        @challenges.each do |challenge|
+          @league.user_leagues.each do |user_league|
+              UserLeagueChallenge.create!(user_league: user_league, challenge: @challenge)
+          end
+        end
+    end
+
     private
 
     def league_params
@@ -45,4 +54,6 @@ class LeaguesController < ApplicationController
     def set_league
         @league = League.find(params[:id])
     end
+
+
 end

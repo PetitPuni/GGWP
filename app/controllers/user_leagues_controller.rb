@@ -6,7 +6,8 @@ class UserLeaguesController < ApplicationController
   def index
     @user_leagues = UserLeague.all
     @leagues = League.all
-    @stats = SteamService.get_user_stats(current_user.steam_id)
+    @stats = SteamService.get_user_stats('76561197981067382')
+    @stats = SteamService.get_user_stats('76561197981067382') || []
   end
 
   def show

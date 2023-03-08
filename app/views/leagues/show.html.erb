@@ -10,7 +10,9 @@
 
 
     <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
-    <%= link_to 'Delete your league', league_path(@league), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    <%= link_to 'Delete your league', league_path(@league), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>
 
+    <%= @league.game.challenges %>
 
 </div>
