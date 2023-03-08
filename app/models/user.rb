@@ -2,7 +2,6 @@ class User < ApplicationRecord
   has_many :user_leagues
   before_create :set_steam_attributes
   validates :steam_id, presence: true, uniqueness: true
-  validates :steam_username, presence: true
 
   private
 
