@@ -18,8 +18,8 @@ class LeaguesController < ApplicationController
     @league = League.new(league_params)
     @league.token = RandomToken.gen(6)
     if @league.save!
-      UserLeague.new(user: current_user, league: @league)
-      redirect_to league_path(@league)
+      userleague = UserLeague.new(user: current_user, league: @league)
+      redirect_to league_path(@league) if userleague.save!
     else
       render :new, status: :unrpocessable_entity
     end
@@ -39,11 +39,11 @@ class LeaguesController < ApplicationController
 
   def join
     @user_league = UserLeague.new
-    if @league.token == params[:token]
+    if League.where('token like ?', params[:token]).exists?
       @user_league.league = @league
       @user_league.user = current_user
       @user_league.save
-      redirect_to leagues_path(@league)
+      redirect_to league_path(@league)
     else
       flash.alert = "Worng token."
       redirect_to leagues_path
