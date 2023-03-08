@@ -79,19 +79,19 @@ user_league = UserLeague.create!(
 ap 'user_league created'
 
 UserLeagueChallenge.create!(
-  succes: false,
+  succes: true,
   challenge: challenge,
   user_league: user_league
 )
 
 UserLeagueChallenge.create!(
-  succes: false,
+  succes: true,
   challenge: challenge1,
   user_league: user_league
 )
 
 UserLeagueChallenge.create!(
-  succes: false,
+  succes: true,
   challenge: challenge2,
   user_league: user_league
 )

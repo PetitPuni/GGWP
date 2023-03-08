@@ -6,6 +6,12 @@ class LeaguesController < ApplicationController
     end
 
     def show
+        @league = League.find(params[:id])
+        @player_rankings = User.joins(user_leagues: { user_league_challenges: :challenge })
+                                .where(user_leagues: { league_id: @league.id, user_league_challenges: { succes: true } })
+                                .select("users.steam_username, COALESCE(COUNT(DISTINCT challenges.id), 0) AS challenges, COALESCE(SUM(challenges.points), 0) AS score")
+                                .group("users.id")
+                                .order("score DESC")
     end
 
     def new
@@ -35,6 +41,7 @@ class LeaguesController < ApplicationController
         @league.destroy
         redirect_to leagues_path
     end
+
 
     private
 
