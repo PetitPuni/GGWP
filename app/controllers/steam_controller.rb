@@ -7,11 +7,8 @@ class SteamController < ApplicationController
 
   def callback
     steam_id = params['openid.claimed_id'].split('/').last
-    ap steam_id
     user = User.find_or_create_by(steam_id: steam_id)
-    ap user
     session['user_id'] = user.id
-    ap session['user_id']
     redirect_to leagues_path
   end
 end
