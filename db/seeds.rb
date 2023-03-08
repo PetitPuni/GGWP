@@ -8,12 +8,14 @@
 
 puts 'destroying all'
 
-User.destroy_all
-Game.destroy_all
-League.destroy_all
-Challenge.destroy_all
-UserLeague.destroy_all
 UserLeagueChallenge.destroy_all
+UserLeague.destroy_all
+Challenge.destroy_all
+League.destroy_all
+Game.destroy_all
+User.destroy_all
+
+ap User.all
 
 puts 'creating user, league, challenge, user_league, user_league_challenge'
 
@@ -39,7 +41,8 @@ league = League.create!(
   description: "the first league of the batch #1102",
   start_on: Date.today,
   end_on: Date.today + 1.month,
-  game: game
+  game: game,
+  token: RandomToken.gen(6)
 )
 
 ap 'league created'
@@ -71,7 +74,6 @@ challenge2 = Challenge.create!(
 ap 'challenge created'
 
 user_league = UserLeague.create!(
-  score: 0,
   user: user1,
   league: league
 )
@@ -79,19 +81,16 @@ user_league = UserLeague.create!(
 ap 'user_league created'
 
 UserLeagueChallenge.create!(
-  succes: true,
   challenge: challenge,
   user_league: user_league
 )
 
 UserLeagueChallenge.create!(
-  succes: true,
   challenge: challenge1,
   user_league: user_league
 )
 
 UserLeagueChallenge.create!(
-  succes: true,
   challenge: challenge2,
   user_league: user_league
 )
