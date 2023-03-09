@@ -54,7 +54,14 @@ class LeaguesController < ApplicationController
       @user_league = UserLeague.new
       @user_league.league = @league
       @user_league.user = current_user
-      @user_league.save
+      if @user_league.save
+        UserLeagueChannel.broadcast_to(
+          @league,
+          render_to_string(partial: "users/user", locals: {user: current_user})
+        )
+      else
+        flash.alert = "You are already in this league."
+      end
       redirect_to league_path(@league)
     else
       flash.alert = "Worng token."
