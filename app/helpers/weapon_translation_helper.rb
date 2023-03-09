@@ -47,7 +47,7 @@ module WeaponTranslationHelper
             spanner: "Spanner",
             ssg08: "SSG 08",
             tagrenade: "Tactical Awareness Grenade",
-            taser: "Taser Zeus x27",
+            taser: "Taser Zeus",
             tec9: "Tec-9",
             ump45: "UMP-45",
             usp_silencer: "USP-S",

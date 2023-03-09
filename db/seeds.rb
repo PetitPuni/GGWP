@@ -108,8 +108,8 @@ ap 'user_league_challenge created'
 
 guns = ['ak47', 'aug', 'awp', 'axe', 'bizon', 'c4', 'cz75a', 'deagle', 'decoy', 'elite', 'famas', 'fists', 'fiveseven', 'flashbang', 'g3sg1', 'galilar', 'glock', 'hammer', 'hkp2000', 'incgrenade', 'knifegg', 'm249', 'm4a1', 'm4a1_silencer', 'mac10', 'mag7', 'molotov', 'mp5sd', 'mp7', 'mp9', 'negev', 'nova', 'p250', 'p90', 'revolver', 'breachcharge', 'bumpmine', 'sawedoff', 'scar20', 'sg556', 'smokegrenade', 'snowball', 'spanner', 'ssg08', 'tagrenade', 'taser', 'tec9', 'ump45', 'usp_silencer', 'xm1014', 'zone_repulsor']
 
-action1 = ['hit', 'shot', 'kill' ]
-actions = ['hits', 'shots', 'kills', 'deaths' ]
+actions = ['hit', 'shot', 'kill' ]
+actions1 = ['hits', 'shots', 'kills', 'deaths' ]
 
 
 # CHALLENGES GENERATOR
@@ -119,8 +119,8 @@ actions.each do |action|
   guns.each do |gun|
     ennemies = (1..50).to_a.sample
     challenge = Challenge.create!(
-      name: "#{action} #{ennemies} #{ApplicationController.helpers.translate_weapon(gun)}",
-      description: "Pour cette mission si vous l'acceptez you need to #{action} #{ennemies} ennemies with this #{ApplicationController.helpers.translate_weapon(gun)} !", 
+      name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} #{ApplicationController.helpers.translate_weapon(gun)}",
+      description: "Pour cette mission si vous l'acceptez you need to #{ApplicationController.helpers.action_capitalize(action)} #{ennemies} ennemies with this #{ApplicationController.helpers.translate_weapon(gun)} !", 
       points: (1..100).to_a.sample,
       game: game
     )
