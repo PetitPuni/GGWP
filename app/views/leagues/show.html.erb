@@ -17,18 +17,14 @@
     </div>
 
     <%#<p><%= @league.description %></p>
-    <p> Created: <%= @league.start_on.in_time_zone("Europe/Paris").strftime('%B %d, %Y %H:%M') %></p>
-    <p> Ends: <%= @league.end_on.strftime('%B %d, %Y %H:%M')  %></p>
-    <p>Game: <%= @league.game.name %></p>
 
-    <div data-controller="timer">
-      <p>The league started on <%= @league.start_on.in_time_zone("Europe/Paris").strftime('%B %d, %Y %H:%M') %>.</p>
+    <div>
+      <p>The league start on <%= @league.start_on.in_time_zone("Europe/Paris").strftime('%B %d, %Y %H:%M') %>.</p>
       <p>The league ends on <%= @league.end_on.strftime('%B %d, %Y %H:%M')  %>.</p>
-      <div id="timer" data-target="timer"></div>
     </div>
 
     <div data-controller="timer"
-        data-timer-start-value="2023-03-09T19:30:00Z">
+        data-timer-start-value=<%= @league.end_on %>>
 
       <p>
         <span data-timer-target="days"></span>
