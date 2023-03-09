@@ -7,7 +7,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @challenges = @league.challenges
+    @challenges = @league.user_league_challenges
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
     @league = League.find(params[:id])
@@ -54,7 +54,14 @@ class LeaguesController < ApplicationController
       @user_league = UserLeague.new
       @user_league.league = @league
       @user_league.user = current_user
-      @user_league.save
+      if @user_league.save
+        UserLeagueChannel.broadcast_to(
+          @league,
+          render_to_string(partial: "users/user", locals: {user: current_user})
+        )
+      else
+        flash.alert = "You are already in this league."
+      end
       redirect_to league_path(@league)
     else
       flash.alert = "Worng token."
@@ -64,11 +71,11 @@ class LeaguesController < ApplicationController
   end
 
   def start
-    @challenges = @league.game.challenges.shuffle().first(5)
-    @challenges.each do |challenge|
-      @league.user_leagues.each do |user_league|
-        UserLeagueChallenge.create!(user_league: user_league, challenge: challenge)
-      end
+      @challenges = @league.game.challenges.shuffle.take(5)
+      @challenges.each do |challenge|
+        @league.user_leagues.each do |user_league|
+            UserLeagueChallenge.create!(user_league: user_league, challenge: challenge)
+        end
     end
     redirect_to league_path(@league)
   end

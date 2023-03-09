@@ -13,5 +13,8 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import LeagueSubscriptionController from "./league_subscription_controller"
+application.register("league-subscription", LeagueSubscriptionController)
+
 import ShareController from "./share_controller"
 application.register("share", ShareController)

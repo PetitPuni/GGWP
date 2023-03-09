@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :leagues do
     member do 
-      post :start
+     post :start
     end
     resources :challenges, only: [:show, :index]
     resources :user_leagues, only: [:index, :show]
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy]
 
   get 'leagues/:id/join', to: 'leagues#join', as: 'join_league'
+  # get 'leagues/:id/start', to: 'leagues#start', as: 'start_league'
 
   get 'steam/connect', to: 'steam#connect'
   get 'steam/callback', to: 'steam#callback'
