@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <% if @stats.present? %>
+    <% if @stats.any? %>
       <% @stats.each do |game_stats| %>
         <% if game_stats.present? %>
           <% game_name = game_stats['gameName'] %>
@@ -40,3 +40,4 @@
     <% end %>
   </tbody>
 </table>
+<% console %>
