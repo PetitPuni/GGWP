@@ -1,6 +1,6 @@
-<div class="container">
+<div class="league-container">
 
-    <h2><%= @league.name %></h2>
+    <h2><%= @league.name.capitalize %></h2>
 
     <div data-controller="share" data-share-url-value="<%= @url %>">
       <div class="mobile" data-share-target="mobile">
@@ -16,16 +16,14 @@
       </div>
     </div>
 
-    <p><%= @league.description %></p>
-    <p><%= @league.start_on.in_time_zone("Europe/Paris").strftime('%B %d, %Y %H:%M') %></p>
-    <p><%= @league.end_on.strftime('%B %d, %Y %H:%M')  %></p>
-    <p><%= @league.game.name %></p>
-    <p><%= @league.game.genre %></p>
-    <p><%= @league.game.description %></p>
+    <%#<p><%= @league.description %></p>
+    <p> Created: <%= @league.start_on.in_time_zone("Europe/Paris").strftime('%B %d, %Y %H:%M') %></p>
+    <p> Ends: <%= @league.end_on.strftime('%B %d, %Y %H:%M')  %></p>
+    <p>Game: <%= @league.game.name %></p>
+    <%#<p><%= @league.game.genre %></p>
+    <%#<p><%= @league.game.description %></p>
 
-
-    <p>---------------------------------------------------</p>
-    <div class="container"
+    <div class="players-list"
       data-controller="league-subscription"
       data-league-subscription-league-id-value="<%= @league.id %>">
         <h3>Player List</h3>
@@ -35,7 +33,6 @@
           <% end %>
         </div>
     </div>
-    <p>---------------------------------------------------</p>
 
 
  <h1>Rankings</h1>
