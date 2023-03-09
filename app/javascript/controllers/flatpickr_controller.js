@@ -14,14 +14,15 @@ export default class extends Controller {
       enableTime: true,
       dateFormat: "Y-m-d H:i",
       altFormat: "F j, Y H:i",
-      time_24hr: true 
+      time_24hr: true,
+      defaultDate: new Date()
     })
     
     // flatpickr(this.startOnTarget, { mode: "range" })
     
     flatpickr(this.endOnTarget, { 
       altInput: true,
-      enableTime: true,
+      enableTime: true, 
       dateFormat: "Y-m-d H:i",
       altFormat: "F j, Y H:i",
       time_24hr: true 

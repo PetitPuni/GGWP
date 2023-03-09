@@ -17,8 +17,8 @@
     </div>
 
     <p><%= @league.description %></p>
-    <p><%= @league.start_on.strftime('%B %d, %Y') %></p>
-    <p><%= @league.end_on.strftime('%B %d, %Y')  %></p>
+    <p><%= @league.start_on.in_time_zone("Europe/Paris").strftime('%B %d, %Y %H:%M') %></p>
+    <p><%= @league.end_on.strftime('%B %d, %Y %H:%M')  %></p>
     <p><%= @league.game.name %></p>
     <p><%= @league.game.genre %></p>
     <p><%= @league.game.description %></p>
