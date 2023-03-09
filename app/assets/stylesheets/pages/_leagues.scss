@@ -8,3 +8,63 @@
     display: flex;
     justify-content: center;
 }
+
+ul {
+    list-style-type: none;
+}
+
+.league-card {
+    background: #fff;
+    border-radius: 4px;
+    border: solid 1px #ccc;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 25px;
+    position: relative;
+    margin: 10px;
+}
+
+.league-title {
+    margin: 0;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+}
+
+.league-game {
+  padding: 1rem;
+  text-align: right;
+  color: $my-purple;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.league-dates {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.league-txt {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.league-title-total {
+    padding: 2.5em 1.5em 1.5em 1.5em;
+}
+
+.img-game-image {
+  width : 100%;
+}
+
+.game-image {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-image: url("https://wallpapercave.com/wp/wp1810702.png");
+  background-position: bottom center;
+  background-size: cover;
+}
