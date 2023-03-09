@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-  before_action :set_league, only: %i[show edit update destroy join]
+  before_action :set_league, only: %i[show edit update destroy start join]
   skip_before_action :authenticate_user!, only: %i[join]
 
   def index
