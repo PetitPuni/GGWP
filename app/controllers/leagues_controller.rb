@@ -58,6 +58,16 @@ class LeaguesController < ApplicationController
       redirect_to leagues_path
     end
   end
+  
+  def start
+      @challenges = @league.game.challenges.shuffle().first(5)
+      @challenges.each do |challenge|
+        @league.user_leagues.each do |user_league|
+            UserLeagueChallenge.create!(user_league: user_league, challenge: challenge)
+        end
+      end
+      redirect_to league_path(@league)
+  end
 
   private
 
@@ -65,15 +75,6 @@ class LeaguesController < ApplicationController
     params.require(:league).permit(:name, :description, :start_on, :end_on, :game_id, :token)
   end
 
-    def start
-        @challenges = @league.game.challenges.shuffle().first(5)
-        @challenges.each do |challenge|
-          @league.user_leagues.each do |user_league|
-              UserLeagueChallenge.create!(user_league: user_league, challenge: challenge)
-          end
-        end
-        redirect_to league_path(@league)
-    end
 
   def set_league
     @league = League.find(params[:id])

@@ -127,12 +127,4 @@ ap 'CHALLENGES GENERATOR CREATED'
 # challenges3 = Challenge.create!(name: "You need to #{action1} with this #{translate_weapon(gun)} ! " )
 # challenges2 = "You need to kill #{kill} before the end of the league ! "
 
-challenge2 = Challenge.create!(
-  name: "plant the bomb",
-  description: "plant the bomb",
-  points: 10,
-  key: 3,
-  game: game
-)
-
   puts 'done'
