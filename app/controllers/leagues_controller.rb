@@ -7,6 +7,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
+    @challenges = @league.challenges
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
     @league = League.find(params[:id])
@@ -62,11 +63,32 @@ class LeaguesController < ApplicationController
     session[:url] = nil
   end
 
+  def start
+      @challenges = @league.game.challenges.shuffle().first(5)
+      @challenges.each do |challenge|
+        @league.user_leagues.each do |user_league|
+            UserLeagueChallenge.create!(user_league: user_league, challenge: challenge)
+        end
+      end
+      redirect_to league_path(@league)
+  end
+
+  def start
+      @challenges = @league.game.challenges.shuffle().first(5)
+      @challenges.each do |challenge|
+        @league.user_leagues.each do |user_league|
+            UserLeagueChallenge.create!(user_league: user_league, challenge: challenge)
+        end
+      end
+      redirect_to league_path(@league)
+  end
+
   private
 
   def league_params
     params.require(:league).permit(:name, :description, :start_on, :end_on, :game_id, :token)
   end
+
 
   def set_league
     @league = League.find(params[:id])

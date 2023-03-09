@@ -1,2 +1,2 @@
-web: unset PORT && bin/rails server -b 0.0.0.0
+web: unset PORT && bin/rails server
 js: yarn build --watch
