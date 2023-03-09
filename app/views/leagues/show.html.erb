@@ -55,9 +55,6 @@
     <%= link_to 'Start the league by generating Challenges !', league_path(@league), class: "btn btn-primary", data: { turbo_method: :start, turbo_confirm: "Are you sure?" } %>
 
     <%= @league.game.challenges %>
-
-    <% console %>
-
     <%= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
  </div>
 
