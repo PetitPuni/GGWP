@@ -52,9 +52,38 @@
     <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
     <%= link_to 'Delete your league', league_path(@league), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
     <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>
-    <%= link_to 'Start the league by generating Challenges !', league_path(@league), class: "btn btn-primary", data: { turbo_method: :start, turbo_confirm: "Are you sure?" } %>
+    <%= button_to 'Start the league by generating Challenges !', start_league_path(@league), method: :post, class: "btn btn-primary" %>
     <%= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
 
  </div>
 
+
+ -----------------------------------
+
+ <h1><%= @league.name %> Challenges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @challenges.each do |user_league_challenge| %>
+        <% challenge = user_league_challenge.challenge %>
+      <tr>
+        <td><%= link_to challenge.name, league_challenge_path(@league, challenge) %></td>
+        <td><%= challenge.description %></td>
+        <td><%= challenge.points %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Back to my League", league_path(@league) %>
+
+
 </div>
+
