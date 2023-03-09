@@ -1,5 +1,6 @@
 class LeaguesController < ApplicationController
   before_action :set_league, only: %i[show edit update destroy join]
+  skip_before_action :authenticate_user!, only: %i[join]
 
   def index
     @leagues = current_user.leagues
@@ -45,7 +46,9 @@ class LeaguesController < ApplicationController
   end
 
   def join
+    ap "je suis dans le join"
     session[:url] = request.url
+    return redirect_to steam_connect_path unless current_user
     if League.where('token like ?', params[:token]).exists?
       @user_league = UserLeague.new
       @user_league.league = @league
@@ -56,6 +59,7 @@ class LeaguesController < ApplicationController
       flash.alert = "Worng token."
       redirect_to leagues_path
     end
+    session[:url] = nil
   end
 
   private
