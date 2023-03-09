@@ -2,6 +2,9 @@
 
 <h1>Steam User Stats</h1>
 
+<%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
+    <%= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
+
 <table>
   <thead>
     <tr>
@@ -11,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <% if @stats.present? %>
+    <% if @stats.any? %>
       <% @stats.each do |game_stats| %>
         <% if game_stats.present? %>
           <% game_name = game_stats['gameName'] %>
@@ -37,3 +40,4 @@
     <% end %>
   </tbody>
 </table>
+<% console %>
