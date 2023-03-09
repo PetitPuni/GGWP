@@ -1,4 +1,5 @@
 module WeaponTranslationHelper
+
     def translate_weapon(weapon)
         {
             ak47: "Ak47",

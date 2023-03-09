@@ -6,7 +6,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @challenges = @league.challenges
+    @challenges = @league.user_league_challenges
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
     @league = League.find(params[:id])
@@ -60,7 +60,7 @@ class LeaguesController < ApplicationController
   end
   
   def start
-      @challenges = @league.game.challenges.shuffle().first(5)
+      @challenges = @league.game.challenges.shuffle.take(5)
       @challenges.each do |challenge|
         @league.user_leagues.each do |user_league|
             UserLeagueChallenge.create!(user_league: user_league, challenge: challenge)
