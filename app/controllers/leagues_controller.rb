@@ -1,11 +1,12 @@
 class LeaguesController < ApplicationController
-  before_action :set_league, only: %i[show edit update destroy join]
+    before_action :set_league, only: %i[show edit update destroy start join] 
 
   def index
     @leagues = current_user.leagues
   end
 
   def show
+    @challenges = @league.challenges
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
     @league = League.find(params[:id])
@@ -57,12 +58,23 @@ class LeaguesController < ApplicationController
       redirect_to leagues_path
     end
   end
+  
+  def start
+      @challenges = @league.game.challenges.shuffle().first(5)
+      @challenges.each do |challenge|
+        @league.user_leagues.each do |user_league|
+            UserLeagueChallenge.create!(user_league: user_league, challenge: challenge)
+        end
+      end
+      redirect_to league_path(@league)
+  end
 
   private
 
   def league_params
     params.require(:league).permit(:name, :description, :start_on, :end_on, :game_id, :token)
   end
+
 
   def set_league
     @league = League.find(params[:id])
