@@ -5,9 +5,13 @@ class SteamController < ApplicationController
   end
   def callback
     steam_id = params['openid.claimed_id'].split('/').last
-    user = User.find_or_create_by(steam_id: steam_id)
+    user = User.find_or_create_by(steam_id:)
     session['user_id'] = user.id
-    redirect_to leagues_path
+    if session[:url].present?
+      redirect_to session[:url]
+    else
+      redirect_to leagues_path
+    end
   end
   def index
     @stats = nil

@@ -1,6 +1,15 @@
 <div class="container">
 
     <h2><%= @league.name %></h2>
+
+    <div data-controller="share">
+      <div class="invite">
+          <p >Invite your friends to join your league with this token <span data-share-target="token"><%= @league.token %></span></p>
+          <%= @url %>
+          <button data-share-target="share" data-action="click->share#send" class="btn btn-primary">Share</button>
+      </div>
+    </div>
+
     <p><%= @league.description %></p>
     <p><%= @league.start_on.strftime('%B %d, %Y') %></p>
     <p><%= @league.end_on.strftime('%B %d, %Y')  %></p>
@@ -9,6 +18,37 @@
     <p><%= @league.game.description %></p>
 
 
+    <p>---------------------------------------------------</p>
+    <h3>Player List</h3>
+    <% @users.each do |user| %>
+      <p><%= user.steam_username.capitalize %></p>
+    <% end %>
+    <p>---------------------------------------------------</p>
+
+
+ <h1>Rankings</h1>
+    <table>
+      <thead>
+        <tr>
+          <th><p> Rank </p></th>
+          <th><p> Player </p></th>
+          <th><p> Challenges Completed </p></th>
+          <th><p> Score </p></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @player_rankings.each_with_index do |player, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= player.steam_username %></td>
+            <td><%= player.challenges %></td>
+            <td><%= player.score %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+---------
+ <div>
     <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
     <%= link_to 'Delete your league', league_path(@league), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
     <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>
