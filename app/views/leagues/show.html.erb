@@ -2,11 +2,17 @@
 
     <h2><%= @league.name %></h2>
 
-    <div data-controller="share">
-      <div class="invite">
-          <p >Invite your friends to join your league with this token <span data-share-target="token"><%= @league.token %></span></p>
-          <%= @url %>
-          <button data-share-target="share" data-action="click->share#send" class="btn btn-primary">Share</button>
+    <div data-controller="share" data-share-url-value="<%= @url %>">
+      <div class="mobile" data-share-target="mobile">
+          <p >Invite your friends to join your league <span data-share-target="name"><%= @league.name %></span></p>
+          <button data-share-target="share" data-action="click->share#send" class="btn btn-primary">Invite</button>
+      </div>
+      <div class="orid" data-share-target="ordi">
+        <div data-controller="clipboard">
+          <p >Give to your friends this link to join your league <span data-share-target="name"><%= @league.name %></span> </p>
+          <input data-clipboard-target="source" class="font-extralight text-xs h-6 rounded-md" type="text" value="<%= @url %>" readonly>
+          <button data-clipboard-target="trigger" data-action="clipboard#copy">Copy</button>
+        </div>
       </div>
     </div>
 

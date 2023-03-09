@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ClipboardController from "./clipboard_controller"
+application.register("clipboard", ClipboardController)
+
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
