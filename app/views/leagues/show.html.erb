@@ -27,6 +27,7 @@
     <p>---------------------------------------------------</p>
     <h3>Player List</h3>
     <% @users.each do |user| %>
+      <img class="friends-avatar" src="<%= user.steam_image %>" alt="User Image">
       <p><%= user.steam_username.capitalize %></p>
     <% end %>
     <p>---------------------------------------------------</p>
