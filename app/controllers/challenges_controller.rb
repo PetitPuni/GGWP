@@ -2,7 +2,7 @@ class ChallengesController < ApplicationController
     before_action :set_league
 
     def index
-      @challenges = @league.challenges
+      @challenges = @league.user_league_challenges
     end
 
     def show
