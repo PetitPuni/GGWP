@@ -1,11 +1,12 @@
 class LeaguesController < ApplicationController
-    before_action :set_league, only: %i[show edit update destroy]
+    before_action :set_league, only: %i[show edit update destroy start]
 
     def index
         @leagues = League.all
     end
 
     def show
+        @challenges = @league.challenges
     end
 
     def new
@@ -23,6 +24,15 @@ class LeaguesController < ApplicationController
         end
     end
 
+    def start
+        @challenges = @league.game.challenges.shuffle().first(5)
+        @challenges.each do |challenge|
+          @league.user_leagues.each do |user_league|
+              UserLeagueChallenge.create!(user_league: user_league, challenge: challenge)
+          end
+        end
+        redirect_to league_path(@league)
+    end
 
     def edit
     end

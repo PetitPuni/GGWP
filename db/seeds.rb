@@ -113,8 +113,8 @@ challenges3 =
 actions.each do |action|
   guns.each do |gun|
     Challenge.create!(
-      name: "You need to #{action} #{ennemies} ennemies with this #{translate_weapon(gun)} !",
-      description: , 
+      name: "#{action} #{ennemies} #{translate_weapon(gun)}",
+      description: "Pour cette mission si vous l'acceptez you need to #{action} #{ennemies} ennemies with this #{translate_weapon(gun)} !", 
       points: [1..100].sample,
       game: game
     )
