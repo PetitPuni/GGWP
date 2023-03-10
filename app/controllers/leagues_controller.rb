@@ -78,8 +78,7 @@ class LeaguesController < ApplicationController
       options << { action: challenge.action, gun: challenge.gun }
     end
     @league.user_leagues.each do |user_league|
-      # steam_id: user_league.user.steam_id
-      values = FetchSteamUserStats.call(steam_id: '76561197981067382', game_id: @league.game.app_id, options: options)
+      values = FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id, options: options)
       @challenges.each_with_index do |challenge, index|
         UserLeagueChallenge.create!(user_league: user_league, challenge: challenge, init_user_stat: values[index])
       end
