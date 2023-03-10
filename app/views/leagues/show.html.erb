@@ -59,7 +59,7 @@
 
  -----------------------------------
 
-    <h1><%= @league.name %> Challenges</h1>
+    <h1>Your <%= @league.name %> Challenges</h1>
 
     <table>
     <thead>
@@ -69,8 +69,7 @@
         </tr>
     </thead>
     <tbody>
-        <% @challenges.each do |user_league_challenge| %>
-            <% challenge = user_league_challenge.challenge %>
+        <% @challenges.each do |challenge| %>
         <tr>
             <td class><%= link_to challenge.name, league_challenge_path(@league, challenge) %></td>
             <td><%= challenge.points %></td>
@@ -79,6 +78,29 @@
     </tbody>
     </table>
 
+    <div>
+    <% @values.each do |value| %>
+      <p>Challenge name<%= @value.challenge.name %></p>
+      <p>Init Stat user<%= @value.init_user_stat %></p>
+    <% end %>
+
+    </div>
+
+ <% @challenges.each do |challenge| %>
+    <div class="card">
+      <%#= image_tag challenge.photo %>
+      <h3><%= challenge.name %></h3>
+      <p><%= challenge.description %></p>
+      <div class="progress">
+        <div class="progress-bar <%#= challenge.progress >= 75 ? "progress-high" : challenge.progress >= 50 ? "progress-medium" : "progress-low" %>" style="width: <%#= challenge.progress %>%;"></div>
+      </div>
+      <div class="card-details">
+        <div>
+          <%= challenge.points %> points
+        </div>
+      </div>
+    </div>
+  <% end %>
 
 
     -----------------------------------
