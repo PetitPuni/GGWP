@@ -18,4 +18,8 @@ class UserLeaguesController < ApplicationController
     @steam_id = params[:steam_id]
     @stats = SteamService.get_user_stats(steam_id)
   end
+
+  def my_challenges
+    @challenges = UserLeagueChallenge.where(user_league_id: current_user.id)
+  end
 end

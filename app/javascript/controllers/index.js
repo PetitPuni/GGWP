@@ -18,3 +18,6 @@ application.register("league-subscription", LeagueSubscriptionController)
 
 import ShareController from "./share_controller"
 application.register("share", ShareController)
+
+import TimerController from "./timer_controller"
+application.register("timer", TimerController)
