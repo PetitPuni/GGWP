@@ -20,12 +20,12 @@ ap User.all
 
 # ap 'user created'
 
-# game = Game.create!(
-#   name: "Counter-Strike: Global Offensive",
-#   genre: "FPS",
-#   description: "Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay that it pioneered when it was launched 19 years ago. CS: GO features new maps, characters, and weapons and delivers updated versions of the classic CS content (de_dust, etc.). In addition, CS: GO will introduce new gameplay modes, matchmaking, leader boards, and more.",
-#   app_id: 730
-# )
+game = Game.create!(
+   name: "Counter-Strike: Global Offensive",
+   genre: "FPS",
+   description: "Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay that it pioneered when it was launched 19 years ago. CS: GO features new maps, characters, and weapons and delivers updated versions of the classic CS content (de_dust, etc.). In addition, CS: GO will introduce new gameplay modes, matchmaking, leader boards, and more.",
+   app_id: 730
+  )
 
 # ap 'game created'
 
