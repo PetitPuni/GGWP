@@ -6,20 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts 'destroying all'
-
-UserLeagueChallenge.destroy_all
-ap 'user_league_challenge destroyed'
-UserLeague.destroy_all
-ap 'user_league destroyed'
-Challenge.destroy_all
-ap 'challenge destroyed'
-League.destroy_all
-ap 'league destroyed'
-Game.destroy_all
-ap 'game destroyed'
-User.destroy_all
-ap 'user destroyed'
+puts 'destroying all by replanting'
 
 ap User.all
 
@@ -122,7 +109,7 @@ actions.each do |action|
       name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} #{ApplicationController.helpers.translate_weapon(gun)}",
       description: "Pour cette mission si vous l'acceptez you need to #{ApplicationController.helpers.action_capitalize(action)} #{ennemies} ennemies with this #{ApplicationController.helpers.translate_weapon(gun)} !",
       points: (1..100).to_a.sample,
-      game: game
+      game: game,
       ennemies: ennemies,
       gun: gun,
       action: action

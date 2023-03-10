@@ -30,7 +30,7 @@ class FetchSteamUserStats < ApplicationService
     ap @options
     @stats = @options.map do |option|
       ap "je cherche la valeur de #{option[:action]} #{option[:gun]}"
-      @data[0]["stats"].find { |stat| stat['name'].include? "#{option[:action]}_#{option[:gun]}" }['value']
+      @data[0]["stats"].find { |stat| stat['name'].include?("#{option[:action]}s_#{option[:gun]}") }['value']
     end
     @stats
   end
