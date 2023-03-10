@@ -1,6 +1,6 @@
 
 <div class="container">
-  <h1><%= @league.name %> Challenges</h1>
+  <h1><%= @league.name.upcase %> CHALLENGES </h1>
 
   <% [@fake_challenge, @fake_challenge1, @fake_challenge2].each do |fc| %>
     <% if fc %>
