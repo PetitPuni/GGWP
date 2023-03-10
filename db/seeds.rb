@@ -120,9 +120,9 @@ actions.each do |action|
     ennemies = (1..50).to_a.sample
     challenge = Challenge.create!(
       name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} #{ApplicationController.helpers.translate_weapon(gun)}",
-      description: "Pour cette mission si vous l'acceptez you need to #{ApplicationController.helpers.action_capitalize(action)} #{ennemies} ennemies with this #{ApplicationController.helpers.translate_weapon(gun)} !",
+      description: "Your mission, if you choose to accept it, is to #{ApplicationController.helpers.action_capitalize(action)} #{ennemies} ennemies with #{ApplicationController.helpers.translate_weapon(gun)} !",
       points: (1..100).to_a.sample,
-      game: game
+      game: game,
       ennemies: ennemies,
       gun: gun,
       action: action
