@@ -123,6 +123,9 @@ actions.each do |action|
       description: "Pour cette mission si vous l'acceptez you need to #{ApplicationController.helpers.action_capitalize(action)} #{ennemies} ennemies with this #{ApplicationController.helpers.translate_weapon(gun)} !", 
       points: (1..100).to_a.sample,
       game: game
+      ennemies: ennemies,
+      gun: gun,
+      action: action
     )
     ap challenge.name
   end

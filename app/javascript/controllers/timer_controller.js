@@ -18,8 +18,10 @@ export default class extends Controller {
 	refresh() {
     const now = (new Date()).getTime()
     const distance = this.start - now
+
+    console.log(this.start)
     
-    console.log(this.start, now,  (new Date()).getTime())
+    // console.log(this.start, now,  (new Date()).getTime())
     
     this.daysTarget.innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
   	this.hoursTarget.innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -29,7 +31,7 @@ export default class extends Controller {
 
   connect() {
     this.start = Date.parse(this.startValue)  
-		console.log(this.startValue, this.start)
+		// console.log(this.startValue, this.start)
 		setInterval(this.refresh, 1000)
   }
 }
