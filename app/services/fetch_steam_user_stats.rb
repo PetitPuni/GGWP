@@ -33,8 +33,8 @@ class FetchSteamUserStats < ApplicationService
         value = 0
       else
         ap "je cherche la valeur de #{option[:action]} #{option[:gun]}"
-        value = @data[0]["stats"].find { |stat| stat['name'].include?("#{option[:action]}s_#{option[:gun]}") }['value']
-        value.nil? ? 0 : value
+        value = @data[0]["stats"].find { |stat| stat['name'].include?("#{option[:action]}s_#{option[:gun]}") }
+        value.blank? ? 0 : value['value']
       end
     end
     @stats
