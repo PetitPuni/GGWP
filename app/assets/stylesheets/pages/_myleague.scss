@@ -33,3 +33,10 @@
     text-transform: uppercase;
     color: $my-purple;
   }
+
+  .league-container {
+  display: flex;
+  align-items: center;  
+  justify-content: center;
+  flex-direction: column;
+  }
