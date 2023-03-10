@@ -6,8 +6,8 @@ class UserLeaguesController < ApplicationController
   def index
     @user_leagues = UserLeague.all
     @leagues = League.all
-    @stats = SteamService.get_user_stats('76561197981067382')
-    @stats = SteamService.get_user_stats('76561197981067382') || []
+    @stats = SteamService.call('76561197981067382', @league.game.app_id) || []
+    @stats = SteamService.call('76561197981067382', @league.game.app_id) || []
   end
 
   def show
@@ -16,7 +16,7 @@ class UserLeaguesController < ApplicationController
 
   def my_stats
     @steam_id = params[:steam_id]
-    @stats = SteamService.get_user_stats(steam_id)
+    @stats = SteamService.call(steam_id: @steam_id, game_id: 730)
   end
 
   def my_challenges
