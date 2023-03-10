@@ -2,14 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 20px;
   }
 
 .card-wrapper {
     border-top: 1px solid #ccc;
     display: flex;
-    overflow-x: scroll;
     padding: 10px;
     flex-wrap: wrap;
     border-bottom: 1px solid #ccc;
@@ -18,7 +16,6 @@
   .league-card {
     height: 160px;
     width: 240px;
-    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,6 +25,7 @@
     background-image: url('http://media.steampowered.com/apps/csgo/blog/images/fb_image.png');
     background-size: cover;
     border-radius: 20px;
+    color: white;
   }
 
 ul {
@@ -35,7 +33,7 @@ ul {
 }
 
 .league-name {
-  color: $light-gray;
+  color: white;
   font-size: 32px;
   display: flex;
   flex-direction: column;
@@ -48,6 +46,4 @@ ul {
     margin: 25px;
 }
 
-h1 {
-    font-size : 32px;
-}
+

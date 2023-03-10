@@ -4,8 +4,8 @@
 
     <div data-controller="share" data-share-url-value="<%= @url %>">
       <div class="mobile" data-share-target="mobile">
-          <p >Invite your friends to join your league <span data-share-target="name"><%= @league.name %></span></p>
-          <button data-share-target="share" data-action="click->share#send" class="btn btn-primary">Invite</button>
+          <p ><span data-share-target="name"><%= @league.name %></span></p>
+          <button data-share-target="share" data-action="click->share#send" class="btn btn-primary">Invite your friends</button>
       </div>
       <div class="orid" data-share-target="ordi">
         <div data-controller="clipboard">
@@ -88,7 +88,7 @@
         <%= link_to 'Delete your league', league_path(@league), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>
         <%= button_to 'Start the league by generating Challenges !', start_league_path(@league), method: :post, class: "btn btn-primary" %>
-        <%= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
+        <%#= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
 
     </div>
 
