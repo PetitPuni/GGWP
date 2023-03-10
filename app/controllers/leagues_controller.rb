@@ -80,7 +80,9 @@ class LeaguesController < ApplicationController
     @league.user_leagues.each do |user_league|
       values = FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id, options: options)
       @challenges.each_with_index do |challenge, index|
-        UserLeagueChallenge.create!(user_league: user_league, challenge: challenge, init_user_stat: values[index])
+        UserLeagueChallenge.create!(user_league: user_league,
+                                    challenge: challenge, init_user_stat: values[index],
+                                    end_value: values[index])
       end
     end
     redirect_to league_path(@league)
@@ -91,13 +93,12 @@ class LeaguesController < ApplicationController
     @league.challenges.each do |challenge|
       options << { action: challenge.action, gun: challenge.gun }
     end
-    @league.user_league_challenges.each do |user_league_challenge|
-      values = FetchSteamUserStats.call(steam_id: user_league_challenge.user_league.user.steam_id,
-                                        game_id: @league.game.app_id,
-                                        options: options)
-      progress = (values[user_league_challenge.challenge_id] - user_league_challenge.init_user_stat) / user_league_challenge.challenge.ennemies  * 100
-      user_league_challenge.update!(current_user_stat: values[user_league_challenge.challenge_id],
-                                    progress: progress)
+    @league.user_leagues.each do |user_league|
+      values = FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id, options: options)
+      user_league.user_league_challenges.each_with_index do |user_league_challenge, index|
+        progress = (values[index] - user_league_challenge.init_user_stat) / user_league_challenge.challenge.ennemies  * 100
+        user_league_challenge.update!(end_value: values[index], progress: progress)
+      end
     end
   end
 
