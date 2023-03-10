@@ -78,6 +78,14 @@
     </tbody>
     </table>
 
+    <div>
+    <% @values.each do |value| %>
+      <p>Challenge name<%= @value.challenge.name %></p>
+      <p>Init Stat user<%= @value.init_user_stat %></p>
+    <% end %>
+
+    </div>
+
  <% @challenges.each do |challenge| %>
     <div class="card">
       <%#= image_tag challenge.photo %>
