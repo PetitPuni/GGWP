@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :leagues do
     member do
-     post :start
+      post :start
+      get :update_stats
     end
     resources :challenges, only: [:show, :index]
     resources :user_leagues, only: [:index, :show]

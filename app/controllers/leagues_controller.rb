@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-  before_action :set_league, only: %i[show edit update destroy start join]
+  before_action :set_league, only: %i[show edit update destroy start join update_stats]
   skip_before_action :authenticate_user!, only: %i[join]
 
   def index
@@ -84,6 +84,21 @@ class LeaguesController < ApplicationController
       end
     end
     redirect_to league_path(@league)
+  end
+
+  def update_stats
+    options = []
+    @league.challenges.each do |challenge|
+      options << { action: challenge.action, gun: challenge.gun }
+    end
+    @league.user_league_challenges.each do |user_league_challenge|
+      values = FetchSteamUserStats.call(steam_id: user_league_challenge.user_league.user.steam_id,
+                                        game_id: @league.game.app_id,
+                                        options: options)
+      progress = (values[user_league_challenge.challenge_id] - user_league_challenge.init_user_stat) / user_league_challenge.challenge.ennemies  * 100
+      user_league_challenge.update!(current_user_stat: values[user_league_challenge.challenge_id],
+                                    progress: progress)
+    end
   end
 
   private
