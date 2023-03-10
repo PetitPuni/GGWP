@@ -22,7 +22,7 @@ module WeaponTranslationHelper
             hammer: "Hammer",
             hkp2000: "Hkp2000",
             incgrenade: "Incendiary Grenade",
-            knife: "Knife",
+            knifegg: "Knife",
             m249: "M249",
             m4a1: "M4a1",
             m4a1_silencer: "M4a1-Silencer",

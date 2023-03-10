@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import flatpickr from "flatpickr";
 
+
 export default class extends Controller {
 
   static targets = [ "startOn", "endOn" ]
@@ -15,7 +16,7 @@ export default class extends Controller {
       dateFormat: "Y-m-d H:i",
       altFormat: "F j, Y H:i",
       time_24hr: true,
-      defaultDate: new Date()
+      defaultDate: new Date(),
     })
     
     // flatpickr(this.startOnTarget, { mode: "range" })
