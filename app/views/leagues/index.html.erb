@@ -1,23 +1,23 @@
-<div class="container">
+<div class="leagues-container">
     <h1>My Leagues</h1>
-  <div class ="league-card">
-    <div class="league-txt">
-      <div class="game-image">
-      </div>
-      <div class="league-title-total">
-        <ul>
-          <% @leagues.each do |league| %>
-            <li class ="league-game"><%= league.game.name %></li>
-            <li class ="league-title"><%= link_to league.name, league_path(league) %></li>
-            <li class ="league-desc"><%#= league.description %></li>
-            <li class ="league-dates"><%#= league.start_on %></li>
-            <li class ="league-dates"><%#= league.end_on %></li>
-          <% end %>
-        </ul>
-      </div>  
-    </div>  
-</div>
-<div>
+  <div class ="card-wrapper">
+      <ul>
+        <% @leagues.each do |league| %>
+          <div class="league-card">
+            <li class="league-game"><%#= league.game.name %></li>
+            <li class="league-name"><%= link_to league.name, league_path(league) %></li>
+            <li><%#= league.description %></li>
+            <li><%#= league.start_on %></li>
+            <li><%#= league.end_on %></li>
+          </div>
+        <% end %>
+      </ul>
+  </div>
+  <div class="create">
     <%= link_to 'Create your League', new_league_path, class: "btn btn-primary" %>
-    <%= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
+  </div>
+  <%= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>    
 </div>
+
+
+
