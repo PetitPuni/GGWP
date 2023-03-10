@@ -6,20 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts 'destroying all'
-
-UserLeagueChallenge.destroy_all
-ap 'user_league_challenge destroyed'
-UserLeague.destroy_all
-ap 'user_league destroyed'
-Challenge.destroy_all
-ap 'challenge destroyed'
-League.destroy_all
-ap 'league destroyed'
-Game.destroy_all
-ap 'game destroyed'
-User.destroy_all
-ap 'user destroyed'
+puts 'destroying all by replanting'
 
 ap User.all
 
