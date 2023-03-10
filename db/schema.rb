@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_144724) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_221647) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,7 +23,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_144724) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
-    t.integer "progress"
     t.index ["game_id"], name: "index_challenges_on_game_id"
   end
 
@@ -49,6 +47,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_144724) do
     t.index ["game_id"], name: "index_leagues_on_game_id"
   end
 
+  create_table "stats", force: :cascade do |t|
+    t.string "gameName"
+    t.string "genre"
+    t.string "name"
+    t.integer "value"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_stats_on_user_id"
+  end
+
   create_table "user_league_challenges", force: :cascade do |t|
     t.string "value", default: "0"
     t.boolean "succes", default: false
@@ -56,6 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_144724) do
     t.bigint "user_league_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "progress", default: 0
+    t.integer "init_user_stat", default: 0
     t.index ["challenge_id"], name: "index_user_league_challenges_on_challenge_id"
     t.index ["user_league_id"], name: "index_user_league_challenges_on_user_league_id"
   end
@@ -80,6 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_144724) do
 
   add_foreign_key "challenges", "games"
   add_foreign_key "leagues", "games"
+  add_foreign_key "stats", "users"
   add_foreign_key "user_league_challenges", "challenges"
   add_foreign_key "user_league_challenges", "user_leagues"
   add_foreign_key "user_leagues", "leagues"
