@@ -7,7 +7,8 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @challenges = @league.user_league_challenges
+    @challenges = current_user.challenges
+    @values = current_user.user_league_challenges
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
     @league = League.find(params[:id])
@@ -71,11 +72,16 @@ class LeaguesController < ApplicationController
   end
 
   def start
-      @challenges = @league.game.challenges.shuffle.take(5)
-      @challenges.each do |challenge|
-        @league.user_leagues.each do |user_league|
-            UserLeagueChallenge.create!(user_league: user_league, challenge: challenge)
-        end
+    @challenges = @league.game.challenges.shuffle.take(5)
+    options = []
+    @challenges.each do |challenge|
+      options << { action: challenge.action, gun: challenge.gun }
+    end
+    @league.user_leagues.each do |user_league|
+      values = FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id, options: options)
+      @challenges.each_with_index do |challenge, index|
+        UserLeagueChallenge.create!(user_league: user_league, challenge: challenge, init_user_stat: values[index])
+      end
     end
     redirect_to league_path(@league)
   end

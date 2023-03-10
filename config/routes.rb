@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :leagues do
-    member do 
+    member do
      post :start
     end
     resources :challenges, only: [:show, :index]
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'user_leagues/my_stats', to: 'user_leagues#my_stats'
   get 'steam/get_stats', to: 'steam#get_stats'
   get '/user_leagues', to: 'user_leagues#index'
+  get '/my_challenges', to: 'user_leagues#my_challenges'
 
 
   # Defines the root path route ("/")
