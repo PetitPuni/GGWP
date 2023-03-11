@@ -90,14 +90,6 @@
   }
 }
 
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
   .challenge-container {
     max-width: 600px;
     margin: 0 auto;
@@ -107,7 +99,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     text-align: center;
   }
-  /* Center the challenge container */
+
 .challenge-container {
   position: absolute;
   top: 50%;
@@ -120,7 +112,7 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Add some cool hover effects */
+
 .challenge-container:hover {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
 }
@@ -173,7 +165,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   }
 
-  /* Add some cool hover effects */
+
   .challenge-container:hover {
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
   }
