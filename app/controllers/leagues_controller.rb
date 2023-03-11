@@ -7,8 +7,9 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @challenges = current_user.user_league_challenges.order("progress DESC")
-    @values = current_user.user_league_challenges
+    # @challenges = current_user.user_league_challenges.order("progress DESC")
+    @challenges = User.joins(user_leagues: { user_league_challenges: :challenge })
+                      .where(user_leagues: { league_id: @league.id})
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
     @league = League.find(params[:id])
@@ -56,6 +57,11 @@ class LeaguesController < ApplicationController
       @user_league.league = @league
       @user_league.user = current_user
       if @user_league.save
+        unless @league.challenges.blank?
+          @league.challenges.each do |challenge|
+            UserLeagueChallenge.create(user_league: @user_league, challenge: challenge)
+          end
+        end
         UserLeagueChannel.broadcast_to(
           @league,
           render_to_string(partial: "users/user", locals: {user: current_user})
@@ -97,9 +103,11 @@ class LeaguesController < ApplicationController
     @league.user_leagues.each do |user_league|
       values = FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id, options: @options)
       user_league.user_league_challenges.each do |user_league_challenge|
-        progress = (((values[user_league_challenge.challenge_id.to_s] - user_league_challenge.init_user_stat) / @options[user_league_challenge.challenge_id.to_s][:ennemies].to_f ) * 100).round
-        progress >= 100 ? succes = true : succes = false
-        user_league_challenge.update!(end_value: values[user_league_challenge.challenge_id.to_s], progress:, succes:)
+        unless user_league_challenge.succes
+          progress = (((values[user_league_challenge.challenge_id.to_s] - user_league_challenge.init_user_stat) / @options[user_league_challenge.challenge_id.to_s][:ennemies].to_f ) * 100).round
+          progress >= 100 ? succes = true : succes = false
+          user_league_challenge.update!(end_value: values[user_league_challenge.challenge_id.to_s], progress:, succes:)
+        end
       end
     end
   end

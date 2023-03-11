@@ -91,13 +91,6 @@
     </tbody>
     </table>
 
-    <div>
-    <% @values.each do |value| %>
-      <p>Challenge name <%= value.challenge.name %></p>
-      <p>User has already <%= value.challenge.action %>s <%= value.init_user_stat %> ennemies with <%= value.challenge.gun %></p> </p>
-    <% end %>
-
-    </div>
 
  <% @challenges.each do |challenge| %>
     <div class="card">

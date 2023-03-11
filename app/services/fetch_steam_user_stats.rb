@@ -147,7 +147,7 @@ class FetchSteamUserStats < ApplicationService
           {"name"=>"total_kills_m4a1", "value"=>66},
           {"name"=>"total_kills_galilar", "value"=>2},
           {"name"=>"total_shots_m4a1", "value"=>1237},
-          {"name"=>"total_shots_galilar", "value"=>50},
+          {"name"=>"total_shots_galilar", "value"=>75},
           {"name"=>"total_shots_taser", "value"=>2},
           {"name"=>"total_hits_m4a1", "value"=>290},
           {"name"=>"total_hits_galilar", "value"=>3},
