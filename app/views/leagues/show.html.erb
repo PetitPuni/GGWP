@@ -55,7 +55,7 @@
         <tr>
           <th><p> Rank </p></th>
           <th><p> Player </p></th>
-          <th><p> Challenges Completed </p></th>
+          <!--<th><p> Challenges Completed </p></th>-->
           <th><p> Score </p></th>
         </tr>
       </thead>
@@ -64,7 +64,7 @@
           <tr>
             <td><%= index + 1 %></td>
             <td><%= player.steam_username %></td>
-            <td><%= player.challenges %></td>
+            <!--<td><%= player.challenges.name %></td>-->
             <td><%= player.score %></td>
           </tr>
         <% end %>
@@ -84,8 +84,8 @@
     <tbody>
         <% @challenges.each do |challenge| %>
         <tr>
-            <td class><%= link_to challenge.name, league_challenge_path(@league, challenge) %></td>
-            <td><%= challenge.points %></td>
+            <td class><%= link_to challenge.challenge.name, league_challenge_path(@league, challenge) %></td>
+            <td><%= challenge.challenge.points %></td>
         </tr>
         <% end %>
     </tbody>
@@ -102,14 +102,14 @@
  <% @challenges.each do |challenge| %>
     <div class="card">
       <%#= image_tag challenge.photo %>
-      <h3><%= challenge.name %></h3>
-      <p><%= challenge.description %></p>
+      <h3><%= challenge.challenge.name %></h3>
+      <p><%= challenge.challenge.description %></p>
       <div class="progress">
-        <div class="progress-bar <%#= challenge.progress >= 75 ? "progress-high" : challenge.progress >= 50 ? "progress-medium" : "progress-low" %>" style="width: <%#= challenge.progress %>%;"></div>
+        <div class="progress-bar <%= challenge.progress >= 75 ? "progress-high" : challenge.progress >= 50 ? "progress-medium" : "progress-low" %>" style="width: <%= challenge.progress %>%;"></div>
       </div>
       <div class="card-details">
         <div>
-          <%= challenge.points %> points
+          <%= challenge.challenge.points %> points
         </div>
       </div>
     </div>

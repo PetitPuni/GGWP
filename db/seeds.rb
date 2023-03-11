@@ -103,21 +103,21 @@ actions1 = ['hits', 'shots', 'kills', 'deaths']
 # CHALLENGES GENERATOR
 
 challenges3 =
-actions.each do |action|
-  guns.each do |gun|
-    ennemies = (1..50).to_a.sample
-    challenge = Challenge.create!(
-      name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} #{ApplicationController.helpers.translate_weapon(gun)}",
-      description: "Pour cette mission si vous l'acceptez you need to #{ApplicationController.helpers.action_capitalize(action)} #{ennemies} ennemies with this #{ApplicationController.helpers.translate_weapon(gun)} !",
-      points: (1..100).to_a.sample,
-      game: game,
-      ennemies: ennemies,
-      gun: gun,
-      action: action
-    )
-    ap challenge.name
+  actions.each do |action|
+    guns.each do |gun|
+      ennemies = (1..50).to_a.sample
+      challenge = Challenge.create!(
+        name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} #{ApplicationController.helpers.translate_weapon(gun)}",
+        description: "Pour cette mission si vous l'acceptez you need to #{ApplicationController.helpers.action_capitalize(action)} #{ennemies} ennemies with this #{ApplicationController.helpers.translate_weapon(gun)} !",
+        points: (1..100).to_a.sample,
+        game: game,
+        ennemies: ennemies,
+        gun: gun,
+        action: action
+      )
+      ap challenge.name
+    end
   end
-end
 
 ap 'CHALLENGES GENERATOR CREATED'
 

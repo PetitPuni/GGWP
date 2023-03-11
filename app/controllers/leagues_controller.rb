@@ -7,7 +7,7 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @challenges = current_user.challenges
+    @challenges = current_user.user_league_challenges.order("progress DESC")
     @values = current_user.user_league_challenges
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
@@ -73,31 +73,33 @@ class LeaguesController < ApplicationController
 
   def start
     @challenges = @league.game.challenges.shuffle.take(5)
-    options = []
+    @options = {}
     @challenges.each do |challenge|
-      options << { action: challenge.action, gun: challenge.gun }
+      @options[challenge.id.to_s] = { action: challenge.action, gun: challenge.gun, ennemies: challenge.ennemies }
     end
     @league.user_leagues.each do |user_league|
-      values = FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id, options: options)
-      @challenges.each_with_index do |challenge, index|
-        UserLeagueChallenge.create!(user_league: user_league,
-                                    challenge: challenge, init_user_stat: values[index],
-                                    end_value: values[index])
+      values = FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id, options: @options)
+      @challenges.each do |challenge|
+        UserLeagueChallenge.create!(user_league:,
+                                    challenge:, init_user_stat: values[challenge.id.to_s],
+                                    end_value: values[challenge.id.to_s], progress: 0)
       end
     end
     redirect_to league_path(@league)
   end
 
   def update_stats
-    options = []
+    @options = {}
     @league.challenges.each do |challenge|
-      options << { action: challenge.action, gun: challenge.gun }
+      @options[challenge.id.to_s] = { action: challenge.action, gun: challenge.gun, ennemies: challenge.ennemies }
     end
+    ap @options
     @league.user_leagues.each do |user_league|
-      values = FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id, options: options)
-      user_league.user_league_challenges.each_with_index do |user_league_challenge, index|
-        progress = (values[index] - user_league_challenge.init_user_stat) / user_league_challenge.challenge.ennemies  * 100
-        user_league_challenge.update!(end_value: values[index], progress: progress)
+      values = FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id, options: @options)
+      user_league.user_league_challenges.each do |user_league_challenge|
+        progress = (((values[user_league_challenge.challenge_id.to_s] - user_league_challenge.init_user_stat) / @options[user_league_challenge.challenge_id.to_s][:ennemies].to_f ) * 100).round
+        progress >= 100 ? succes = true : succes = false
+        user_league_challenge.update!(end_value: values[user_league_challenge.challenge_id.to_s], progress:, succes:)
       end
     end
   end
