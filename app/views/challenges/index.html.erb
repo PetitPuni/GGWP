@@ -2,27 +2,6 @@
 <div class="container">
   <h1><%= @league.name.upcase %> CHALLENGES </h1>
 
-  <% [@fake_challenge, @fake_challenge1, @fake_challenge2].each do |fc| %>
-    <% if fc %>
-      <div class="card">
-        <%= image_tag fc.photo %>
-        <h3><%= fc.name %></h3>
-        <div class="progress">
-          <div class="progress-bar <%= fc.progress >= 75 ? "progress-high" : fc.progress >= 50 ? "progress-medium" : "progress-low" %>" style="width: <%= fc.progress %>%;"></div>
-        </div>
-        <div class="card-details">
-          <div>
-            <%= fc.points %> points
-            <div class="sticky-button">
-              <%= link_to league_path(@league), class: "sticky-image" do %>
-                <%= image_tag "back.png", class: "sticky-image" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
 
   <% @challenges.each do |challenge| %>
     <div class="card">
