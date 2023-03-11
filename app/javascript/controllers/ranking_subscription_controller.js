@@ -11,7 +11,7 @@ export default class extends Controller {
     console.log('conect to ranking')
     this.channel = createConsumer().subscriptions.create(
       { channel: "rankingChannel", id: this.leagueIdValue },
-      { received: data => this.#updateRanking(data) }
+      { received: data => console.log(data) }
     )
     console.log(`Subscribed to the league with the id ${this.leagueIdValue}.`)
   }

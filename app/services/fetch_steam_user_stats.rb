@@ -25,7 +25,7 @@ class FetchSteamUserStats < ApplicationService
     ap "je suis dans extract_stats"
     ap 'jai acces a @data'
     # ap @data
-    if  steam_id = "76561197979499217"
+    if  steam_id == "76561197979499217"
       @data = values = [{"steamID"=>"76561197981067382",
         "gameName"=>"ValveTestApp260",
         "stats"=>
@@ -68,7 +68,7 @@ class FetchSteamUserStats < ApplicationService
           {"name"=>"total_shots_aug", "value"=>23},
           {"name"=>"total_shots_famas", "value"=>104},
           {"name"=>"total_shots_g3sg1", "value"=>21},
-          {"name"=>"total_shots_p90", "value"=>65},
+          {"name"=>"total_shots_p90", "value"=>110},
           {"name"=>"total_shots_mac10", "value"=>36},
           {"name"=>"total_shots_ump45", "value"=>146},
           {"name"=>"total_shots_xm1014", "value"=>161},
@@ -124,7 +124,7 @@ class FetchSteamUserStats < ApplicationService
           {"name"=>"total_hits_ssg08", "value"=>13},
           {"name"=>"total_kills_ssg08", "value"=>3},
           {"name"=>"total_shots_mp7", "value"=>72},
-          {"name"=>"total_hits_mp7", "value"=>16},
+          {"name"=>"total_hits_mp7", "value"=>40},
           {"name"=>"total_kills_mp7", "value"=>2},
           {"name"=>"total_kills_mp9", "value"=>5},
           {"name"=>"total_shots_mp9", "value"=>61},
@@ -235,7 +235,7 @@ class FetchSteamUserStats < ApplicationService
           {"name"=>"total_shots_aug", "value"=>23},
           {"name"=>"total_shots_famas", "value"=>104},
           {"name"=>"total_shots_g3sg1", "value"=>21},
-          {"name"=>"total_shots_p90", "value"=>65},
+          {"name"=>"total_shots_p90", "value"=>80},
           {"name"=>"total_shots_mac10", "value"=>36},
           {"name"=>"total_shots_ump45", "value"=>146},
           {"name"=>"total_shots_xm1014", "value"=>161},

@@ -7,7 +7,6 @@ export default class extends Controller {
   static targets = ["players"]
 
   connect() {
-    console.log('conect')
     this.channel = createConsumer().subscriptions.create(
       { channel: "UserLeagueChannel", id: this.leagueIdValue },
       { received: data => this.#insertPlayerAndScrollDown(data) }
