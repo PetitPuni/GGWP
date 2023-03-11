@@ -1,30 +1,8 @@
 <div class="league-container">
 
     <h1><%= @league.name.upcase %></h1>
-
-    <div class="players-list"
-      data-controller="league-subscription"
-      data-league-subscription-league-id-value="<%= @league.id %>">
-        <h3>Player List</h3>
-        <div class="players" data-league-subscription-target="players">
-          <% @users.each do |user| %>
-            <%= render "users/user", user: user %>
-          <% end %>
-        </div>
-    </div>
-
-    <div data-controller="share" data-share-url-value="<%= @url %>">
-      <div class="mobile" data-share-target="mobile">
-          <button data-share-target="share" data-action="click->share#send" class="btn btn-primary">Invite your friends</button>
-      </div>
-      <div class="orid" data-share-target="ordi">
-        <div data-controller="clipboard">
-          <p >Give to your friends this link to join your league <span data-share-target="name"><%= @league.name %></span> </p>
-          <input data-clipboard-target="source" class="font-extralight text-xs h-6 rounded-md" type="text" value="<%= @url %>" readonly>
-          <button data-clipboard-target="trigger" data-action="clipboard#copy">Copy</button>
-        </div>
-      </div>
-    </div>
+    <%= render "invite_player" %>
+    <%= render "player_list" %>
 
     <%#<p><%= @league.description %></p>
 
@@ -49,27 +27,7 @@
 
 
 
- <h3>Rankings</h3>
-    <table>
-      <thead>
-        <tr>
-          <th><p> Rank </p></th>
-          <th><p> Player </p></th>
-          <!--<th><p> Challenges Completed </p></th>-->
-          <th><p> Score </p></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @player_rankings.each_with_index do |player, index| %>
-          <tr>
-            <td><%= index + 1 %></td>
-            <td><%= player.steam_username %></td>
-            <!--<td><%= player.challenges.name %></td>-->
-            <td><%= player.score %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <%= render "ranking_player" %>
 
 
     <h3><%= @league.name %> Challenges</h3>

@@ -13,11 +13,7 @@ class LeaguesController < ApplicationController
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
     @league = League.find(params[:id])
-    @player_rankings = User.joins(user_leagues: { user_league_challenges: :challenge })
-                            .where(user_leagues: { league_id: @league.id, user_league_challenges: { succes: true } })
-                            .select("users.steam_username, COALESCE(COUNT(DISTINCT challenges.id), 0) AS challenges, COALESCE(SUM(challenges.points), 0) AS score")
-                            .group("users.id")
-                            .order("score DESC")
+    @player_rankings = ranking
   end
 
   def new
@@ -59,8 +55,10 @@ class LeaguesController < ApplicationController
       if @user_league.save
         unless @league.challenges.blank?
           @league.challenges.each do |challenge|
-            UserLeagueChallenge.create(user_league: @user_league, challenge: challenge)
+            UserLeagueChallenge.create(user_league: @user_league, challenge: challenge,
+                                       init_user_stat: nil)
           end
+          update_stats
         end
         UserLeagueChannel.broadcast_to(
           @league,
@@ -103,10 +101,17 @@ class LeaguesController < ApplicationController
     @league.user_leagues.each do |user_league|
       values = FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id, options: @options)
       user_league.user_league_challenges.each do |user_league_challenge|
+        user_league_challenge.update!(init_user_stat: values[user_league_challenge.challenge_id.to_s]) if user_league_challenge.init_user_stat.nil?
         unless user_league_challenge.succes
           progress = (((values[user_league_challenge.challenge_id.to_s] - user_league_challenge.init_user_stat) / @options[user_league_challenge.challenge_id.to_s][:ennemies].to_f ) * 100).round
           progress >= 100 ? succes = true : succes = false
-          user_league_challenge.update!(end_value: values[user_league_challenge.challenge_id.to_s], progress:, succes:)
+          if user_league_challenge.update!(end_value: values[user_league_challenge.challenge_id.to_s], progress:, succes:)
+              player_rankings = ranking
+            RankingChannel.broadcast_to(
+              @league,
+              render_to_string(partial: "ranking", locals: {player_rankings:})
+            )
+          end
         end
       end
     end
@@ -120,5 +125,13 @@ class LeaguesController < ApplicationController
 
   def set_league
     @league = League.find(params[:id])
+  end
+
+  def ranking
+    User.joins(user_leagues: { user_league_challenges: :challenge })
+                            .where(user_leagues: { league_id: @league.id, user_league_challenges: { succes: true } })
+                            .select("users.steam_username, COALESCE(COUNT(DISTINCT challenges.id), 0) AS challenges, COALESCE(SUM(challenges.points), 0) AS score")
+                            .group("users.id")
+                            .order("score DESC")
   end
 end

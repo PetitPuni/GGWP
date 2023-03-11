@@ -16,6 +16,9 @@ application.register("hello", HelloController)
 import LeagueSubscriptionController from "./league_subscription_controller"
 application.register("league-subscription", LeagueSubscriptionController)
 
+import RankingSubscriptionController from "./ranking_subscription_controller"
+application.register("ranking-subscription", RankingSubscriptionController)
+
 import ShareController from "./share_controller"
 application.register("share", ShareController)
 
