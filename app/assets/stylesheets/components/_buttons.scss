@@ -1,4 +1,26 @@
-/* General styles */
+#steam-connect-btn > img{
+  display: inline-block;
+  height: auto;
+  width: auto;
+  max-width: 300px;
+  max-height: 300px;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.login-btn:hover {
+  background-color: #0062cc;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.login-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
 img {
   display: inline-block;
   height: auto;
