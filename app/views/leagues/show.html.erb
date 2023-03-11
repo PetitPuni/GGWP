@@ -84,7 +84,7 @@
     <tbody>
         <% @challenges.each do |challenge| %>
         <tr>
-            <td class><%= link_to challenge.challenge.name, league_challenge_path(@league, challenge) %></td>
+            <td class><%= link_to challenge.challenge.name, league_challenge_path(@league, challenge.challenge) %></td>
             <td><%= challenge.challenge.points %></td>
         </tr>
         <% end %>

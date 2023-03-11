@@ -7,9 +7,9 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    # @challenges = current_user.user_league_challenges.order("progress DESC")
-    @challenges = User.joins(user_leagues: { user_league_challenges: :challenge })
-                      .where(user_leagues: { league_id: @league.id})
+    @challenges = UserLeagueChallenge.joins(user_league: [:league]).includes(:challenge)
+                                     .where(user_leagues: { user_id: current_user, league_id: @league})
+                                     .order('progress DESC')
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
     @league = League.find(params[:id])
