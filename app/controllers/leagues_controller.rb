@@ -105,11 +105,11 @@ class LeaguesController < ApplicationController
         unless user_league_challenge.succes
           progress = (((values[user_league_challenge.challenge_id.to_s] - user_league_challenge.init_user_stat) / @options[user_league_challenge.challenge_id.to_s][:ennemies].to_f ) * 100).round
           progress >= 100 ? succes = true : succes = false
-          if user_league_challenge.update!(end_value: values[user_league_challenge.challenge_id.to_s], progress:, succes:)
-              player_rankings = ranking
+          if user_league_challenge.update!(end_value: values[user_league_challenge.challenge_id.to_s], progress:, succes: )
+            @player_rankings = ranking
             RankingChannel.broadcast_to(
               @league,
-              render_to_string(partial: "ranking", locals: {player_rankings:})
+              render_to_string(partial: "ranking", locals: {player_rankings: @player_rankings})
             )
           end
         end

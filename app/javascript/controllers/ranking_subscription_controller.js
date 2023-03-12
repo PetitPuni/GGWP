@@ -10,14 +10,17 @@ export default class extends Controller {
   connect() {
     console.log('conect to ranking')
     this.channel = createConsumer().subscriptions.create(
-      { channel: "rankingChannel", id: this.leagueIdValue },
-      { received: data => console.log(data) }
+      { channel: "RankingChannel", id: this.leagueIdValue },
+      // { received: data => console.log(data) }
+      { received: data => this.#insertRanking(data) }
+
     )
     console.log(`Subscribed to the league with the id ${this.leagueIdValue}.`)
   }
 
-  #updateRanking(data) {
-    this.rankingTarget.innerHTML(data)
+  #insertRanking(data) {
+    // this.rankingTarget.insertAdjacentHTML("beforeend", data)
+    this.rankingTarget.innerHTML = data
     }
 
     resetForm(event) {
