@@ -1,30 +1,31 @@
-// Specific CSS for your home-page
 html, body {
   height: 100%;
-  display: flex;
-  align-items: center;
+  margin :0;
+  padding:0;
 }
 
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-  }
-  
-  .logo-container img {
-    max-width: 100%;
-    height: auto;
-    box-shadow: inset;
-  }
-  
-  a{
-    text-decoration: none;
-  }
-
 .home-page {
-  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.background-image {
+  background-image: url("home.jpg");
+  opacity: 0.6;
+  background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 .container {
@@ -33,18 +34,31 @@ html, body {
   align-items: center;
   justify-content: center;
   padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.logo-container img {
+  max-width: 100%;
+  box-shadow: inset;
+}
+
+a {
+  text-decoration: none;
+  color: fff;
 }
 
 .container h1 {
-  font-size : 32px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  font-size: 2rem;
 }
 
 .container h2 {
-  font-size : 24px;
-  color: white;
+  font-size: 1.5rem;
 }

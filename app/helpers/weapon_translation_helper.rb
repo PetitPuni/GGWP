@@ -3,8 +3,8 @@ module WeaponTranslationHelper
     def translate_weapon(weapon)
         {
             ak47: "Ak47",
-            aug: "Aug", 
-            awp: "Awp", 
+            aug: "Aug",
+            awp: "Awp",
             axe: "Axe",
             bizon: "Bizon",
             c4: "C4",
