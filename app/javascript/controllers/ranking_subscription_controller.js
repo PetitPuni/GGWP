@@ -1,23 +1,26 @@
 import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 
-// Connects to data-controller="league-subscription"
+
+// Connects to data-controller="ranking-subscription"
 export default class extends Controller {
   static values = { leagueId: Number }
-  static targets = ["players"]
+  static targets = ["ranking"]
 
   connect() {
+    console.log('conect to ranking')
     this.channel = createConsumer().subscriptions.create(
-      { channel: "UserLeagueChannel", id: this.leagueIdValue },
-      { received: data => this.#insertPlayerAndScrollDown(data) }
+      { channel: "RankingChannel", id: this.leagueIdValue },
+      // { received: data => console.log(data) }
+      { received: data => this.#insertRanking(data) }
+
     )
     console.log(`Subscribed to the league with the id ${this.leagueIdValue}.`)
   }
 
-
-  #insertPlayerAndScrollDown(data) {
-    this.playersTarget.insertAdjacentHTML("beforeend", data)
-    this.playersTarget.scrollTo(0, this.playersTarget.scrollHeight)
+  #insertRanking(data) {
+    // this.rankingTarget.insertAdjacentHTML("beforeend", data)
+    this.rankingTarget.innerHTML = data
     }
 
     resetForm(event) {

@@ -117,7 +117,6 @@ actions.each do |action|
     )
     ap challenge.name
   end
-end
 
 ap 'CHALLENGES GENERATOR CREATED'
 

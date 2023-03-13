@@ -4,11 +4,11 @@
     border-radius: 5px;
     font-family: "Press Start 2P", sans-serif;
   }
-  
+
   [data-controller="timer"] p {
     margin: 0;
   }
-  
+
   [data-timer-target="days"],
   [data-timer-target="hours"],
   [data-timer-target="minutes"],
@@ -21,7 +21,7 @@
     margin: 0 2px;
     border-radius: 5px;
   }
-  
+
   [data-timer-target="days"]::before,
   [data-timer-target="hours"]::before,
   [data-timer-target="minutes"]::before,
@@ -35,9 +35,10 @@
   }
 
   .league-container {
+  min-height: 100vh;
+  padding-bottom: 70px;
   display: flex;
-  align-items: center;  
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   }
-
