@@ -99,6 +99,16 @@ guns = ['ak47', 'aug', 'awp', 'axe', 'bizon', 'c4', 'cz75a', 'deagle', 'decoy', 
 actions = ['hit', 'shot', 'kill']
 # actions1 = ['hits', 'shots', 'kills', 'deaths']
 
+actions_coef = [hit = 1, shot = 2, kill = 3]
+points = (1..50).to_a.sample
+define_points =   case actions
+when 'hit'
+  points
+when 'shot'
+  points*2
+when 'kill'
+  points*3
+end
 
 # CHALLENGES GENERATOR
 
@@ -109,14 +119,29 @@ actions.each do |action|
     challenge = Challenge.create!(
       name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} #{ApplicationController.helpers.translate_weapon(gun)}",
       description: "Your mission, if you choose to accept it, is to #{ApplicationController.helpers.action_capitalize(action)} #{ennemies} ennemies with #{ApplicationController.helpers.translate_weapon(gun)} !",
-      points: (1..100).to_a.sample,
+      points: case action
+      when 'hit'
+        (1..50).to_a.sample
+      when 'shot'
+        (1..50).to_a.sample * 2
+      when 'kill'
+        (1..50).to_a.sample * 3
+      end,
       game: game,
-      ennemies: ennemies,
+      ennemies: case action
+      when 'hit'
+        (1..50).to_a.sample
+      when 'shot'
+        (1..50).to_a.sample * 2
+      when 'kill'
+        (1..50).to_a.sample * 3
+      end,
       gun: gun,
       action: action
     )
     ap challenge.name
   end
+end
 
 ap 'CHALLENGES GENERATOR CREATED'
 
