@@ -22,7 +22,6 @@
     display: flex;
     justify-content: center;
     padding: 10px;
-    flex-wrap: wrap;
   }
 
 .league-card {
@@ -31,8 +30,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     margin: 10px;
+    margin-right: 40px;
     padding: 25px;
     background-image: url('http://media.steampowered.com/apps/csgo/blog/images/fb_image.png');
     background-size: cover;
