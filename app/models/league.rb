@@ -10,4 +10,6 @@ class League < ApplicationRecord
   validates :description, presence: true
   validates :start_on, presence: true
   validates :end_on, presence: true
+
+  scope :active, -> { where("start_on <= ? AND end_on >= ?", Time.now, Time.now) }
 end
