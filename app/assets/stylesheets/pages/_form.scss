@@ -1,3 +1,25 @@
 .form{
     font-family: var(--bs-body-font-family) !important;
 }
+
+.radio {
+    display: none;
+}
+
+.radio:checked + .label {
+    opacity: 0.5;
+    background-color: #6A36D5;
+}
+
+.label > img {
+    display: flex;
+    border-radius: 4px;
+    order: 2;
+    margin: 0;
+    float: left;
+    width:  150px;
+    height: 150px;
+    object-fit: cover;
+    justify-content: center;
+    align-content: center;
+}

@@ -1,7 +1,13 @@
 <div class="container form" data-controller="flatpickr" >
     <%= simple_form_for(league) do |f| %>
     <%= f.input :name, label: 'League name', placeholder: 'Enter the name of your league here' %>
-    <%= f.association :game, label: 'The game of you want to be challenged on 💪'%>
+    <p>Choose the game you want to be challenged on 💪 !</p>
+    <% @games.each do |game| %>
+        <input type="radio" name="league[game_id]" value="<%= game.id %>" id="<%= game.id %>" class="radio">
+        <%= f.label :game, for: game.id, class: "label" do %>
+            <%= image_tag game.name %>
+        <% end %>
+    <% end %>
     <%= f.input :description, label: 'League description', placeholder: 'Try a funky description'%>
     <%= f.input :start_on, label: 'Your League start on',  as: :string, input_html: { data: { flatpickr_target: "startOn" } }, placeholder: 'Select Date..' %>
     <%= f.input :end_on, label: 'Your League ends on', as: :string, input_html: { data: { flatpickr_target: "endOn" } }, placeholder: 'Select Date..' %>

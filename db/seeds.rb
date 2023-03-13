@@ -21,10 +21,31 @@ ap User.all
 # ap 'user created'
 
 game = Game.create!(
-   name: "Counter-Strike: Global Offensive",
+   name: "csgo",
    genre: "FPS",
    description: "Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay that it pioneered when it was launched 19 years ago. CS: GO features new maps, characters, and weapons and delivers updated versions of the classic CS content (de_dust, etc.). In addition, CS: GO will introduce new gameplay modes, matchmaking, leader boards, and more.",
    app_id: 730
+  )
+
+  game2 = Game.create!(
+    name: "dota-2",
+    genre: "MOBA",
+    description: "Dota 2 is a multiplayer online battle arena (MOBA) video game in which two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the Ancient, whilst defending their own.",
+    app_id: 570
+  )
+
+  game3 = Game.create!(
+    name: "lol",
+    genre: "MOBA",
+    description: "League of Legends is a multiplayer online battle arena video game developed and published by Riot Games for Microsoft Windows and macOS. Inspired by the Warcraft III: The Frozen Throne mod Defense of the Ancients, the game follows a freemium model and is supported by microtransactions, and was inspired by the Warcraft III: The Frozen Throne mod, Defense of the Ancients.",
+    app_id: 21779
+  )
+
+  game4 = Game.create!(
+    name: "apex",
+    genre: "FPS",
+    description: "Apex Legends is a free-to-play battle royale game developed by Respawn Entertainment and published by Electronic Arts. It was released for Microsoft Windows, PlayStation 4, and Xbox One on February 4, 2019, without any prior announcement or marketing.",
+    app_id: 1172470
   )
 
 # ap 'game created'
