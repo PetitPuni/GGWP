@@ -1,9 +1,12 @@
 <div class="profile-container">
-    <div class="profile-info">
-      <img class="profile-picture" src="<%= @user.steam_image %>" alt="User Image">
-      <h1><%= @user.steam_username %></h1>
-        <p>Rank: <%= @user.rank %></p>
-    </div>
+  <div class="profile-avatar">
+  <div class="profile-image"></div>
+    <img class="profile-picture" src="<%= @user.steam_image %>" alt="User Image">
+  </div>
+  <div class="profile-info">
+  <h1><%= @user.steam_username %></h1>
+      <p>Rank: <%= @user.rank %></p>
+  </div> 
   <div class="user-card-container">
     <div class="user-card">
       <div class="card-body">
