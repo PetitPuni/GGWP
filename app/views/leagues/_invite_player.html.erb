@@ -4,7 +4,7 @@
       </div>
       <div class="orid" data-share-target="ordi">
         <div data-controller="clipboard">
-          <p >Give to your friends this link to join your league <span data-share-target="name"><%= @league.name %></span> </p>
+          <p>Send this link to your friends and start the League !  <span data-share-target="name"><%= @league.name %></span> </p>
           <input data-clipboard-target="source" class="font-extralight text-xs h-6 rounded-md" type="text" value="<%= @url %>" readonly>
           <button data-clipboard-target="trigger" data-action="clipboard#copy">Copy</button>
         </div>
