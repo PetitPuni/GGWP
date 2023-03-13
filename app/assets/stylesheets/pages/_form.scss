@@ -1,5 +1,6 @@
 .form{
     font-family: var(--bs-body-font-family) !important;
+    margin-bottom: 48px;
 }
 
 .radio {
@@ -32,4 +33,9 @@
     width:  150px;
     height: 150px;
     object-fit: cover;
+}
+
+.btn-form{
+    display: flex;
+    justify-content: flex-end;
 }

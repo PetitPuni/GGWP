@@ -13,6 +13,9 @@
     <%= f.input :description, label: 'League description', placeholder: 'Try a funky description'%>
     <%= f.input :start_on, label: 'Your League start on',  as: :string, input_html: { data: { flatpickr_target: "startOn" } }, placeholder: 'Select Date..' %>
     <%= f.input :end_on, label: 'Your League ends on', as: :string, input_html: { data: { flatpickr_target: "endOn" } }, placeholder: 'Select Date..' %>
-    <%= f.submit "Let's Gooo 🚀", class: 'btn btn-primary' %>
+    <div class="btn-form">
+        <%# <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
+        <%= f.submit "Let's Gooo 🚀", class: 'btn btn-primary' %>
+    </div>
     <% end %>
 </div>
