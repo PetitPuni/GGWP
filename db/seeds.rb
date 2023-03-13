@@ -145,3 +145,4 @@ puts 'done'
 
 # challenges3 = Challenge.create!(name: "You need to #{action1} with this #{translate_weapon(gun)} ! " )
 # challenges2 = "You need to kill #{kill} before the end of the league ! "
+end
