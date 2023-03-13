@@ -67,12 +67,11 @@
   <% end %>
 
     <div>
-        <%= button_to 'Start the league by generating Challenges !', start_league_path(@league), method: :post, class: "btn btn-primary" %>
-        <%= button_to 'Update players stats !', update_stats_league_path(@league), method: :get, class: "btn btn-primary" %>
+        <%#= button_to 'Start the league by generating Challenges !', start_league_path(@league), method: :post, class: "btn btn-primary" %>
+        <%#= button_to 'Update players stats !', update_stats_league_path(@league), method: :get, class: "btn btn-primary" %>
         <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
         <%= link_to 'Delete your league', league_path(@league), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>
         <%#= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
     </div>
 </div>
-

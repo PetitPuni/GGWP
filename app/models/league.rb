@@ -12,4 +12,13 @@ class League < ApplicationRecord
   validates :end_on, presence: true
 
   scope :active, -> { where("start_on <= ? AND end_on >= ?", Time.now, Time.now) }
+
+
+  after_commit :async_update, on: [:create]
+
+  private
+
+  def async_update
+    StartLeagueJob.set(wait_until: start_on).perform_later(self)
+  end
 end
