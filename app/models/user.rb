@@ -15,11 +15,11 @@ class User < ApplicationRecord
   def rank
     case completed_challenges_count
     when 0..9
-      "bronze"
+      "Rookie 🧒🏻"
     when 10..20
-      "silver"
+      "Demi-God 🔱"
     else
-      "gold"
+      "Allmighty ❤️‍🔥"
     end
   end
 
