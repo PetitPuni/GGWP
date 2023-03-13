@@ -100,15 +100,9 @@ actions = ['hit', 'shot', 'kill']
 # actions1 = ['hits', 'shots', 'kills', 'deaths']
 
 actions_coef = [hit = 1, shot = 2, kill = 3]
-points = (1..50).to_a.sample
-define_points =   case actions
-when 'hit'
-  points
-when 'shot'
-  points*2
-when 'kill'
-  points*3
-end
+points1 = (1..50).to_a.sample
+
+
 
 # CHALLENGES GENERATOR
 
@@ -116,26 +110,24 @@ challenges3 =
 actions.each do |action|
   guns.each do |gun|
     ennemies = (1..50).to_a.sample
+    multiplier = case action
+    when 'hit'
+      1
+    when 'shot'
+      2
+    when 'kill'
+      3
+    end
+    
+    ennemies = (1..25).to_a.sample
+    points = ennemies * multiplier * 5 
+
     challenge = Challenge.create!(
-      name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} #{ApplicationController.helpers.translate_weapon(gun)}",
+      name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} with #{ApplicationController.helpers.translate_weapon(gun)}",
       description: "Your mission, if you choose to accept it, is to #{ApplicationController.helpers.action_capitalize(action)} #{ennemies} ennemies with #{ApplicationController.helpers.translate_weapon(gun)} !",
-      points: case action
-      when 'hit'
-        (1..50).to_a.sample
-      when 'shot'
-        (1..50).to_a.sample * 2
-      when 'kill'
-        (1..50).to_a.sample * 3
-      end,
+      points: points,
       game: game,
-      ennemies: case action
-      when 'hit'
-        (1..50).to_a.sample
-      when 'shot'
-        (1..50).to_a.sample * 2
-      when 'kill'
-        (1..50).to_a.sample * 3
-      end,
+      ennemies: ennemies,
       gun: gun,
       action: action
     )
@@ -144,6 +136,8 @@ actions.each do |action|
 end
 
 ap 'CHALLENGES GENERATOR CREATED'
+
+
 
 puts 'done'
 
