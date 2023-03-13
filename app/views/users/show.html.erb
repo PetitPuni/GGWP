@@ -1,10 +1,11 @@
 <div class="profile-container">
   <div class="profile-avatar">
-  <div class="profile-image"></div>
+   <div class="profile-image">
+   <h1><%= @user.steam_username.upcase %></h1>
+   </div>
     <img class="profile-picture" src="<%= @user.steam_image %>" alt="User Image">
   </div>
   <div class="profile-info">
-  <h1><%= @user.steam_username %></h1>
       <p>Rank: <%= @user.rank %></p>
   </div> 
   <div class="user-card-container">
