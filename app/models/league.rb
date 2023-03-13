@@ -10,4 +10,8 @@ class League < ApplicationRecord
   validates :description, presence: true
   validates :start_on, presence: true
   validates :end_on, presence: true
+
+  def ended?
+    end_on <= Time.current
+  end
 end

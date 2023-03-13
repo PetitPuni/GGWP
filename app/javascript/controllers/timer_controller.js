@@ -9,28 +9,34 @@ export default class extends Controller {
     start: String
   }
   
-  static targets = ['days', 'hours', 'minutes', "seconds"]
+  static targets = ['days', 'hours', 'minutes', "seconds", "affichage", "endmessage"]
   
   connect() {
-    this.start = new Date(this.startValue)  
-    console.log(this.startValue, this.start)
+    this.start = new Date(this.startValue)
+    // console.log(this.startValue, this.start)
     setInterval(this.refresh, 1000)
-
   }
   
 	initialize() {
     this.refresh = this.refresh.bind(this)
   }
   
-	refresh() {
-    const now = (new Date()).getTime();
-    let distance = Math.abs(new Date(this.startValue) - now ) ;
-
-    console.log(now)
-    
+  show(distance){
     this.daysTarget.innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-  	this.hoursTarget.innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  	this.minutesTarget.innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  	this.secondsTarget.innerText = Math.floor((distance % (1000 * 60)) / 1000);
+    this.hoursTarget.innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    this.minutesTarget.innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    this.secondsTarget.innerText = Math.floor((distance % (1000 * 60)) / 1000);
+  }
+
+  showEndMessage() {
+    // this.endmessageTarget.innerText = "The league is over ! Check who won 🏆!"
+  }
+
+	refresh() {
+    const now = (new Date());
+    // console.log(now)
+    let distance = this.start.getTime() - now.getTime();
+    console.log(distance)
+    distance >= 0 ? this.show(distance) : this.showEndMessage()
   }
 }

@@ -7,19 +7,25 @@
     <%#<p><%= @league.description %></p>
 
     <div>
-      <p>The league start on <%= @league.start_on.in_time_zone("Europe/Paris").strftime('%B %d, %Y %H:%M') %>.</p>
-      <p>The league ends on <%= @league.end_on.in_time_zone("Europe/Paris").strftime('%B %d, %Y %H:%M')  %>.</p>
+      <p>The league start on <%= @league.start_on.strftime('%B %d, %Y %H:%M') %>.</p>
+      <p>The league ends on <%= @league.end_on.strftime('%B %d, %Y %H:%M')  %>.</p>
     </div>
 
-    <div data-controller="timer"
-        data-timer-start-value=<%= @league.end_on.iso8601 %>>
-
-      <p>
-        <span data-timer-target="days">Days</span>
-        <span data-timer-target="hours">Hours</span>
-        <span data-timer-target="minutes">Minutes</span>
-        <span data-timer-target="seconds">Seconds</span>
-      </p>
+    <div class="league-over" data-controller="timer"
+        data-timer-start-value=<%= (@league.end_on - 1.hours).iso8601%>>
+        
+        <div data-target="affichage" class="<%= 'd-none' if @league.ended? %>">
+          <p>
+            <span data-timer-target="days">Days</span>
+            <span data-timer-target="hours">Hours</span>
+            <span data-timer-target="minutes">Minutes</span>
+            <span data-timer-target="seconds">Seconds</span>
+          </p>
+        </div>
+    
+        <div data-timer-target="endmessage" class="<%= 'd-none' unless @league.ended? %> league-over">
+          <p> The league is over ! Check who won 🏆 ! </p>
+        </div>
     </div>
 
     <%#<p><%= @league.game.genre %></p>
