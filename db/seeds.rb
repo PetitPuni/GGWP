@@ -120,7 +120,7 @@ actions.each do |action|
     end
     
     ennemies = (1..25).to_a.sample
-    points = ennemies * multiplier * 5 
+    points = ennemies * multiplier * 5  
 
     challenge = Challenge.create!(
       name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} with #{ApplicationController.helpers.translate_weapon(gun)}",
