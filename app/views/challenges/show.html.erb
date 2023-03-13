@@ -1,8 +1,6 @@
-<h1><%= @challenge.name %></h1>
-
-<p><%= @challenge.description %></p>
-
-<p>Points: <%= @challenge.points %></p>
-
-<%= link_to "Back to league", league_path(@league) %>
-
+<div class="challenge-container">
+  <h1><%= @challenge.name %></h1>
+  <p><%= @challenge.description %></p>
+  <p>Points: <%= @challenge.points %></p>
+  <%= link_to "Back to league", league_path(@league), class: "btn btn-secondary" %>
+</div>

@@ -11,16 +11,17 @@
       <p>The league ends on <%= @league.end_on.strftime('%B %d, %Y %H:%M')  %>.</p>
     </div>
 
+
     <div class="league-over" data-controller="timer"
         data-timer-start-value=<%= (@league.end_on - 1.hours).iso8601%>>
         
         <div data-target="affichage" class="<%= 'd-none' if @league.ended? %>">
-          <p>
-            <span data-timer-target="days">Days</span>
-            <span data-timer-target="hours">Hours</span>
-            <span data-timer-target="minutes">Minutes</span>
-            <span data-timer-target="seconds">Seconds</span>
-          </p>
+         <p>
+          <span data-timer-target="days"></span>
+          <span data-timer-target="hours"></span>
+          <span data-timer-target="minutes"></span>
+          <span data-timer-target="seconds"></span>
+         </p>
         </div>
     
         <div data-timer-target="endmessage" class="<%= 'd-none' unless @league.ended? %> league-over">
@@ -73,11 +74,9 @@
   <% end %>
 
     <div>
-        <%= button_to 'Start the league by generating Challenges !', start_league_path(@league), method: :post, class: "btn btn-primary" %>
-        <%= button_to 'Update players stats !', update_stats_league_path(@league), method: :get, class: "btn btn-primary" %>
+        <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>
         <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
         <%= link_to 'Delete your league', league_path(@league), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-        <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>
         <%#= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
     </div>
 </div>

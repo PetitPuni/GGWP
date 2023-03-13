@@ -1,9 +1,13 @@
 <div class="profile-container">
-    <div class="profile-info">
-      <img class="profile-picture" src="<%= @user.steam_image %>" alt="User Image">
-      <h1><%= @user.steam_username %></h1>
-        <p>Rank: <%= @user.rank %></p>
-    </div>
+  <div class="profile-avatar">
+   <div class="profile-image">
+   <h1><%= @user.steam_username.upcase %></h1>
+   </div>
+    <img class="profile-picture" src="<%= @user.steam_image %>" alt="User Image">
+  </div>
+  <div class="profile-info">
+      <p>Rank: <%= @user.rank %></p>
+  </div> 
   <div class="user-card-container">
     <div class="user-card">
       <div class="card-body">
@@ -13,13 +17,13 @@
     </div>
     <div class="user-card">
       <div class="card-body">
-        <h5 class="user-card-title">Game currently playing</h5>
+        <h5 class="user-card-title">Favorite Game</h5>
         <p class="user-card-text"><%#= @league.game.name %> CS GO</p>
       </div>
     </div>
     <div class="user-card">
-      <div class="user-card-body">
-        <h5 class="user-card-title">Number of challenges completed</h5>
+      <div class="user-card-challenges">
+        <h5 class="user-card-title">Challenges completed</h5>
         <p class="user-card-text"><%= @user.completed_challenges_count %></p>
       </div>
     </div>

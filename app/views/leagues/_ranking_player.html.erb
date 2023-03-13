@@ -1,17 +1,17 @@
- <div data-controller="ranking-subscription"
+<div data-controller="ranking-subscription"
       data-ranking-subscription-league-id-value="<%= @league.id %>">
   <h3>Rankings</h3>
-    <table>
-      <thead>
-        <tr>
-          <th><p> Rank </p></th>
-          <th><p> Player </p></th>
-          <!--<th><p> Challenges Completed </p></th>-->
-          <th><p> Score </p></th>
-        </tr>
-      </thead>
-      <tbody>
-          <%= render "ranking", player_rankings: @player_rankings%>
-      </tbody>
-    </table>
+  <table>
+    <thead>
+      <tr>
+        <th><p> Rank </p></th>
+        <th><p> Player </p></th>
+        <!--<th><p> Challenges Completed </p></th>-->
+        <th><p> Score </p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render "ranking", player_rankings: @player_rankings %>
+    </tbody>
+  </table>
 </div>

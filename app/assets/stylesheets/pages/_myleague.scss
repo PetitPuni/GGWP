@@ -1,44 +1,44 @@
 [data-controller="timer"] {
-    display: inline-block;
-    padding: 8px;
-    border-radius: 5px;
-    font-family: "Press Start 2P", sans-serif;
-  }
+  display: inline-block;
+  padding: 8px;
+  border-radius: 5px;
+  font-family: "Press Start 2P", sans-serif;
+}
 
-  [data-controller="timer"] p {
-    margin: 0;
-  }
+[data-controller="timer"] p {
+  margin: 0;
+}
 
-  [data-timer-target="days"],
-  [data-timer-target="hours"],
-  [data-timer-target="minutes"],
-  [data-timer-target="seconds"] {
-    display: inline-block;
-    padding: 5px;
-    color: $my-purple;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 0 2px;
-    border-radius: 5px;
-  }
+[data-timer-target="days"],
+[data-timer-target="hours"],
+[data-timer-target="minutes"],
+[data-timer-target="seconds"] {
+  display: inline-block;
+  padding: 5px;
+  color: $my-purple;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 2px;
+  border-radius: 5px;
+}
 
-  [data-timer-target="days"]::before,
-  [data-timer-target="hours"]::before,
-  [data-timer-target="minutes"]::before,
-  [data-timer-target="seconds"]::before {
-    content: attr(data-timer-target);
-    display: block;
-    font-size: 8px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    color: $my-purple;
-  }
+[data-timer-target="days"]::before,
+[data-timer-target="hours"]::before,
+[data-timer-target="minutes"]::before,
+[data-timer-target="seconds"]::before {
+  content: attr(data-timer-target);
+  display: block;
+  font-size: 8px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  color: $my-purple;
+}
 
-  .league-container {
-  min-height: 100vh;
-  padding-bottom: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  }
+.league-container {
+min-height: 100vh;
+padding-bottom: 90px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
