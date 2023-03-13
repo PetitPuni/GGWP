@@ -41,3 +41,18 @@
 .profile-categories p {
   margin: 0 10px;
 }
+
+.user-card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  padding: 20px;
+  text-align: center;
+
+  .user-card {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin:10px;
+    overflow: hidden;
+  }
+}
