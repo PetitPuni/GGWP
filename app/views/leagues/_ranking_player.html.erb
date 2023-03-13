@@ -1,5 +1,5 @@
  <div data-controller="ranking-subscription"
-      data-ranking-subscription-league-id-value="<%= @league.id %>">
+      data-ranking-subscription-league-id-value="<%= league.id %>">
   <h3>Rankings</h3>
     <table>
       <thead>
@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-          <%= render "ranking", player_rankings: @player_rankings%>
+          <%= render "leagues/ranking", player_rankings: player_rankings%>
       </tbody>
     </table>
 </div>

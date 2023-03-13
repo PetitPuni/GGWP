@@ -11,24 +11,18 @@ export default class extends Controller {
     console.log('conect to ranking')
     this.channel = createConsumer().subscriptions.create(
       { channel: "RankingChannel", id: this.leagueIdValue },
-      // { received: data => console.log(data) }
-      { received: data => this.#insertRanking(data) }
-
+      { received: data => this.element.outerHTML = data }
     )
     console.log(`Subscribed to the league with the id ${this.leagueIdValue}.`)
   }
 
-  #insertRanking(data) {
-    // this.rankingTarget.insertAdjacentHTML("beforeend", data)
-    this.rankingTarget.innerHTML = data
-    }
 
-    resetForm(event) {
+  resetForm(event) {
     event.target.reset()
-    }
+  }
 
-    disconnect() {
+  disconnect() {
     console.log("Unsubscribed from the chatroom")
     this.channel.unsubscribe()
-    }
+  }
 }
