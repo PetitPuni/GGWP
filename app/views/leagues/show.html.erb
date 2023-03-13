@@ -11,16 +11,17 @@
       <p>The league ends on <%= @league.end_on.strftime('%B %d, %Y %H:%M')  %>.</p>
     </div>
 
+
     <div class="league-over" data-controller="timer"
         data-timer-start-value=<%= (@league.end_on - 1.hours).iso8601%>>
         
         <div data-target="affichage" class="<%= 'd-none' if @league.ended? %>">
-          <p>
-            <span data-timer-target="days">Days</span>
-            <span data-timer-target="hours">Hours</span>
-            <span data-timer-target="minutes">Minutes</span>
-            <span data-timer-target="seconds">Seconds</span>
-          </p>
+         <p>
+          <span data-timer-target="days"></span>
+          <span data-timer-target="hours"></span>
+          <span data-timer-target="minutes"></span>
+          <span data-timer-target="seconds"></span>
+         </p>
         </div>
     
         <div data-timer-target="endmessage" class="<%= 'd-none' unless @league.ended? %> league-over">
