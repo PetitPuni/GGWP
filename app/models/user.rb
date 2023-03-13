@@ -8,6 +8,21 @@ class User < ApplicationRecord
   before_create :set_steam_attributes
   validates :steam_id, presence: true, uniqueness: true
 
+  def completed_challenges_count
+    user_league_challenges.where(succes: true).count
+  end
+ 
+  def rank
+    case completed_challenges_count
+    when 0..9
+      "bronze"
+    when 10..20
+      "silver"
+    else
+      "gold"
+    end
+  end
+
   private
 
   def set_steam_attributes
