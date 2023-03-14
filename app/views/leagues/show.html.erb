@@ -1,3 +1,4 @@
+<div class="leagues-background"></div>
 <div class="league-container">
 
     <h1><%= @league.name.upcase %></h1>
@@ -31,8 +32,6 @@
 
     <%#<p><%= @league.game.genre %></p>
     <%#<p><%= @league.game.description %></p>
-
-
 
   <%= render "ranking_player" %>
 
@@ -76,7 +75,7 @@
 
     <div>
         <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>
-        <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
+        <%#= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
         <%= link_to 'Delete your league', league_path(@league), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         <%#= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
     </div>
