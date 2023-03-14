@@ -3,10 +3,10 @@
   <div class ="card-wrapper">
       <ul>
         <% @leagues.each do |league| %>
-          <div class="league-card">
+          <div class="league-card <%=league.game.name%>-img"  >
             <li class="league-game"><%#= league.game.name %></li>
             <li class="league-name"><%= link_to league.name, league_path(league) %></li>
-            <li class="league-player"> <%= UserLeague.count %> gamers 🎮</li>
+            <li class="league-player"> <%= league.user_leagues.count %> gamers 🎮</li>
             <li><%#= league.start_on %></li>
             <li><%#= league.end_on %></li>
           </div>

@@ -34,10 +34,24 @@
     margin: 10px;
     margin-right: 40px;
     padding: 25px;
-    background-image: url('http://media.steampowered.com/apps/csgo/blog/images/fb_image.png');
     background-size: cover;
     border-radius: 20px;
-  
+  }
+
+  .dota-2-img{
+    background-image: url('dota-2.jpg');
+  }
+
+  .csgo-img{
+    background-image: url('http://media.steampowered.com/apps/csgo/blog/images/fb_image.png');
+  }
+
+  .apex-img{
+    background-image: url('apex.jpg');
+  }
+
+  .lol-img{
+    background-image: url('lol.jpg');
   }
 
 
