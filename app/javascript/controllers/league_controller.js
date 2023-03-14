@@ -31,6 +31,13 @@ export default class extends Controller {
     this.updateUserChallenges(data.user_challenges)
   }
 
+  update(data) {
+    console.log('je suis dans update')
+    console.log(data)
+    this.updateRanking(data.ranking)
+    this.updateUserChallenges(data.user_challenges)
+  }
+
   updateRanking(rankingHtml) {
     this.rankingTarget.outerHTML = rankingHtml
   }

@@ -10,28 +10,16 @@ class UpdateLeagueChallenges < ApplicationService
     broadcast
   end
 
-  def show_ranking
-    ranking
-  end
-
   private
-
-  def update_user_league_challenges
-    @league.user_leagues.each {|user_league| update_user_league(user_league)}
-  end
-
-  def broadcast
-    ranking
-    @rank = ActionController::Base.new.render_to_string(partial: "leagues/ranking_player", locals: {player_rankings: ranking, league: @league})
-    LeagueChannel.broadcast_to(
-      @league, { key: "ranking", data: {rank: @rank}}
-    )
-  end
 
   def define_options
     @options = @league.challenges.order(:id).map do |challenge|
       { action: challenge.action, gun: challenge.gun }
     end
+  end
+
+  def update_user_league_challenges
+    @league.user_leagues.each {|user_league| update_user_league(user_league)}
   end
 
   def update_user_league(user_league)
@@ -53,6 +41,27 @@ class UpdateLeagueChallenges < ApplicationService
         user_league_challenge.update(end_value: @values[index])
       end
     end
+  end
+
+  def broadcast
+    ap 'je suis dans broadcast de update league challenges'
+
+    player_rankings = RankingLeagueService.call(league: @league)
+    ranking_html = ActionController::Base.new.render_to_string(partial: 'leagues/ranking_player', locals: {league: @league, player_rankings: player_rankings})
+
+    user_challenges = @league.user_leagues.to_h do |user_league|
+      html = ActionController::Base.new.render_to_string(partial: "leagues/user_challenges", locals: {user_challenges: user_league.user_league_challenges.order('progress DESC')})
+      [user_league.user_id, html]
+    end
+
+    data = {
+      ranking: ranking_html,
+      user_challenges: user_challenges
+    }
+
+    LeagueChannel.broadcast_to(
+      @league, { key: "update", data:}
+    )
   end
 
   def ranking

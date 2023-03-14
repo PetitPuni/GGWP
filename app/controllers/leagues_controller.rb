@@ -15,7 +15,7 @@ class LeaguesController < ApplicationController
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
     @league = League.find(params[:id])
-    @player_rankings = UpdateLeagueChallenges.new(league: @league).show_ranking
+    @player_rankings = RankingLeagueService.call(league: @league)
   end
 
   def new
