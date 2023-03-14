@@ -11,25 +11,25 @@
   <div class="user-card-container">
     <div class="user-card">
       <div class="card-body">
-        <h5 class="user-card-title">Number of leagues</h5>
+        <h5 class="user-card-title">Leagues 👾</h5>
         <p class="user-card-text"><%= @user.user_leagues.count %></p>
       </div>
     </div>
     <div class="user-card">
       <div class="card-body">
-        <h5 class="user-card-title">Favorite Game</h5>
+        <h5 class="user-card-title">Favorite Game 🎮</h5>
         <p class="user-card-text"><%#= @league.game.name %> CS GO</p>
       </div>
     </div>
     <div class="user-card">
       <div class="user-card-challenges">
-        <h5 class="user-card-title">Challenges completed</h5>
+        <h5 class="user-card-title">Challenges completed 🎯</h5>
         <p class="user-card-text"><%= @user.completed_challenges_count %></p>
       </div>
     </div>
     <div class="user-card">
       <div class="user-card-body">
-        <h5 class="user-card-title">Member since</h5>
+        <h5 class="user-card-title">Member since ⏲</h5>
         <p class="user-card-text"><%= @user.created_at.strftime("%B %Y") %></p>
       </div>
     </div>
