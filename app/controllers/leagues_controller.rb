@@ -7,9 +7,11 @@ class LeaguesController < ApplicationController
   end
 
   def show
-    @challenges = UserLeagueChallenge.joins(user_league: [:league]).includes(:challenge)
+    @league_challenges = @league.challenges
+    @user_challenges = UserLeagueChallenge.joins(user_league: [:league]).includes(:challenge)
                                      .where(user_leagues: { user_id: current_user, league_id: @league})
                                      .order('progress DESC')
+
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
     @league = League.find(params[:id])
@@ -45,9 +47,9 @@ class LeaguesController < ApplicationController
   end
 
   def join
-    ap "je suis dans le join"
     session[:url] = request.url
     return redirect_to steam_connect_path unless current_user
+
     if League.where('token like ?', params[:token]).exists?
       @user_league = UserLeague.new
       @user_league.league = @league
@@ -56,13 +58,13 @@ class LeaguesController < ApplicationController
         unless @league.challenges.blank?
           @league.challenges.each do |challenge|
             UserLeagueChallenge.create(user_league: @user_league, challenge: challenge,
-                                       init_user_stat: nil)
+              init_user_stat: nil)
+            end
+            update_stats
           end
-          update_stats
-        end
-        UserLeagueChannel.broadcast_to(
-          @league,
-          render_to_string(partial: "users/user", locals: {user: current_user})
+        @new_user = render_to_string(partial: "users/user", locals: {user: current_user})
+        LeagueChannel.broadcast_to(
+          @league, { key: "join", data: {user: @new_user}}
         )
       else
         flash.alert = "You are already in this league."
@@ -74,7 +76,6 @@ class LeaguesController < ApplicationController
     end
     session[:url] = nil
   end
-
 
   def update_stats
     UpdateLeagueChallenges.call(league: League.last)

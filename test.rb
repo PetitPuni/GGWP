@@ -10,8 +10,8 @@
 
 # ap '1 = 54 et 2 = 16'
 
-ap UserLeagueChallenge.find(321).update(init_user_stat: 25, end_value: 25, progress: 0, succes: false)
-ap UserLeagueChallenge.find(318).update(init_user_stat: -20, end_value: -20, progress: 0, succes: false)
+ap UserLeagueChallenge.find(1119).update(init_user_stat: -50, end_value: -50, progress: 0, succes: false)
+# ap UserLeagueChallenge.find(1054).update(init_user_stat: -50, end_value: -50, progress: 0, succes: false)
 
 
 # ap UserLeague.find(59).user_league_challenges

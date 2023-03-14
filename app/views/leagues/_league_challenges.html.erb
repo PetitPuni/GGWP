@@ -1,0 +1,19 @@
+<div data-league-target="leagueChallenges">
+    <h3><%= league.name %> Challenges</h3>
+    <table>
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Points</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% challenges.each do |challenge| %>
+        <tr>
+          <td class><%= challenge.name %></td>
+          <td><%= challenge.points %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+  </div>

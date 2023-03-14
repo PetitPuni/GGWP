@@ -1,5 +1,4 @@
- <div data-controller="ranking-subscription"
-      data-ranking-subscription-league-id-value="<%= league.id %>">
+ <div class="ranking" data-league-target="ranking">
   <h3>Rankings</h3>
     <table>
       <thead>
@@ -11,7 +10,14 @@
         </tr>
       </thead>
       <tbody>
-          <%= render "leagues/ranking", player_rankings: player_rankings%>
+        <% player_rankings.each_with_index do |player, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= player.steam_username %></td>
+            <!--<td><%= player.challenges.name %></td>-->
+            <td><%= player.score %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
 </div>

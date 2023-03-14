@@ -6,6 +6,8 @@ class StartLeagueChallenges < ApplicationService
 
   def call
     start
+    broadcast
+    user_challenges
   end
 
   private
@@ -23,5 +25,20 @@ class StartLeagueChallenges < ApplicationService
                                     end_value: values[index], progress: 0)
       end
     end
+  end
+
+  def user_challenges
+    @challenges = UserLeagueChallenge.joins(user_league: [:league]).includes(:challenge)
+                                     .where(user_leagues: { user_id: @current_user, league_id: @league})
+                                     .order('progress DESC')
+  end
+
+  def broadcast
+    partial = "leagues/league_challenges"
+    ap 'je suis dans broadcast de start league challenges'
+    @broadcast_challenges = ActionController::Base.new.render_to_string(partial:, locals: {challenges: @challenges, league: @league})
+    LeagueChannel.broadcast_to(
+      @league, { key: "leagueChallenges", data: {challenges: @broadcast_challenges}}
+    )
   end
 end

@@ -1,4 +1,4 @@
-<div class="league-container">
+<div class="league-container" data-controller="league" data-league-league-id-value="<%= @league.id %>">
 
     <h1><%= @league.name.upcase %></h1>
     <%= render "invite_player" %>
@@ -26,49 +26,17 @@
     <%#<p><%= @league.game.description %></p>
 
 
-
+  <div>
     <%= render "ranking_player", league: @league, player_rankings: @player_rankings %>
+  </div>
 
+  <div>
+    <%= render "league_challenges", challenges: @league_challenges, league: @league %>
+  </div>
 
-    <h3><%= @league.name %> Challenges</h3>
-
-    <table>
-    <thead>
-        <tr>
-        <th>Name</th>
-        <th>Points</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @challenges.each do |challenge| %>
-        <tr>
-            <td class><%= link_to challenge.challenge.name, league_challenge_path(@league, challenge.challenge) %></td>
-            <td><%= challenge.challenge.points %></td>
-        </tr>
-        <% end %>
-    </tbody>
-    </table>
-
-
- <% @challenges.each do |challenge| %>
-    <div class="card">
-      <%#= image_tag challenge.photo %>
-      <h3><%= challenge.challenge.name %></h3>
-      <p><%= challenge.challenge.description %></p>
-      <div class="progress">
-        <div class="progress-bar <%= challenge.progress >= 75 ? "progress-high" : challenge.progress >= 50 ? "progress-medium" : "progress-low" %>" style="width: <%= challenge.progress %>%;"></div>
-      </div>
-      <div class="card-details">
-        <div>
-          <%= challenge.challenge.points %> points
-        </div>
-      </div>
-    </div>
-  <% end %>
-
+  <%= render "challenges", challenges: @user_challenges %>
+  </div>
     <div>
-        <%#= button_to 'Start the league by generating Challenges !', start_league_path(@league), method: :post, class: "btn btn-primary" %>
-        <%#= button_to 'Update players stats !', update_stats_league_path(@league), method: :get, class: "btn btn-primary" %>
         <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
         <%= link_to 'Delete your league', league_path(@league), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>

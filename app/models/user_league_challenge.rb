@@ -13,7 +13,8 @@ class UserLeagueChallenge < ApplicationRecord
     progress = gap * 100 / objectif
     progress = 100 if progress > 100
     succes = progress == 100
-    update(progress: progress, succes: succes)
+    user_league.update_score!(challenge.points) if succes
+    update(progress:, succes:)
   end
 
   private
