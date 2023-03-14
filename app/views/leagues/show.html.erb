@@ -1,4 +1,7 @@
-<div class="league-container" data-controller="league" data-league-league-id-value="<%= @league.id %>"  data-league-current-user-id-value="<%= current_user.id %>">
+
+<div class="leagues-background"></div>
+<div class="league-container">
+
 
     <h1><%= @league.name.upcase %></h1>
     <%= render "invite_player" %>
@@ -40,7 +43,7 @@
   </div>
     <div>
         <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>
-        <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
+        <%#= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
         <%= link_to 'Delete your league', league_path(@league), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         <%#= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
     </div>
