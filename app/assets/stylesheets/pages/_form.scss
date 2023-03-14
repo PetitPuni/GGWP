@@ -39,3 +39,11 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.form-background {
+    background: linear-gradient(-70deg, #FF517C, $my-purple, #23a6d5);
+	background-size: 400% 400%;
+	animation: gradient 10s ease infinite;
+	height: 100vh;
+    opacity: 0.2;
+}
