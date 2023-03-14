@@ -24,6 +24,8 @@ class League < ApplicationRecord
 
   def async_update
     StartLeagueJob.set(wait_until: start_on).perform_later(self)
+  end
+
   def ended?
     end_on <= Time.current
   end
