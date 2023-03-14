@@ -1,18 +1,18 @@
 <body class="home-page">
   <div class="home-background">
-  </div>
-  <div class="container home-title-h1">
-      <h1>Welcome to GGWellPlayed</h1>
-  
+      <h1 class="home-title-h1">GGWellPlayed</h1>
     <div class="logo-container">
       <%= image_tag("GGWPLOGO.png", alt: "GGWellPlayed Logo") %>
     </div>
+  </div>
+  <div class="container">
+  
 
-      <h2 class="home-title-h1">Unleash your competitive spirit and challenge your friends today.</h2>
+      <h2 class="home-title-h2">Unleash your competitive spirit and challenge your friends today.</h2>
 
 
 
-      <%= link_to image_tag("loginsteamlarge.png"), '/steam/connect', id: 'steam-connect-btn', class: 'login-btn' %>
   </div>
     <%# <%= link_to 'connect', '/steam/connect' %>
 </body>
+      <%= link_to image_tag("loginsteamlarge.png"), '/steam/connect', id: 'steam-connect-btn', class: 'login-btn' %>
