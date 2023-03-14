@@ -6,7 +6,7 @@
           <div class="league-card">
             <li class="league-game"><%#= league.game.name %></li>
             <li class="league-name"><%= link_to league.name, league_path(league) %></li>
-            <li><%#= league.description %></li>
+            <li class="league-player"> <%= UserLeague.count %> gamers 🎮</li>
             <li><%#= league.start_on %></li>
             <li><%#= league.end_on %></li>
           </div>
@@ -15,7 +15,7 @@
   </div>
   <div class="create">
     <%= link_to 'Create your League', new_league_path, class: "btn btn-primary" %>
-  </div>
+  </div>  
   <div>
   <%#= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
   </div>    

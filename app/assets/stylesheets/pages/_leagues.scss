@@ -25,8 +25,9 @@
   }
 
 .league-card {
+    position: relative;
     height: 160px;
-    width: 240px;
+    width: 368px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,7 +37,9 @@
     background-image: url('http://media.steampowered.com/apps/csgo/blog/images/fb_image.png');
     background-size: cover;
     border-radius: 20px;
+  
   }
+
 
   .league-card .league-name {
     color: #ffffff;
@@ -47,11 +50,19 @@ ul {
   }
 
 .league-name {
-  color: white;
+  text-align: top-left;
   font-size: 32px;
   display: flex;
   flex-direction: column;
   text-decoration: white;
+
+}
+
+.league-name > a {
+  color: white;
+  font-family: "Gugi", "cursive";
+  // -webkit-text-stroke: 1px black;
+  text-decoration: none;
 }
 
 .create {
@@ -96,4 +107,11 @@ ul {
 
   p {
     margin: 0;
+  }
+
+  .league-player {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: white;
   }
