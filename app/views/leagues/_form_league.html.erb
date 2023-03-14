@@ -1,6 +1,7 @@
+<div class="form-background"></div>
 <div class="container form" data-controller="flatpickr" >
     <%= simple_form_for(league) do |f| %>
-    <h6>Choose a game to be challenged on 💪 !</h6>
+    <h6>Choose a game to be challenged on 💪</h6>
     <div class= "label-all">
         <% @games.each do |game| %>
             <input type="radio" name="league[game_id]" value="<%= game.id %>" id="<%= game.id %>" class="radio">
