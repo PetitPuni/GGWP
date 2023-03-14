@@ -5,10 +5,11 @@ html, body {
 }
 
 .home-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // position: relative;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
   height: 100%;
   background: linear-gradient(-70deg, #FF517C, $my-purple, #23a6d5);
 	background-size: 400% 400%;
@@ -40,9 +41,13 @@ html, body {
 }
 
 .logo-container {
+  // position: absolute;
+  // top: 24 px;
+  // right: 54px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   margin: 20px 0;
   -webkit-filter: drop-shadow(1px 1px 0 white)
                 drop-shadow(-1px 1px 0 white)
@@ -56,8 +61,10 @@ html, body {
 }
 
 .logo-container img {
-  max-width: 100%;
   box-shadow: inset;
+  overflow: hidden;
+  margin-bottom: -30px;
+  margin-top: -82px;
 }
 
 a {
@@ -71,13 +78,14 @@ a {
   align-items: center;
   text-align: center;
   color: white;
+  margin-top: 42px;
 }
 
 .home-title-h2 {
   font-size: 1.5rem;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  text-align: left;
   color: white;
   margin-bottom: 50px;
 }
