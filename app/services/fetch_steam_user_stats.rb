@@ -17,11 +17,11 @@ class FetchSteamUserStats < ApplicationService
 
   def make_request
     ap "je dois faire make request"
+    if false
       fake_stats
-    # if false
-    # else
-    #   @data = SteamService.call(steam_id: @steam_id, game_id: @game_id)
-    # end
+    else
+      @data = SteamService.call(steam_id: @steam_id, game_id: @game_id)
+    end
     extract_stats
   end
 
