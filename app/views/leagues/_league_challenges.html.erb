@@ -1,19 +1,23 @@
 <div data-league-target="leagueChallenges">
+   <% if league.started? %>
     <h3><%= league.name %> Challenges</h3>
     <table>
-    <thead>
-        <tr>
-        <th>Name</th>
-        <th>Points</th>
-        </tr>
-    </thead>
-    <tbody>
-      <% challenges.each do |challenge| %>
-        <tr>
-          <td class><%= challenge.name %></td>
-          <td><%= challenge.points %></td>
-        </tr>
-      <% end %>
-    </tbody>
+      <thead>
+          <tr>
+          <th>Name</th>
+          <th>Points</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% challenges.each do |challenge| %>
+          <tr>
+            <td class><%= challenge.name %></td>
+            <td><%= challenge.points %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
-  </div>
+  <% else %>
+    <p>Challenges is comming 😁</p>
+  <% end %>
+</div>

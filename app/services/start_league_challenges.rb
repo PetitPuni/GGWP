@@ -7,7 +7,7 @@ class StartLeagueChallenges < ApplicationService
   def call
     start
     broadcast
-    user_challenges
+    # user_challenges
   end
 
   private
@@ -27,18 +27,46 @@ class StartLeagueChallenges < ApplicationService
     end
   end
 
-  def user_challenges
-    @challenges = UserLeagueChallenge.joins(user_league: [:league]).includes(:challenge)
-                                     .where(user_leagues: { user_id: @current_user, league_id: @league})
-                                     .order('progress DESC')
-  end
+  # def user_challenges
+  #   @challenges = UserLeagueChallenge.joins(user_league: [:league]).includes(:challenge)
+  #                                    .where(user_leagues: { user_id: @current_user, league_id: @league})
+  #                                    .order('progress DESC')
+  # end
 
   def broadcast
-    partial = "leagues/league_challenges"
     ap 'je suis dans broadcast de start league challenges'
-    @broadcast_challenges = ActionController::Base.new.render_to_string(partial:, locals: {challenges: @challenges, league: @league})
+
+    player_rankings = ranking
+
+    ranking_html = ActionController::Base.new.render_to_string(partial: 'leagues/ranking_player', locals: {league: @league, player_rankings: player_rankings})
+    challenge_html = ActionController::Base.new.render_to_string(partial: "leagues/league_challenges", locals: {challenges: @challenges, league: @league})
+
+
+    user_challenges = @league.user_leagues.to_h do |user_league|
+      html = ActionController::Base.new.render_to_string(partial: "leagues/user_challenges", locals: {user_challenges: user_league.user_league_challenges.order('progress DESC')})
+      [user_league.user_id, html]
+    end
+
+    data = {
+      ranking: ranking_html,
+      challenges: challenge_html,
+      user_challenges: user_challenges
+    }
+
     LeagueChannel.broadcast_to(
-      @league, { key: "leagueChallenges", data: {challenges: @broadcast_challenges}}
+      @league, { key: "start", data:}
     )
+  end
+
+  def ranking
+    # User.joins(user_leagues: { user_league_challenges: :challenge })
+    #                         .where(user_leagues: { league_id: @league.id, user_league_challenges: { succes: true } })
+    #                         .select("users.steam_username, COALESCE(COUNT(DISTINCT challenges.id), 0) AS challenges, COALESCE(SUM(challenges.points), 0) AS score")
+    #                         .group("users.id")
+    #                         .order("score DESC")
+    User.joins(user_leagues: [:league])
+        .where(user_leagues: { league_id: @league.id })
+        .select("users.steam_username, user_leagues.score")
+        .order("score DESC")
   end
 end

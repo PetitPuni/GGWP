@@ -3,7 +3,7 @@ import { createConsumer } from "@rails/actioncable"
 
 // Connects to data-controller="league"
 export default class extends Controller {
-  static values = { leagueId: Number, currentUserId: Number }
+  static values = { leagueId: Number }
   static targets = ["userChallenges", "ranking", "players", "leagueChallenges"]
 
   initialize() {
@@ -16,7 +16,6 @@ export default class extends Controller {
       { received: this.received }
     )
     console.log(`Subscribed to the league with the id ${this.leagueIdValue}.`)
-    console.log(this.currentUserIdValue)
   }
 
   join(data) {
@@ -26,24 +25,11 @@ export default class extends Controller {
   start(data) {
     console.log('je suis dans start')
     console.log(data)
-    this.updateRanking(data.ranking)
-    this.updateChallenges(data.challenges)
-    this.updateUserChallenges(data.user_challenges)
   }
 
-  updateRanking(rankingHtml) {
-    this.rankingTarget.outerHTML = rankingHtml
-  }
-
-  updateChallenges(challengesHtml) {
-    this.leagueChallengesTarget.outerHTML = challengesHtml
-  }
-
-  updateUserChallenges(user_challenges) {
-    const myChallengesHtml = user_challenges[this.currentUserIdValue]
-    if (myChallengesHtml) {
-      this.userChallengesTarget.outerHTML = myChallengesHtml
-    }
+  update(data) {
+    console.log('je suis dans update')
+    console.log(data)
   }
 
   received(json) {

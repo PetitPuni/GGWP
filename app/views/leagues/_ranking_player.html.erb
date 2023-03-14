@@ -1,5 +1,6 @@
  <div class="ranking" data-league-target="ranking">
-  <h3>Rankings</h3>
+  <% if league.started? %>
+    <h3>Rankings</h3>
     <table>
       <thead>
         <tr>
@@ -20,4 +21,5 @@
         <% end %>
       </tbody>
     </table>
+  <% end %>
 </div>

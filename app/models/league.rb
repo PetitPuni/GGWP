@@ -16,6 +16,10 @@ class League < ApplicationRecord
 
   after_commit :async_update, on: [:create]
 
+  def started?
+    start_on <= Time.now
+  end
+
   private
 
   def async_update

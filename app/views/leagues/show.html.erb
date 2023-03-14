@@ -1,4 +1,4 @@
-<div class="league-container" data-controller="league" data-league-league-id-value="<%= @league.id %>">
+<div class="league-container" data-controller="league" data-league-league-id-value="<%= @league.id %>"  data-league-current-user-id-value="<%= current_user.id %>">
 
     <h1><%= @league.name.upcase %></h1>
     <%= render "invite_player" %>
@@ -26,15 +26,10 @@
     <%#<p><%= @league.game.description %></p>
 
 
-  <div>
-    <%= render "ranking_player", league: @league, player_rankings: @player_rankings %>
-  </div>
+  <%= render "ranking_player", league: @league, player_rankings: @player_rankings %>
+  <%= render "league_challenges", challenges: @league_challenges, league: @league %>
+  <%= render "user_challenges", user_challenges: @user_challenges %>
 
-  <div>
-    <%= render "league_challenges", challenges: @league_challenges, league: @league %>
-  </div>
-
-  <%= render "challenges", challenges: @user_challenges %>
   </div>
     <div>
         <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
