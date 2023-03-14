@@ -20,7 +20,7 @@ class LeaguesController < ApplicationController
 
   def new
     @league = League.new
-    @games = Game.all
+    @games = Game.all 
   end
 
   def create

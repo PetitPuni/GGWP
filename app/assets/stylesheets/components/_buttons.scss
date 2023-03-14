@@ -1,23 +1,99 @@
 #steam-connect-btn > img{
-    display: inline-block;
-    height: auto; 
-    width: auto; 
-    max-width: 300px; 
-    max-height: 300px;
-    text-decoration: none;
-    border-radius: 4px;
-    border: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  display: inline-block;
+  height: 100px;
+  width: 844px;
+  max-width: 100%;
+  max-height: 300px;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-  .login-btn:hover {
-    background-color: #0062cc;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-  }
-  
-  .login-btn:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
-  }
+.login-btn:hover {
+  background-color: #0062cc;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.login-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
+img {
+  display: inline-block;
+  height: auto;
+  width: auto;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.btn {
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 20px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+/* Primary button */
+.btn-primary {
+  color: #fff;
+  background-color: #6A36D5;
+  border-color: #6A36D5;
+}
+
+.btn-primary:hover {
+  background-color: #472796;
+  border-color: #472796;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 2px rgba(106, 54, 213, 0.5);
+}
+
+/* Warning button */
+.btn-warning {
+  color: #fff;
+  background-color: #ff4107;
+  border-color: #ff4107;
+}
+
+/* Secondary button */
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+/* Login button */
+.login-btn {
+  background-color: #0062cc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.login-btn:hover {
+  background-color: #0062cc;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Button container */
+.button-container {
+  text-align: center;
+}
+.inline-block {
+  display: inline-block;
+}

@@ -11,6 +11,7 @@ class FetchSteamAttributesFromSteamId < ApplicationService
   end
 
   def call
+    ap url
     http = Net::HTTP.new(url.host, url.port);
     request = Net::HTTP::Get.new(url)
 
@@ -27,6 +28,6 @@ class FetchSteamAttributesFromSteamId < ApplicationService
   private
 
   def url
-    URI("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{API_KEY}&steamids=#{@steam_id}}")
+    URI("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=#{API_KEY}&steamids=#{@steam_id}")
   end
 end

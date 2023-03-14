@@ -3,7 +3,7 @@
     bottom: 0;
     position: fixed;
     width: 100%;
-    // z-index: 100;
+    z-index: 100;
     margin-top: 30px;
   }
 
@@ -36,11 +36,12 @@ body.home-page .footer-bar{
 }
 
 .footer-button i.fa-plus {
-  font-size: 32px; /* adjust size as desired */
-  background-color: $my-purple;
+  font-size: 32px;
+  background-color: #FF517C;
   border-radius: 50%;
   padding: 10px;
   color: white;
   display: inline-block;
   margin-top: -30px;
+  border : 2px solid white;
 }
