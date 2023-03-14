@@ -2,17 +2,15 @@
 <div class="leagues-container">
     <h1>MY LEAGUES</h1>
   <div class ="card-wrapper">
-      <ul>
         <% @leagues.each do |league| %>
           <div class="league-card <%=league.game.name%>-img"  >
-            <li class="league-game"><%#= league.game.name %></li>
-            <li class="league-name"><%= link_to league.name, league_path(league) %></li>
-            <li class="league-player"> <%= league.user_leagues.count %> gamers 🎮</li>
-            <li><%#= league.start_on %></li>
-            <li><%#= league.end_on %></li>
+            <p class="league-game"><%#= league.game.name %></p>
+            <p class="league-name"><%= link_to league.name, league_path(league) %></p>
+            <p class="league-player"> <%= league.user_leagues.count %> gamers 🎮</p>
+            <p><%#= league.start_on %></p>
+            <p><%#= league.end_on %></p>
           </div>
         <% end %>
-      </ul>
   </div>
   <div class="create">
     <%= link_to 'Create your League', new_league_path, class: "btn btn-primary" %>
