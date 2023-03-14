@@ -1,16 +1,20 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :leagues do
-    member do
-      post :start
-      get :update_stats
-    end
+    # member do
+    #   post :start
+    #   get :update_stats
+    # end
     resources :challenges, only: [:show, :index]
     resources :user_leagues, only: [:index, :show]
   end
 
   resources :users, only: [:show, :edit, :update, :destroy]
+
+  mount Sidekiq::Web => '/sidekiq'
 
   get 'leagues/:id/join', to: 'leagues#join', as: 'join_league'
   # get 'leagues/:id/start', to: 'leagues#start', as: 'start_league'

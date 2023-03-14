@@ -1,12 +1,8 @@
-<div class="players-list"
-      data-controller="league-subscription"
-      data-league-subscription-league-id-value="<%= @league.id %>">
-        <h3>Player List</h3>
-        <div class="players" data-league-subscription-target="players">
-          <% @users.each do |user| %>
-            <%= render "users/user", user: user %>
-          <% end %>
-        </div>
-    </div>
-
-
+<div class="players-list">
+  <h3>Player List</h3>
+  <div class="players" data-league-target="players">
+    <% @users.each do |user| %>
+      <%= render "users/user", user: user %>
+    <% end %>
+  </div>
+</div>
