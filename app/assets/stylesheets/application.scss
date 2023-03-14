@@ -3,6 +3,7 @@
 @import "config/colors";
 @import "config/bootstrap_variables";
 
+
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
@@ -11,6 +12,7 @@
 @import "components/index";
 @import "pages/index";
 @import "flatpickr/dist/flatpickr.css";
+@import "pages/challenges";
 
 a {
     text-decoration: none;
@@ -25,4 +27,3 @@ p {
     margin: 0;
 
 }
-
