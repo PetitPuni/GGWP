@@ -24,3 +24,6 @@ application.register("share", ShareController)
 
 import TimerController from "./timer_controller"
 application.register("timer", TimerController)
+
+import TypedController from "./typed_controller"
+application.register("typed", TypedController)
