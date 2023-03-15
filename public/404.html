@@ -1,77 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Oopsi... Page not found </title>
+  <title>404 page not found </title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   .GG-error-page{
       height: 100%;
       background: linear-gradient(-70deg, #FF517C, #6A36D5, #23a6d5);
-      background-size: 400% 400%;
-      animation: gradient 10s ease infinite;
   }
 
-  .rails-default-error-page div.dialog {
+.GG-error-page div.dialog {
     width: 95%;
     max-width: 33em;
     margin: 4em auto 0;
+    height: 100vh;
   }
 
-  /* .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  } */
-
-  .dialog > h1 {
+.GG-error-page h1 {
       font-size: 2rem;
+      font-family: "Press Start 2P", sans-serif;
       justify-content: center;
       align-items: center;
       text-align: center;
       color: white;
-      margin-top: 108px;
+      margin-top: 64px;
   }
+
+.GG-error-page p {
+      font-size: 2rem;
+      font-family: "Gugi", "cursive";
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+  }
+.GG-error-page img {
+  height: 50%;
+  width: 50%;
+  align-content: center;
+  border-radius: 8px;
+  }
+
+  .container-404 {
+      text-align: center;
+      color: white;
+      text-decoration: none;
+  }
+
+.GG-error-page div.dialog > p {
+      font-size: 1rem;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+  }
+
+.GG-error-page div.dialog > a {
+      font-size: 1rem;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+  }
+
+  .container-404 a {
+      color: white;
+      text-decoration: none;
+  }
+
+
   </style>
+
 </head>
 
 
 <body class="GG-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="container">
+  <div>
     <div class="dialog">
-      <div>
-        <h1>The page you were looking for doesn't exist or an error occured.</h1>
-        <p>You have reached the end of our world but we want to keep on rocking yours 🪩 </p>
+      <div class="container-404">
+        <h1>Oopsi... That's a 404 !</h1>
+        <img src="404-blazer.png" alt="404 page not found image">
+        <p>You have reached the end of our world but we want to keep on blasting yours!</p>
+        <a href="http://www.ggwp.me/leagues">Click here to go back to the home page</a>
       </div>
-      <p>Click here to go back to the home page</p>
     </div>
   </div>
 </body>
