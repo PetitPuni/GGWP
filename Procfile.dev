@@ -1,4 +1,4 @@
-web: unset PORT && bin/rails server
+web: bin/rails server -p 3000
 js: yarn build --watch
 worker: redis-cli flushall ; bundle exec sidekiq -C config/sidekiq.yml
 web: bundle exec puma -C config/puma.rb

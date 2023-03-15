@@ -37,13 +37,13 @@ export default class extends Controller {
 
   showBefore(distance_start) {
     this.showTimer(distance_start)
-    this.messageTarget.innerText = "The league starts on :"
+    this.messageTarget.innerText = "The league starts in :"
     this.affichageTarget.classList.remove("d-none")
   }
 
   showActive(distance_end) {
     this.showTimer(distance_end)
-    this.messageTarget.innerText = "The league ends on :"
+    this.messageTarget.innerText = "The league ends in :"
     this.affichageTarget.classList.remove("d-none")
   }
 
