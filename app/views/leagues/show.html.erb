@@ -35,7 +35,6 @@
 
   <%= render "ranking_player" %>
 
-
     <h3><%= @league.name %> Challenges</h3>
 
     <table>
@@ -54,8 +53,7 @@
         <% end %>
     </tbody>
     </table>
-
-
+  
  <% @challenges.each do |challenge| %>
     <div class="card">
       <%#= image_tag challenge.photo %>
