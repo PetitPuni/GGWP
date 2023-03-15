@@ -16,13 +16,26 @@
 
 .label-all {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    // grid-template-columns: 1fr 1fr;
     place-items: center;
     gap: 10px 0px; 
     // flex-wrap: wrap;
     margin-bottom: 8px;
     margin-top: 8px;
 }
+
+@media (min-width: 400px) {  
+    .label-all {
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+  /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+  @media (min-width: 810px) {
+    .label-all {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+
 
 .label > img {
     flex-basis: 50%;
