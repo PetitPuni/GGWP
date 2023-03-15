@@ -4,6 +4,6 @@ class UpdateLeagueJob < ApplicationJob
     # Do something later
     ap "UpdateLeagueJob: I'm running!"
     ap league
-    # UpdateLeagueChallenges.call(league: league)
+    UpdateLeagueChallenges.call(league: league)
   end
 end

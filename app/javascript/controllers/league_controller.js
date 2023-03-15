@@ -11,12 +11,12 @@ export default class extends Controller {
   }
 
   connect() {
+    console.log(this.start_messageTargetValue)
     this.channel = createConsumer().subscriptions.create(
       { channel: "LeagueChannel", id: this.leagueIdValue },
       { received: this.received }
     )
     console.log(`Subscribed to the league with the id ${this.leagueIdValue}.`)
-    console.log(this.currentUserIdValue)
   }
 
   join(data) {
@@ -24,16 +24,12 @@ export default class extends Controller {
   }
 
   start(data) {
-    console.log('je suis dans start')
-    console.log(data)
     this.updateRanking(data.ranking)
     this.updateChallenges(data.challenges)
     this.updateUserChallenges(data.user_challenges)
   }
 
   update(data) {
-    console.log('je suis dans update')
-    console.log(data)
     this.updateRanking(data.ranking)
     this.updateUserChallenges(data.user_challenges)
   }

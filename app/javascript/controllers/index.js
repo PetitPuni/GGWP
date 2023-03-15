@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import ChallengesSubscriptionController from "./challenges_subscription_controller"
-application.register("challenges-subscription", ChallengesSubscriptionController)
-
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
 
@@ -19,11 +16,6 @@ application.register("hello", HelloController)
 import LeagueController from "./league_controller"
 application.register("league", LeagueController)
 
-import LeagueSubscriptionController from "./league_subscription_controller"
-application.register("league-subscription", LeagueSubscriptionController)
-
-import RankingSubscriptionController from "./ranking_subscription_controller"
-application.register("ranking-subscription", RankingSubscriptionController)
 
 import ShareController from "./share_controller"
 application.register("share", ShareController)

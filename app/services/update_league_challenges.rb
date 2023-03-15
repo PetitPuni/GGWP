@@ -44,8 +44,6 @@ class UpdateLeagueChallenges < ApplicationService
   end
 
   def broadcast
-    ap 'je suis dans broadcast de update league challenges'
-
     player_rankings = RankingLeagueService.call(league: @league)
     ranking_html = ActionController::Base.new.render_to_string(partial: 'leagues/ranking_player', locals: {league: @league, player_rankings: player_rankings})
 
@@ -62,17 +60,5 @@ class UpdateLeagueChallenges < ApplicationService
     LeagueChannel.broadcast_to(
       @league, { key: "update", data:}
     )
-  end
-
-  def ranking
-    # User.joins(user_leagues: { user_league_challenges: :challenge })
-    #                         .where(user_leagues: { league_id: @league.id, user_league_challenges: { succes: true } })
-    #                         .select("users.steam_username, COALESCE(COUNT(DISTINCT challenges.id), 0) AS challenges, COALESCE(SUM(challenges.points), 0) AS score")
-    #                         .group("users.id")
-    #                         .order("score DESC")
-    User.joins(user_leagues: [:league])
-        .where(user_leagues: { league_id: @league.id })
-        .select("users.steam_username, user_leagues.score")
-        .order("score DESC")
   end
 end
