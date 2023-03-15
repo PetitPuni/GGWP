@@ -1,3 +1,8 @@
+<!-- app/views/offers/show.html.erb allow the title and the logo to appear on the tab of the browser-->
+<% content_for :meta_title, "#{@offer.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @offer.description %>
+<% content_for :meta_image, cl_image_path(@offer.photo.key) %>
+
 <div class="leagues-background"></div>
 <div class="leagues-container">
     <h1>MY LEAGUES</h1>
