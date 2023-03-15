@@ -59,9 +59,9 @@ class LeaguesController < ApplicationController
           @league.challenges.each do |challenge|
             UserLeagueChallenge.create(user_league: @user_league, challenge: challenge,
               init_user_stat: nil)
-            end
-            update_stats
           end
+          update_stats
+        end
         @new_user = render_to_string(partial: "users/user", locals: {user: current_user})
         LeagueChannel.broadcast_to(
           @league, { key: "join", data: {user: @new_user}}
