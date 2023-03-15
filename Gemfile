@@ -52,7 +52,7 @@ gem 'random_token', '~> 1.1', '>= 1.1.1'
 
 gem 'awesome_print', '~> 1.8'
 
-gem "sidekiq"
+gem "sidekiq", '~> 6.5'
 gem "sidekiq-failures", "~> 1.0"
 
 gem "autoprefixer-rails"
