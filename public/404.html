@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>Oopsi... Page not found </title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
+  .GG-error-page{
+      height: 100%;
+      background: linear-gradient(-70deg, #FF517C, #6A36D5, #23a6d5);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
   }
 
   .rails-default-error-page div.dialog {
@@ -18,7 +17,7 @@
     margin: 4em auto 0;
   }
 
-  .rails-default-error-page div.dialog > div {
+  /* .rails-default-error-page div.dialog > div {
     border: 1px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
@@ -50,18 +49,30 @@
     border-top-color: #DADADA;
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  } */
+
+  .dialog > h1 {
+      font-size: 2rem;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      margin-top: 108px;
   }
   </style>
 </head>
 
-<body class="rails-default-error-page">
+
+<body class="GG-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+  <div class="container">
+    <div class="dialog">
+      <div>
+        <h1>The page you were looking for doesn't exist or an error occured.</h1>
+        <p>You have reached the end of our world but we want to keep on rocking yours 🪩 </p>
+      </div>
+      <p>Click here to go back to the home page</p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
 </html>
