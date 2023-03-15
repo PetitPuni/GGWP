@@ -5,6 +5,7 @@
   background-color: black;
   margin-top: 20px;
   margin-bottom: 20px;
+  border: 1px solid white;
 }
 
 [data-controller="timer"] p {
@@ -38,6 +39,10 @@
   text-transform: uppercase;
   color: white;
   font-family: $body-font;
+}
+
+.league-over h4 {
+  color: white;
 }
 
 .league-container {
@@ -89,4 +94,17 @@
 
 .invite-friends {
   margin-bottom: 20px;
+}
+
+table {
+  border-radius: 10px;
+}
+
+table thead th{
+  background: $my-purple;
+  color: #ffffff;
+}
+
+table tbody tr {
+  background-color: #ffffff;
 }
