@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GGWP</title>
-    <title><%= meta_title %></title>
+      <title><%= meta_title %></title>
       <meta name="description" content="<%= meta_description %>">
+      <%= favicon_link_tag "icons/favicon-32x32.png", rel: "icon", type: "image/png" %>
 
       <!-- Facebook Open Graph data -->
       <meta property="og:title" content="<%= meta_title %>" />
@@ -20,7 +20,7 @@
       <meta name="twitter:description" content="<%= meta_description %>">
       <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
       <meta name="twitter:image:src" content="<%= meta_image %>">
-      
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
