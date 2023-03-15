@@ -3,22 +3,19 @@
     <h1>MY LEAGUES</h1>
   <div class ="card-wrapper">
         <% @leagues.each do |league| %>
-          <div class="league-card <%=league.game.name%>-img"  >
-            <p class="league-game"><%#= league.game.name %></p>
-            <p class="league-name"><%= link_to league.name, league_path(league) %></p>
-            <p class="league-player"> <%= league.user_leagues.count %> gamers 🎮</p>
-            <p><%#= league.start_on %></p>
-            <p><%#= league.end_on %></p>
-          </div>
+          <%= link_to league_path(league) do %> <%# Tried to add a link_to for all images without success %>
+            <div class="league-card <%=league.game.name%>-img">
+              <p class="league-game"></p>
+              <p class="league-name"><%= league.name %></p>
+              <p class="league-player"> <%= league.user_leagues.count %> gamers 🎮</p>
+            </div>
+          <% end %>
         <% end %>
   </div>
   <div class="create">
     <%= link_to 'Create your League', new_league_path, class: "btn btn-primary" %>
   </div>  
   <div>
-  <%#= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
   </div>    
 </div>
-
-
 
