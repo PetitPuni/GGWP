@@ -24,7 +24,7 @@
     margin-top: 8px;
 }
 
-@media (min-width: 400px) {  
+@media (min-width: 374px) {  
     .label-all {
         grid-template-columns: 1fr 1fr;
     }
@@ -43,8 +43,8 @@
     order: 2;
     margin: 0;
     float: left;
-    width:  150px;
-    height: 150px;
+    width:  120px;
+    height: 120px;
     object-fit: cover;
 }
 
