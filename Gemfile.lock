@@ -273,7 +273,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
   random_token (~> 1.1, >= 1.1.1)
-  redis (~> 4.0)
+  redis (~> 4.8.1)
   sassc-rails
   selenium-webdriver
   sidekiq

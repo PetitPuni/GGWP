@@ -1,8 +1,8 @@
+<h4 data-timer-target="message"></h4>
  <div class="league-over"
   data-controller="timer"
   data-timer-start-value=<%= (@league.start_on - 1.hours).iso8601%>
   data-timer-end-value=<%= (@league.end_on - 1.hours).iso8601%>>
-    <h4 data-timer-target="message"></h4>
     <div data-timer-target="affichage">
       <p>
       <span data-timer-target="days"></span>

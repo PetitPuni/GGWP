@@ -9,8 +9,9 @@
 
   .footer-buttons {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    max-width: 480px;
+    max-width: 100%;
     margin: 0 auto;
     bottom: 0;
   }
@@ -36,14 +37,23 @@ body.home-page .footer-bar{
 }
 
 .footer-button i.fa-plus {
-  font-size: 30px;
+  font-size: 28px;
   background-color: #FF517C;
   border-radius: 49%;
   padding: 10px;
   color: white;
-  display: inline-block;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin-top: -36px;
+  margin-left: 50%;
   border : 2px solid white;
+}
+
+.footer-button i.fa-users {
+ margin-left: 9px;
+}
+
+.footer-button i.fa-trophy {
+  margin-left: 9px;
 }
