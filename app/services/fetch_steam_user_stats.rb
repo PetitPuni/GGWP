@@ -1,5 +1,6 @@
 class FetchSteamUserStats < ApplicationService
   attr_reader :steam_id, :game_id, :options
+
   def initialize(steam_id:, game_id:, options:)
     @steam_id = steam_id
     @game_id = game_id
@@ -16,15 +17,26 @@ class FetchSteamUserStats < ApplicationService
 
   def make_request
     ap "je dois faire make request"
-    # @data = SteamService.call(steam_id: @steam_id, game_id: @game_id)
+    if false
+      fake_stats
+    else
+      @data = SteamService.call(steam_id: @steam_id, game_id: @game_id)
+    end
     extract_stats
   end
 
 
   def extract_stats
     ap "je suis dans extract_stats"
-    ap 'jai acces a @data'
-    # ap @data
+    stats = @data.first.nil? ? [] : @data.first["stats"]
+    @stats = @options.map do |option|
+      name = "total_#{option[:action]}s_#{option[:gun]}"
+      st = stats.find { |stat| stat['name'] == name }
+      st ? st['value'] : 0
+    end
+  end
+
+  def fake_stats
     if  steam_id == "76561197979499217"
       @data = values = [{"steamID"=>"76561197981067382",
         "gameName"=>"ValveTestApp260",
@@ -140,7 +152,7 @@ class FetchSteamUserStats < ApplicationService
           {"name"=>"total_shots_bizon", "value"=>137},
           {"name"=>"total_hits_bizon", "value"=>50},
           {"name"=>"total_kills_bizon", "value"=>3},
-          {"name"=>"total_shots_mag7", "value"=>214},
+          {"name"=>"total_shots_mag7", "value"=>250},
           {"name"=>"total_hits_mag7", "value"=>32},
           {"name"=>"total_kills_mag7", "value"=>1},
           {"name"=>"total_gun_game_contribution_score", "value"=>61},
@@ -362,19 +374,5 @@ class FetchSteamUserStats < ApplicationService
 
     end
           ap "et avec les otpions je cherches les valuers"
-    ap @options
-    @stats = {}
-    @options.each do |option|
-      if @data[0].nil?
-        end_value = 0
-      else
-        ap "je cherche la valeur de #{option[1][:action]}s_#{option[1][:gun]}"
-        value = @data[0]["stats"].find { |stat| stat['name'].include?("#{option[1][:action]}s_#{option[1][:gun]}") }
-        ap value
-        end_value = value.blank? ? 0 : value['value']
-      end
-      @stats[option[0].to_s] = end_value
-    end
-    @stats
   end
 end
