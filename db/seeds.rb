@@ -20,6 +20,89 @@ ap User.all
 
 # ap 'user created'
 
+# userCSgo = []
+# userCSgo << user1CSgo = User.create!(steam_username: 'ZywOo', steam_image: url())
+# userCSgo << user2CSgo = User.create!(steam_username: 'dev1ce', steam_image: url())
+# userCSgo << user3CSgo = User.create!(steam_username: 's1mple', steam_image: url())
+# userCSgo << user4CSgo = User.create!(steam_username: 'electronic', steam_image: url())
+# userCSgo << user5CSgo = User.create!(steam_username: 'kennyS', steam_image: url())
+
+
+# userDota2 = []
+# userDota2 << user1Dota2 = User.create!(steam_username: 'Sumail', steam_image: url())
+# userDota2 << user2Dota2 = User.create!(steam_username: 'Arteezy', steam_image: url())
+# userDota2 << user3Dota2 = User.create!(steam_username: 'UNiVeRsE', steam_image: url())
+
+
+# userLol = []
+# userLol << user1Lol = User.create!(steam_username: 'Caps', steam_image: url())
+# userLol << user2Lol = User.create!(steam_username: 'Perkz', steam_image: url())
+# userLol << user3Lol = User.create!(steam_username: 'Rekkles', steam_image: url())
+# userLol << user4Lol = User.create!(steam_username: 'Faker', steam_image: url())
+
+
+# userApex = []
+# userApex << user1Apex = User.create!(steam_username: 'Sassy', steam_image: url())
+# userApex << user2Apex = User.create!(steam_username: 'Saussage', steam_image: url())
+# userApex << user3Apex = User.create!(steam_username: 'Toto', steam_image: url())
+# userApex << user4Apex = User.create!(steam_username: 'Titi', steam_image: url())
+# userApex << user5Apex = User.create!(steam_username: 'Tata', steam_image: url())
+# userApex << user6Apex = User.create!(steam_username: 'Natouche', steam_image: url())
+
+# userCSgo << user6Apex
+# userLol << user6Apex
+# userDota2 << user6Apex
+
+
+# l1 = League.create!(name: 'CSGO', description: 'CSGO', start_on: Date.today - 2, end_on: Date.today - 1, game_id: 1, token: RandomToken.gen(6))
+# l2 = League.create!(name: 'Dota2', description: 'Dota2', start_on: Date.today, end_on: Date.today + 10, game_id: 2, token: RandomToken.gen(6))
+# l3 = League.create!(name: 'LoL', description: 'LoL', start_on: Date.today, end_on: Date.today + 1, game_id: 3, token: RandomToken.gen(6))
+# l4 = League.create!(name: 'Apex', description: 'Apex', start_on: Date.today - 2, end_on: Date.today + 1, game_id: 4, token: RandomToken.gen(6))
+
+# userLeague
+# userCSgo.each do |user|
+#   UserLeague.create!(user_id: user.id, league_id: l1.id)
+# end
+
+# userDota2.each do |user|
+#   UserLeague.create!(user_id: user.id, league_id: l2.id)
+# end
+
+# userLol.each do |user|
+#   UserLeague.create!(user_id: user.id, league_id: l3.id)
+# end
+
+# userApex.each do |user|
+#   UserLeague.create!(user_id: user.id, league_id: l4.id)
+# end
+
+# cDota = []
+# cDota << c1Dota2 = Challenge.create!(name: 'Dota2', description: 'Dota2', points: 10, league_id: l2.id)
+# cDota << c2Dota2 = Challenge.create!(name: 'Dota2', description: 'Dota2', points: 20, league_id: l2.id)
+# cDota << c3Dota2 = Challenge.create!(name: 'Dota2', description: 'Dota2', points: 30, league_id: l2.id)
+# cDota << c4Dota2 = Challenge.create!(name: 'Dota2', description: 'Dota2', points: 60, league_id: l2.id)
+# cDota << c5Dota2 = Challenge.create!(name: 'Dota2', description: 'Dota2', points: 50, league_id: l2.id)
+
+# cLol = []
+# cLol << c1Lol = Challenge.create!(name: 'Wanna Play ?', description: 'Make 3 games ranked', points: 10, league_id: l3.id)
+# cLol << c2Lol = Challenge.create!(name: 'I see you', description: 'Finish a game with 10 score vision', points: 20, league_id: l3.id)
+# cLol << c3Lol = Challenge.create!(name: 'Immortal', description: 'Finish a game with 0 deaths', points: 30, league_id: l3.id)
+# cLol << c4Lol = Challenge.create!(name: 'Pentakill', description: 'Make a pentakill in one game', points: 40, league_id: l3.id)
+# cLol << c5Lol = Challenge.create!(name: 'Faker', description: 'Kill Faker', points: 50, league_id: l3.id)
+
+# cApex = []
+# cLol << c1Apex = Challenge.create!(name: 'Knockdowns', description: 'Get 5 knockdowns', points: 10, league_id: l4.id)
+# cLol << c2Apex = Challenge.create!(name: 'Make kills', description: 'Get 10 kills in a single match', points: 20, league_id: l4.id)
+# cLol << c3Apex = Challenge.create!(name: 'True damage', description: 'Deal 250 damage as "legend" in any mode', points: 30, league_id: l4.id)
+# cLol << c4Apex = Challenge.create!(name: 'Collect bins', description: 'Open 10 supply bins', points: 40, league_id: l4.id)
+# cLol << c5Apex = Challenge.create!(name: 'Easy damage', description: 'Deal 100 damage with assault rifles', points: 10, league_id: l4.id)
+
+
+
+
+
+
+
 game = Game.create!(
    name: "csgo",
    genre: "FPS",
@@ -139,9 +222,9 @@ actions.each do |action|
     when 'kill'
       3
     end
-    
+
     ennemies = (1..25).to_a.sample
-    points = ennemies * multiplier * 5  
+    points = ennemies * multiplier * 5
 
     challenge = Challenge.create!(
       name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} with #{ApplicationController.helpers.translate_weapon(gun)}",

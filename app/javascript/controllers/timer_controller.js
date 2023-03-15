@@ -6,14 +6,15 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
   static values = {
-    start: String
+    start: String,
+    end: String
   }
 
-  static targets = ['days', 'hours', 'minutes', "seconds", "affichage", "endmessage"]
+  static targets = ['days', 'hours', 'minutes', "seconds", "affichage", "message"]
 
   connect() {
     this.start = new Date(this.startValue)
-    // console.log(this.startValue, this.start)
+    this.end = new Date(this.endValue)
     setInterval(this.refresh, 1000)
   }
 
@@ -21,22 +22,41 @@ export default class extends Controller {
     this.refresh = this.refresh.bind(this)
   }
 
-  show(distance){
+  showTimer(distance){
     this.daysTarget.innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
     this.hoursTarget.innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     this.minutesTarget.innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     this.secondsTarget.innerText = Math.floor((distance % (1000 * 60)) / 1000);
   }
 
-  showEndMessage() {
-    // this.endmessageTarget.innerText = "The league is over ! Check who won 🏆!"
+  showEnd() {
+    this.messageTarget.innerText = "The league is over ! Check who won 🏆!"
+    this.messageTarget.classList.add("league-over")
+    this.affichageTarget.classList.add("d-none")
+  }
+
+  showBefore(distance_start) {
+    this.showTimer(distance_start)
+    this.messageTarget.innerText = "The league starts on :"
+    this.affichageTarget.classList.remove("d-none")
+  }
+
+  showActive(distance_end) {
+    this.showTimer(distance_end)
+    this.messageTarget.innerText = "The league ends on :"
+    this.affichageTarget.classList.remove("d-none")
   }
 
 	refresh() {
     const now = (new Date());
-    // console.log(now)
-    let distance = this.start.getTime() - now.getTime();
-    console.log(distance)
-    distance >= 0 ? this.show(distance) : this.showEndMessage()
+    let distance_end = this.end.getTime() - now.getTime();
+    let distance_start =   this.start.getTime() - now.getTime() ;
+
+    if (this.start.getTime() >= now.getTime() )
+      this.showBefore(distance_start)
+    else if (this.end.getTime() >= now.getTime() )
+      this.showActive(distance_end)
+    else
+      this.showEnd()
   }
 }

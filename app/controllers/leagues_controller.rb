@@ -20,7 +20,7 @@ class LeaguesController < ApplicationController
 
   def new
     @league = League.new
-    @games = Game.all 
+    @games = Game.all
   end
 
   def create
@@ -75,10 +75,6 @@ class LeaguesController < ApplicationController
       redirect_to leagues_path
     end
     session[:url] = nil
-  end
-
-  def update_stats
-    UpdateLeagueChallenges.call(league: League.last)
   end
 
   private

@@ -12,7 +12,6 @@ class FetchSteamUserStats < ApplicationService
     @stats
   end
 
-
   private
 
   def make_request
@@ -24,7 +23,6 @@ class FetchSteamUserStats < ApplicationService
     end
     extract_stats
   end
-
 
   def extract_stats
     ap "je suis dans extract_stats"

@@ -6,7 +6,6 @@ export default class extends Controller {
   static values = { url: String }
 
   connect() {
-    console.log(this.urlValue);
     if (navigator.share !== undefined) {
       this.mobileTarget.classList.remove('d-none')
       this.ordiTarget.classList.add('d-none')
@@ -17,10 +16,7 @@ export default class extends Controller {
   }
 
   send() {
-    console.log('send');
-    console.log(window.location.href);
     const url = window.location.href
-    console.log(navigator.share);
     if (navigator.share !== undefined) {
       navigator.share({
         title: 'join my league',
