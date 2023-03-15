@@ -36,12 +36,14 @@ body.home-page .footer-bar{
 }
 
 .footer-button i.fa-plus {
-  font-size: 32px;
+  font-size: 30px;
   background-color: #FF517C;
-  border-radius: 50%;
+  border-radius: 49%;
   padding: 10px;
   color: white;
   display: inline-block;
-  margin-top: -30px;
+  justify-content: center;
+  align-items: center;
+  margin-top: -36px;
   border : 2px solid white;
 }
