@@ -1,4 +1,4 @@
-.container {
+.challenges-container {
   padding: 20px;
 
   h1 {
@@ -91,12 +91,12 @@
 }
 
 
-// .container {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   height: 100vh;
-// }
+.challenges-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
   .challenge-container {
     max-width: 600px;
