@@ -17,7 +17,6 @@ export default class extends Controller {
 
   send() {
     const url = window.location.href
-    console.log(navigator.share);
     if (navigator.share !== undefined) {
       navigator.share({
         title: 'join my league',

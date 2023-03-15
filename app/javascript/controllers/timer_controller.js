@@ -13,11 +13,8 @@ export default class extends Controller {
   static targets = ['days', 'hours', 'minutes', "seconds", "affichage", "message"]
 
   connect() {
-    console.log('connect with timer controller')
-    console.log(this.startValue)
     this.start = new Date(this.startValue)
     this.end = new Date(this.endValue)
-    console.log(this.start)
     setInterval(this.refresh, 1000)
   }
 

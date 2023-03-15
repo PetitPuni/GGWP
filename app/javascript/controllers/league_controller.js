@@ -11,12 +11,10 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log(this.start_messageTargetValue)
     this.channel = createConsumer().subscriptions.create(
       { channel: "LeagueChannel", id: this.leagueIdValue },
       { received: this.received }
     )
-    console.log(`Subscribed to the league with the id ${this.leagueIdValue}.`)
   }
 
   join(data) {
