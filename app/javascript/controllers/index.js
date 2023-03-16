@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ClickGreyController from "./click_grey_controller"
+application.register("click-grey", ClickGreyController)
+
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
 
@@ -15,7 +18,6 @@ application.register("hello", HelloController)
 
 import LeagueController from "./league_controller"
 application.register("league", LeagueController)
-
 
 import ShareController from "./share_controller"
 application.register("share", ShareController)
