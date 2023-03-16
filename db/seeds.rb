@@ -76,7 +76,7 @@ userCSgo << user5CSgo = User.create!(steam_username: 'kennyS', steam_image: '/as
  )
 
  game3 = Game.create!(
-   name: "TeamFortress",
+   name: "TF2",
    genre: "MOBA",
    description: "League of Legends is a multiplayer online battle arena video game developed and published by Riot Games for Microsoft Windows and macOS. Inspired by the Warcraft III: The Frozen Throne mod Defense of the Ancients, the game follows a freemium model and is supported by microtransactions, and was inspired by the Warcraft III: The Frozen Throne mod, Defense of the Ancients.",
    app_id: 21779
@@ -96,11 +96,11 @@ userDota2 << user2Dota2 = User.create!(steam_username: 'Arteezy', steam_image: '
 userDota2 << user3Dota2 = User.create!(steam_username: 'UNiVeRsE', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000014')
 
 
-userTeamFortress = []
-userTeamFortress << user1TeamFortress = User.create!(steam_username: 'Sassy', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000015')
-userTeamFortress << user2TeamFortress = User.create!(steam_username: 'Saussage', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000016')
-userTeamFortress << user3TeamFortress = User.create!(steam_username: 'Toto', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000017')
-userTeamFortress << user4TeamFortress = User.create!(steam_username: 'Nico', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000018')
+userTF2 = []
+userTF2 << user1TF2 = User.create!(steam_username: 'Sassy', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000015')
+userTF2 << user2TF2 = User.create!(steam_username: 'Saussage', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000016')
+userTF2 << user3TF2 = User.create!(steam_username: 'Toto', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000017')
+userTF2 << user4TF2 = User.create!(steam_username: 'Nico', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000018')
 
 
 userApex = []
@@ -113,7 +113,7 @@ userApex << user5Apex = User.create!(steam_username: 'Tata', steam_image: '/asse
 
 l1 = League.create!(name: 'CSGO', description: 'CSGO', game: game, start_on: Date.today - 2, end_on: Date.today - 1, token: RandomToken.gen(6))
 l2 = League.create!(name: 'Dota2', description: 'Dota2', game: game2, start_on: Date.today, end_on: Date.today + 10, token: RandomToken.gen(6))
-l3 = League.create!(name: 'TeamFortress', description: 'TeamFortress', game: game3, start_on: Date.today, end_on: Date.today + 1, token: RandomToken.gen(6))
+l3 = League.create!(name: 'TeamFortress2', description: 'TF2', game: game3, start_on: Date.today, end_on: Date.today + 1, token: RandomToken.gen(6))
 l4 = League.create!(name: 'Apex', description: 'Apex', game: game4, start_on: Date.today - 2, end_on: Date.today + 1, token: RandomToken.gen(6))
 
 userCSgo.each do |user|
@@ -124,7 +124,7 @@ userDota2.each do |user|
   UserLeague.create!(user_id: user.id, league_id: l2.id)
 end
 
-userTeamFortress.each do |user|
+userTF2.each do |user|
   UserLeague.create!(user_id: user.id, league_id: l3.id)
 end
 
@@ -139,12 +139,12 @@ cDota << c3Dota2 = Challenge.create!(name: 'Winner', description: 'Win 5 games',
 cDota << c4Dota2 = Challenge.create!(name: 'God damage', description: 'Do 1000 damages with your hero', points: 60, game: game2)
 cDota << c5Dota2 = Challenge.create!(name: 'Conqueror', description: 'Conquer 5 bases', points: 50, game: game2)
 
-cTeamFortress = []
-cTeamFortress << c1TeamFortress = Challenge.create!(name: 'Damage', description: 'Make 250 damage with rifle', points: 10, game: game3)
-cTeamFortress << c2TeamFortress = Challenge.create!(name: 'Dexter', description: 'Kill 5 guys with a knife', points: 20, game: game3)
-cTeamFortress << c3TeamFortress = Challenge.create!(name: 'Immortal', description: 'Finish a game with 0 deaths', points: 70, game: game3)
-cTeamFortress << c4TeamFortress = Challenge.create!(name: 'Controle', description: 'Control a zone during 5 min', points: 40, game: game3)
-cTeamFortress << c5TeamFortress = Challenge.create!(name: 'Kill master', description: 'Make 20 kills in one game', points: 50, game: game3)
+cTF2 = []
+cTF2 << c1TF2 = Challenge.create!(name: 'Damage', description: 'Make 250 damage with rifle', points: 10, game: game3)
+cTF2 << c2TF2 = Challenge.create!(name: 'Dexter', description: 'Kill 5 guys with a knife', points: 20, game: game3)
+cTF2 << c3TF2 = Challenge.create!(name: 'Immortal', description: 'Finish a game with 0 deaths', points: 70, game: game3)
+cTF2 << c4TF2 = Challenge.create!(name: 'Controle', description: 'Control a zone during 5 min', points: 40, game: game3)
+cTF2 << c5TF2 = Challenge.create!(name: 'Kill master', description: 'Make 20 kills in one game', points: 50, game: game3)
 
 cApex = []
 cApex << c1Apex = Challenge.create!(name: 'Knockdowns', description: 'Get 5 knockdowns', points: 10, game: game4)
