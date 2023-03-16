@@ -34,6 +34,25 @@ def update_challenges
   UpdateLeagueChallenges.call(league: League.find(113))
 end
 
+def update_site
+  @user = User.find_by(steam_username: "petitpuni")
+  leagues = []
+  League.all.each { |league| leagues << league}
+  leagues.each do |league|
+    @scroe = 0
+    user_league = UserLeague.new
+    user_league.league = league
+    user_league.user = @user
+    user_league.save
+    league.challenges.each do |challenge|
+      @score = @score + challenge.score
+      UserLeagueChallenge.create(user_league: @user_league, challenge: challenge, init_user_stat: 0, end_value: 0, progress: 100, succes: true)
+    end
+    user_league.update(score: @score)
+  end
+end
+
+
 # ap UserLeagueChallenge.find(1119).update(init_user_stat: -50, end_value: -50, progress: 0, succes: false)
 # ap UserLeagueChallenge.find(1054).update(init_user_stat: -50, end_value: -50, progress: 0, succes: false)
 
