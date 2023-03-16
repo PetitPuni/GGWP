@@ -62,8 +62,8 @@ end
 
 userCSgo = []
 userCSgo << User.first
-user2CSgo = User.create!(steam_username: 'dev1ce', steam_image: url(bot_avatar))
 userCSgo << user1CSgo = User.create!(steam_username: 'ZywOo', steam_image: url(/assets/images/bot_avatar))
+userCSgo << user2CSgo = User.create!(steam_username: 'dev1ce', steam_image: url(bot_avatar))
 userCSgo << user3CSgo = User.create!(steam_username: 's1mple', steam_image: url(bot_avatar))
 userCSgo << user4CSgo = User.create!(steam_username: 'electronic', steam_image: url(bot_avatar))
 userCSgo << user5CSgo = User.create!(steam_username: 'kennyS', steam_image: url(bot_avatar))
