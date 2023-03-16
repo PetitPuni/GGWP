@@ -140,6 +140,7 @@ ul {
     bottom: 20px;
     right: 20px;
     row-gap: 0px;
+    padding-right: 15px;
 
   }
 
@@ -154,4 +155,8 @@ ul {
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
     opacity: 0.1;
+  }
+
+  .table-container{
+    text-align: center;
   }
