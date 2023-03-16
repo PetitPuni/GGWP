@@ -38,7 +38,6 @@ class League < ApplicationRecord
   private
 
   def async_update
-    ap "jenregstre le job"
     prestart_on = start_on - 1.hour - 10.seconds
     PrestartLeagueJob.set(wait_until: prestart_on).perform_later(self)
   end

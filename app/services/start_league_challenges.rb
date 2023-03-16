@@ -11,8 +11,6 @@ class StartLeagueChallenges < ApplicationService
   private
 
   def broadcast
-    ap "StartLeagueChallenges #{__method__}"
-
     player_rankings = RankingLeagueService.call(league: @league)
 
     ranking_html = ActionController::Base.new.render_to_string(partial: 'leagues/ranking_player', locals: {league: @league, player_rankings: player_rankings})
