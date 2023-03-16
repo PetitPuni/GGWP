@@ -252,14 +252,37 @@ margin-bottom: 1rem;
 flex: 1 1 auto;
 margin-left: 5px;
 margin-right: 5px;
-.clipboard-width {
-  height: 100vh;
-  align-content: center;
-  display: flex;
-  gap: 8px;
+
 }
 
 .copy-btn{
-height: 2rem;
+  height: 2rem;
+  padding: 6px 12px;
+  width: 12rem;
+
 }
+
+@media (min-width: 360px) {  
+  .clipboard-width {
+      grid-template-columns: 1fr;
+  }
+}
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 810px) {
+  .clipboard-width {
+      grid-template-columns: 1fr 1fr;
+  }
+}
+
+.clipboard-width {
+  align-content: center;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.clipboard-width input{
+  border-radius: $border-radius;
+  border: 1px solid #cccccc;
 }
