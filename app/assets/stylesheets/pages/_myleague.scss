@@ -2,7 +2,7 @@
   display: inline-block;
   padding: 8px;
   border-radius: 5px;
-  background-color: black;
+  background-color: #6A36D5;
   margin-top: 20px;
   margin-bottom: 20px;
   border: 1px solid white;
@@ -40,6 +40,7 @@
   color: white;
   font-family: $body-font;
 }
+
 
 .league-over h4 {
   color: white;
@@ -239,6 +240,20 @@ p {
 }
 }
 
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  gap: 10px;
+}
+
+
 .button-group {
 display: flex;
 flex-wrap: wrap;
@@ -261,4 +276,7 @@ margin-right: 5px;
 .copy-btn{
 height: 2rem;
 }
+}
+.league-space-bottom {
+  margin-bottom: 60px;
 }
