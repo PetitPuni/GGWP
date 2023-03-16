@@ -85,8 +85,10 @@
   padding: 10;
 }
 
-.ranking-table {
-  background-color: $my-purple;
+table{
+  border-radius: $border-radius;
+  border-collapse: collapse;
+  overflow: hidden;
 }
 
 .players-container h3 {
@@ -100,13 +102,12 @@
   margin-bottom: 20px;
 }
 
-table {
-  border-radius: 10px;
-}
 
 table thead th{
   background: $my-purple;
   color: #ffffff;
+  // border-radius: $border-radius;
+  gap: 10px;
 }
 
 table tbody tr {
@@ -266,11 +267,34 @@ margin-bottom: 1rem;
 flex: 1 1 auto;
 margin-left: 5px;
 margin-right: 5px;
+
+}
+
+.copy-btn{
+  height: 2rem;
+  padding: 6px 12px;
+  width: 12rem;
+
+}
+
+@media (min-width: 360px) {  
+  .clipboard-width {
+      grid-template-columns: 1fr;
+  }
+}
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 810px) {
+  .clipboard-width {
+      grid-template-columns: 1fr 1fr;
+  }
+}
+
 .clipboard-width {
-  // height: 70%;
   align-content: center;
   display: flex;
   gap: 8px;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .copy-btn{
@@ -279,4 +303,9 @@ height: 2rem;
 }
 .league-space-bottom {
   margin-bottom: 60px;
+}
+
+.clipboard-width input{
+  border-radius: $border-radius;
+  border: 1px solid #cccccc;
 }

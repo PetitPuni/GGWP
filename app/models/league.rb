@@ -6,7 +6,6 @@ class League < ApplicationRecord
   has_many :challenges, -> { distinct }, through: :user_league_challenges
 
   validates :name, presence: true
-  validates :game, presence: true
   validates :description, presence: true
   validates :start_on, presence: true
   validates :end_on, presence: true
@@ -15,7 +14,7 @@ class League < ApplicationRecord
 
   # before_save do
   #   self.start_on = 10.seconds.from_now + 1.hour
-  #   self.end_on = 20.seconds.from_now + 1.hour
+  #   self.end_on = 30.seconds.from_now + 1.hour
   # end
 
   after_commit :async_update, on: [:create]

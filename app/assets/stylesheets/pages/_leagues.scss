@@ -40,27 +40,34 @@
     // margin-right: 40px;
     padding: 25px;
     background-size: cover;
-    border-radius: 20px;
+    border-radius: $border-radius;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .league-card img{
   }
 
   .dota-2-img{
     background-image: url('dota-2.jpg');
+
   }
 
   .csgo-img{
     background-image: url('http://media.steampowered.com/apps/csgo/blog/images/fb_image.png');
+
   }
 
   .apex-img{
     background-image: url('apex.jpg');
   }
 
-  .lol-img{
-    background-image: url('lol.jpg');
+  .TF2-img{
+    background-image: url('TF2.jpg');
   }
 
 
-  .league-card .league-name {
+  .league-card > .league-name {
+    position: absolute;
     color: #ffffff;
   }
 
@@ -69,9 +76,10 @@ ul {
   }
 
 .league-name {
-  text-align: top-left;
+  text-align: left;
   font-size: 32px;
   display: flex;
+  top: 20px;
   flex-direction: column;
   text-decoration: white;
 
@@ -127,12 +135,15 @@ ul {
   p {
     margin: 0;
   }
-
-  .league-player {
+  
+  .league-card .avatar-user{
+    display: flex;
+    flex-flow: row wrap;
     position: absolute;
     bottom: 20px;
     right: 20px;
-    color: white;
+    row-gap: 0px;
+
   }
 
   .leagues-background {
