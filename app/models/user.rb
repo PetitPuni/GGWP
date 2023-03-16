@@ -26,9 +26,10 @@ class User < ApplicationRecord
   private
 
   def set_steam_attributes
-    unless steam_id
-    data = FetchSteamAttributesFromSteamId.call(steam_id)
-    self.steam_username = data[:username]
-    self.steam_image = data[:image]
+    if steam_id.size > 10
+      data = FetchSteamAttributesFromSteamId.call(steam_id)
+      self.steam_username = data[:username]
+      self.steam_image = data[:image]
+    end
   end
 end
