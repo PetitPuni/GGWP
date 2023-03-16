@@ -39,14 +39,20 @@
     padding: 25px;
     background-size: cover;
     border-radius: $border-radius;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .league-card img{
   }
 
   .dota-2-img{
     background-image: url('dota-2.jpg');
+
   }
 
   .csgo-img{
     background-image: url('http://media.steampowered.com/apps/csgo/blog/images/fb_image.png');
+
   }
 
   .apex-img{
