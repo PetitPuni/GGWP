@@ -2,11 +2,11 @@
 <div class="container form" data-controller="flatpickr" >
     <%= simple_form_for(league) do |f| %>
     <h6>Choose a game to be challenged on 💪</h6>
-    <div class= "label-all">
+    <div class= "label-all" data-controller='click-grey'>
         <% @games.each do |game| %>
             <input type="radio" name="league[game_id]" value="<%= game.id %>" id="<%= game.id %>" class="radio">
             <%= f.label :game, for: game.id, class: "label" do %>
-                <%= image_tag game.name %>
+                <%= image_tag game.name, data: {click_grey_target: 'img', action: 'click->click-grey#grey'}%>
             <% end %>
         <% end %>
     </div>
