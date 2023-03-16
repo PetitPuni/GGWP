@@ -41,8 +41,11 @@
   font-family: $body-font;
 }
 
+
 .league-over h4 {
   color: white;
+  display: flex;
+  justify-content: center;
 }
 
 .league-container {
