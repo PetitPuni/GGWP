@@ -49,15 +49,12 @@ body.home-page .footer-bar{
 
 
 
-.footer-button i.fa-plus {
-  font-size: 28px;
+.footer-button .fa-plus {
   background-color: #FF517C;
   border-radius: 49%;
-  padding: 10px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -40px;
-  border : 2px solid white;
+  padding: 8px;
+  margin-top: -50px;
+  border: 2px solid white;
+  width: 55px;
+  height: 55px;
 }
