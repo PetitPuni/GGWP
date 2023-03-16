@@ -11,7 +11,7 @@
   // max-width: 100%;
   // max-height: 300px;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: $border-radius;
   // border: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -36,7 +36,7 @@ img {
 }
 
 .btn {
-  border-radius: 4px;
+  border-radius: $border-radius;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
