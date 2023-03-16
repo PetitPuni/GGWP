@@ -16,10 +16,10 @@ ap User.all
   #   steam_id: '76561197981067382'
   # )
   guns = ['ak47', 'aug', 'awp', 'axe', 'bizon', 'c4', 'cz75a', 'deagle', 'decoy', 'elite', 'famas', 'fists', 'fiveseven', 'flashbang', 'g3sg1', 'galilar', 'glock', 'hammer', 'hkp2000', 'incgrenade', 'knifegg', 'm249', 'm4a1', 'm4a1_silencer', 'mac10', 'mag7', 'molotov', 'mp5sd', 'mp7', 'mp9', 'negev', 'nova', 'p250', 'p90', 'revolver', 'breachcharge', 'bumpmine', 'sawedoff', 'scar20', 'sg556', 'smokegrenade', 'snowball', 'spanner', 'ssg08', 'tagrenade', 'taser', 'tec9', 'ump45', 'usp_silencer', 'xm1014', 'zone_repulsor']
-  
+
   actions = ['hit', 'shot', 'kill']
   # actions1 = ['hits', 'shots', 'kills', 'deaths']
-  
+
   actions_coef = [hit = 1, shot = 2, kill = 3]
   points1 = (1..50).to_a.sample
 
@@ -43,10 +43,10 @@ actions.each do |action|
     when 'kill'
       3
     end
-    
+
     ennemies = (1..25).to_a.sample
     points = ennemies * multiplier * 5
-    
+
     challenge = Challenge.create!(
       name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} with #{ApplicationController.helpers.translate_weapon(gun)}",
       description: "Your mission, if you choose to accept it, is to #{ApplicationController.helpers.action_capitalize(action)} #{ennemies} ennemies with #{ApplicationController.helpers.translate_weapon(gun)} !",

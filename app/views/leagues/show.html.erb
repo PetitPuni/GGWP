@@ -7,6 +7,7 @@
 <div class="league-container">
 
 
+
     <h1><%= @league.name.upcase %></h1>
     <%= render "invite_player" %>
     <%= render "player_list" %>
@@ -21,6 +22,7 @@
 
   <%= render "ranking_player", league: @league, player_rankings: @player_rankings %>
   <%= render "league_challenges", challenges: @league_challenges, league: @league %>
+
   <%= render "user_challenges", user_challenges: @user_challenges %>
 
   </div>
