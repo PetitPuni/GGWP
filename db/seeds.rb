@@ -16,10 +16,10 @@ ap User.all
   #   steam_id: '76561197981067382'
   # )
   guns = ['ak47', 'aug', 'awp', 'axe', 'bizon', 'c4', 'cz75a', 'deagle', 'decoy', 'elite', 'famas', 'fists', 'fiveseven', 'flashbang', 'g3sg1', 'galilar', 'glock', 'hammer', 'hkp2000', 'incgrenade', 'knifegg', 'm249', 'm4a1', 'm4a1_silencer', 'mac10', 'mag7', 'molotov', 'mp5sd', 'mp7', 'mp9', 'negev', 'nova', 'p250', 'p90', 'revolver', 'breachcharge', 'bumpmine', 'sawedoff', 'scar20', 'sg556', 'smokegrenade', 'snowball', 'spanner', 'ssg08', 'tagrenade', 'taser', 'tec9', 'ump45', 'usp_silencer', 'xm1014', 'zone_repulsor']
-  
+
   actions = ['hit', 'shot', 'kill']
   # actions1 = ['hits', 'shots', 'kills', 'deaths']
-  
+
   actions_coef = [hit = 1, shot = 2, kill = 3]
   points1 = (1..50).to_a.sample
 
@@ -43,10 +43,10 @@ actions.each do |action|
     when 'kill'
       3
     end
-    
+
     ennemies = (1..25).to_a.sample
     points = ennemies * multiplier * 5
-    
+
     challenge = Challenge.create!(
       name: "#{ApplicationController.helpers.action_capitalize(action)} #{ennemies} with #{ApplicationController.helpers.translate_weapon(gun)}",
       description: "Your mission, if you choose to accept it, is to #{ApplicationController.helpers.action_capitalize(action)} #{ennemies} ennemies with #{ApplicationController.helpers.translate_weapon(gun)} !",
@@ -62,11 +62,11 @@ end
 
 userCSgo = []
 userCSgo << User.first
-userCSgo << user1CSgo = User.create!(steam_username: 'ZywOo', steam_image: url(/assets/images/bot_avatar))
-userCSgo << user2CSgo = User.create!(steam_username: 'dev1ce', steam_image: url(bot_avatar))
-userCSgo << user3CSgo = User.create!(steam_username: 's1mple', steam_image: url(bot_avatar))
-userCSgo << user4CSgo = User.create!(steam_username: 'electronic', steam_image: url(bot_avatar))
-userCSgo << user5CSgo = User.create!(steam_username: 'kennyS', steam_image: url(bot_avatar))
+userCSgo << user1CSgo = User.create!(steam_username: 'ZywOo', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '000001')
+userCSgo << user2CSgo = User.create!(steam_username: 'dev1ce', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '000001')
+userCSgo << user3CSgo = User.create!(steam_username: 's1mple', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '000001')
+userCSgo << user4CSgo = User.create!(steam_username: 'electronic', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '000001')
+userCSgo << user5CSgo = User.create!(steam_username: 'kennyS', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '000001')
 # ap 'user created'
 
 
@@ -95,26 +95,26 @@ userCSgo << user5CSgo = User.create!(steam_username: 'kennyS', steam_image: url(
 
 userDota2 = []
 userDota2 << User.first
-userDota2 << user1Dota2 = User.create!(steam_username: 'Sumail', steam_image: url(bot_avatar))
-userDota2 << user2Dota2 = User.create!(steam_username: 'Arteezy', steam_image: url(bot_avatar))
-userDota2 << user3Dota2 = User.create!(steam_username: 'UNiVeRsE', steam_image: url(bot_avatar))
+userDota2 << user1Dota2 = User.create!(steam_username: 'Sumail', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000012')
+userDota2 << user2Dota2 = User.create!(steam_username: 'Arteezy', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000013')
+userDota2 << user3Dota2 = User.create!(steam_username: 'UNiVeRsE', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000014')
 
 
 userLol = []
 userLol << User.first
-userLol << user1Lol = User.create!(steam_username: 'Caps', steam_image: url(bot_avatar))
-userLol << user2Lol = User.create!(steam_username: 'Perkz', steam_image: url(bot_avatar))
-userLol << user3Lol = User.create!(steam_username: 'Rekkles', steam_image: url(bot_avatar))
-userLol << user4Lol = User.create!(steam_username: 'Faker', steam_image: url(bot_avatar))
+userLol << user1Lol = User.create!(steam_username: 'Caps', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000015')
+userLol << user2Lol = User.create!(steam_username: 'Perkz', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000016')
+userLol << user3Lol = User.create!(steam_username: 'Rekkles', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000017')
+userLol << user4Lol = User.create!(steam_username: 'Faker', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000018')
 
 
 userApex = []
 userApex << User.first
-userApex << user1Apex = User.create!(steam_username: 'Sassy', steam_image: url(bot_avatar))
-userApex << user2Apex = User.create!(steam_username: 'Saussage', steam_image: url(bot_avatar))
-userApex << user3Apex = User.create!(steam_username: 'Toto', steam_image: url(bot_avatar))
-userApex << user4Apex = User.create!(steam_username: 'Titi', steam_image: url(bot_avatar))
-userApex << user5Apex = User.create!(steam_username: 'Tata', steam_image: url(bot_avatar))
+userApex << user1Apex = User.create!(steam_username: 'Sassy', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000019')
+userApex << user2Apex = User.create!(steam_username: 'Saussage', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000010')
+userApex << user3Apex = User.create!(steam_username: 'Toto', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '000002')
+userApex << user4Apex = User.create!(steam_username: 'Titi', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000021')
+userApex << user5Apex = User.create!(steam_username: 'Tata', steam_image: '/assets/images/bot_avatar.jpg', steam_id: '0000022')
 
 
 l1 = League.create!(name: 'CSGO', description: 'CSGO', start_on: Date.today - 2, end_on: Date.today - 1, game_id: 1, token: RandomToken.gen(6))

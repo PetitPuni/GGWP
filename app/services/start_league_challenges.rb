@@ -26,7 +26,6 @@ class StartLeagueChallenges < ApplicationService
     end
   end
 
-
   def broadcast
     player_rankings = RankingLeagueService.call(league: @league)
 

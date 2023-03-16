@@ -11,7 +11,7 @@ class User < ApplicationRecord
   def completed_challenges_count
     user_league_challenges.where(succes: true).count
   end
- 
+
   def rank
     case completed_challenges_count
     when 0..9
@@ -26,6 +26,7 @@ class User < ApplicationRecord
   private
 
   def set_steam_attributes
+    unless steam_id
     data = FetchSteamAttributesFromSteamId.call(steam_id)
     self.steam_username = data[:username]
     self.steam_image = data[:image]

@@ -4,7 +4,10 @@
 <%# content_for :meta_image, cl_image_path(@offer.photo.key) %>
 
 <div class="leagues-background"></div>
-<div class="league-container">
+<div class="league-container"
+     data-controller="league"
+     data-league-league-id-value="<%= @league.id %>"
+     data-league-currend-user-id-value ="<%= current_user.id %>" >
 
 
     <h1><%= @league.name.upcase %></h1>
