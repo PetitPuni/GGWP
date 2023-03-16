@@ -6,6 +6,7 @@
   height: 7%;
   z-index: 100;
   margin-top: 3%;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);
 }
 
 .footer-buttons {
@@ -15,6 +16,7 @@
   display: flex;
   justify-content: space-around;
   bottom: 0;
+  box-shadow: 0 4px 2px 6px rgba(0,0,0,.2);
 }
 
 .footer-button {
@@ -48,15 +50,14 @@ body.home-page .footer-bar{
 
 
 .footer-button i.fa-plus {
-  font-size: 30px;
+  font-size: 28px;
   background-color: #FF517C;
   border-radius: 49%;
   padding: 10px;
   color: white;
-  display: inline-block;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin-top: -40px;
   border : 2px solid white;
 }
-

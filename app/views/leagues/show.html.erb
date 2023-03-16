@@ -1,6 +1,11 @@
+<!-- app/views/offers/show.html.erb allow the title and the logo to appear on the tab of the browser-->
+<% content_for :meta_title, "#{@league.name} - GGWP" %>
+<%# content_for :meta_description, @offer.description %>
+<%# content_for :meta_image, cl_image_path(@offer.photo.key) %>
 
 <div class="leagues-background"></div>
 <div class="league-container">
+
 
 
     <h1><%= @league.name.upcase %></h1>
@@ -17,6 +22,7 @@
 
   <%= render "ranking_player", league: @league, player_rankings: @player_rankings %>
   <%= render "league_challenges", challenges: @league_challenges, league: @league %>
+
   <%= render "user_challenges", user_challenges: @user_challenges %>
 
   </div>

@@ -156,7 +156,6 @@
 }
 
 .challenge-container .btn-secondary:hover {
-  background-color: #495057;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -186,12 +185,6 @@
     align-self: center;
   }
 
-  .btn-secondary:hover {
-    background-color: #5a6268;
-    border-color: #5a6268;
-  }
-
   .btn-secondary:focus {
-    box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.5);
     outline: none;
   }

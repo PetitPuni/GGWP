@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'user_leagues/my_stats', to: 'user_leagues#my_stats'
   get 'steam/get_stats', to: 'steam#get_stats'
   get '/user_leagues', to: 'user_leagues#index'
-  get '/my_challenges', to: 'user_leagues#my_challenges'
+  # get '/my_challenges', to: 'user_leagues#my_challenges'
 
 
   # Defines the root path route ("/")
