@@ -58,7 +58,8 @@
   }
 
 
-  .league-card .league-name {
+  .league-card > .league-name {
+    position: absolute;
     color: #ffffff;
   }
 
@@ -67,9 +68,10 @@ ul {
   }
 
 .league-name {
-  text-align: top-left;
+  text-align: left;
   font-size: 32px;
   display: flex;
+  top: 20px;
   flex-direction: column;
   text-decoration: white;
 
@@ -125,14 +127,17 @@ ul {
   p {
     margin: 0;
   }
-
-  .league-player {
+  
+  .league-card .avatar-user{
+    display: flex;
+    flex-flow: row wrap;
     position: absolute;
     bottom: 20px;
     right: 20px;
-    color: white;
+    row-gap: 0px;
+
   }
-  
+
   .leagues-background {
     position: fixed;
     top: 0;
