@@ -44,9 +44,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 
-  .league-card img{
-  }
-
   .dota-2-img{
     background-image: url('dota-2.jpg');
 
@@ -143,6 +140,7 @@ ul {
     bottom: 20px;
     right: 20px;
     row-gap: 0px;
+    padding-right: 15px;
 
   }
 
@@ -157,4 +155,8 @@ ul {
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
     opacity: 0.1;
+  }
+
+  .table-container{
+    text-align: center;
   }

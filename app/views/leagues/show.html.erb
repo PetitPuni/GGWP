@@ -7,7 +7,7 @@
 <div class="league-container"
      data-controller="league"
      data-league-league-id-value="<%= @league.id %>"
-     data-league-currend-user-id-value ="<%= current_user.id %>" >
+     data-league-current-user-id-value="<%= current_user.id %>" >
 
 
 
@@ -15,8 +15,7 @@
     <%= render "invite_player" %>
     <%= render "player_list" %>
 
-
-    <%= render "popup" if @league.ended?%>
+    <%= render "popup"%>
     <%= render "timer" %>
 
     <%#<p><%= @league.game.genre %></p>

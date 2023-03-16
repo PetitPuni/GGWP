@@ -1,7 +1,9 @@
 [data-controller="timer"] {
   display: inline-block;
+  text-align: center;
   padding: 8px;
-  border-radius: 5px;
+  width: 88vw;
+  border-radius: 8px;
   background-color: #6A36D5;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -17,13 +19,12 @@
 [data-timer-target="minutes"],
 [data-timer-target="seconds"] {
   display: inline-block;
-  text-align: center;
   padding: 5px;
   color: white;
   font-size: 16px;
   font-weight: bold;
   margin: 0 2px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-family: "Press Start 2P", sans-serif;
 }
 
@@ -33,7 +34,8 @@
 [data-timer-target="minutes"]::before,
 [data-timer-target="seconds"]::before {
   content: attr(data-timer-target);
-  display: block;
+  display: flex;
+  justify-content: center;
   font-size: 12px;
   margin-bottom: 5px;
   text-transform: uppercase;
@@ -44,6 +46,8 @@
 
 .league-over h4 {
   color: white;
+  display: flex;
+  justify-content: center;
 }
 
 .league-container {
@@ -85,10 +89,11 @@
   padding: 10;
 }
 
-table{
+table {
   border-radius: $border-radius;
   border-collapse: collapse;
   overflow: hidden;
+  width: 88vw;
 }
 
 .players-container h3 {
@@ -98,8 +103,17 @@ table{
   padding: 10;
 }
 
-.invite-friends {
-  margin-bottom: 20px;
+.invite-friends-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2vw;
+}
+
+
+.invite-friends p{
+  text-align: center;
 }
 
 
@@ -117,6 +131,7 @@ table tbody tr {
 .card-challenges {
 position: relative;
 display: flex;
+width: 88vw;
 flex-direction: column;
 justify-content: space-between;
 padding: 1rem;
@@ -290,11 +305,12 @@ margin-right: 5px;
 }
 
 .clipboard-width {
-  align-content: center;
   display: flex;
   gap: 8px;
-  justify-content: center;
   margin-top: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .copy-btn{
