@@ -7,7 +7,7 @@
 <div class="league-container"
      data-controller="league"
      data-league-league-id-value="<%= @league.id %>"
-     data-league-currend-user-id-value ="<%= current_user.id %>" >
+     data-league-current-user-id-value="<%= current_user.id %>" >
 
 
 
@@ -16,7 +16,7 @@
     <%= render "player_list" %>
 
 
-    <%= render "popup" if @league.ended?%>
+    <%= render "popup"%>
     <%= render "timer" %>
 
     <%#<p><%= @league.game.genre %></p>
@@ -26,13 +26,9 @@
   <%= render "ranking_player", league: @league, player_rankings: @player_rankings %>
   <%= render "league_challenges", challenges: @league_challenges, league: @league %>
 
-  <%= render "user_challenges", user_challenges: @user_challenges %>
-
+  <div class="league-space-bottom">
+    <%= render "user_challenges", user_challenges: @user_challenges %>
   </div>
-    <div>
-        <%= link_to 'Access your challenges', league_challenges_path(@league), class: "btn btn-primary" %>
-        <%#= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
-        <%= link_to 'Delete your league', league_path(@league), class: "btn btn-warning", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-        <%#= link_to 'user stat', user_leagues_path, class: "btn btn-secondary" %>
-    </div>
+
 </div>
+
