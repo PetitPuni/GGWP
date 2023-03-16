@@ -10,6 +10,8 @@
     padding-bottom: 70px;
     box-sizing: border-box;
     // align-items: center;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
   }
 
   .leagues-container h1 {
