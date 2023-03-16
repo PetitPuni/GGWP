@@ -248,4 +248,14 @@ margin-bottom: 1rem;
 flex: 1 1 auto;
 margin-left: 5px;
 margin-right: 5px;
+.clipboard-width {
+  // height: 70%;
+  align-content: center;
+  display: flex;
+  gap: 8px;
+}
+
+.copy-btn{
+height: 2rem;
+}
 }
