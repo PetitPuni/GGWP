@@ -1,4 +1,4 @@
-class StartLeagueChallenges < ApplicationService
+class BroadcastLeagueChallenges < ApplicationService
 
   def initialize(league:)
     @league = league
@@ -14,7 +14,7 @@ class StartLeagueChallenges < ApplicationService
     player_rankings = RankingLeagueService.call(league: @league)
 
     ranking_html = ActionController::Base.new.render_to_string(partial: 'leagues/ranking_player', locals: {league: @league, player_rankings: player_rankings})
-    challenge_html = ActionController::Base.new.render_to_string(partial: "leagues/league_challenges", locals: {challenges: @league.challenges, league: @league})
+    challenge_html = ActionController::Base.new.render_to_string(partial: "leagues/league_challenges", locals: {challenges: @challenges, league: @league})
 
 
     user_challenges = @league.user_leagues.to_h do |user_league|
@@ -32,4 +32,5 @@ class StartLeagueChallenges < ApplicationService
       @league, { key: "start", data:}
     )
   end
+
 end

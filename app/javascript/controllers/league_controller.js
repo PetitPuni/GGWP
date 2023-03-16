@@ -12,6 +12,8 @@ export default class extends Controller {
 
   connect() {
     console.log("coucou")
+    console.log(this.leagueIdValue)
+    console.log(this.currentUserIdValue)
     this.channel = createConsumer().subscriptions.create(
       { channel: "LeagueChannel", id: this.leagueIdValue },
       { received: this.received }
@@ -25,7 +27,7 @@ export default class extends Controller {
 
   start(data) {
     console.log("coucou start")
-    console.log(data.challenges)
+    console.log(data.user_challenges)
     this.updateRanking(data.ranking)
     this.updateChallenges(data.challenges)
     this.updateUserChallenges(data.user_challenges)
