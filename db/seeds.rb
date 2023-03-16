@@ -113,23 +113,24 @@ userApex << user5Apex = User.create!(steam_username: 'Tata', steam_image: '/asse
 
 l1 = League.create!(name: 'CSGO', description: 'CSGO', game: game, start_on: Date.today - 2.days, end_on: Date.today - 1.days, token: RandomToken.gen(6))
 l2 = League.create!(name: 'Dota2', description: 'Dota2', game: game2, start_on: Date.today, end_on: Date.today + 10.days, token: RandomToken.gen(6))
-l3 = League.create!(name: 'TeamFortress2', description: 'TF2', game: game3, start_on: Date.today, end_on: Date.today + 1.days, token: RandomToken.gen(6))
-l4 = League.create!(name: 'Apex', description: 'Apex', game: game4, start_on: Date.today - 2.days, end_on: Date.today + 1.days, token: RandomToken.gen(6))
+l3 = League.create!(name: 'TeamFortress2', description: 'TF2', game: game3, start_on: Date.today, end_on: Date.tomorrow, token: RandomToken.gen(6))
+l4 = League.create!(name: 'Apex', description: 'Apex', game: game4, start_on: Date.today - 2.days, end_on: Date.tomorrow, token: RandomToken.gen(6))
 
 userCSgo.each do |user|
-  UserLeague.create!(user_id: user.id, league_id: l1.id)
+  UserLeague.create!(user_id: user.id, league_id: l1.id, score: [10, 20, 30, 50, 60].sample)
 end
 
+
 userDota2.each do |user|
-  UserLeague.create!(user_id: user.id, league_id: l2.id)
+  UserLeague.create!(user_id: user.id, league_id: l2.id, score: [10, 20, 30, 50, 60].sample)
 end
 
 userTF2.each do |user|
-  UserLeague.create!(user_id: user.id, league_id: l3.id)
+  UserLeague.create!(user_id: user.id, league_id: l3.id, score: [10, 20, 40, 50, 70].sample)
 end
 
 userApex.each do |user|
-  UserLeague.create!(user_id: user.id, league_id: l4.id)
+  UserLeague.create!(user_id: user.id, league_id: l4.id, score: [10, 20, 30, 50, 60].sample)
 end
 
 cDota = []
@@ -151,7 +152,7 @@ cApex << c1Apex = Challenge.create!(name: 'Knockdowns', description: 'Get 5 knoc
 cApex << c2Apex = Challenge.create!(name: 'Make kills', description: 'Get 10 kills in a single match', points: 20, game: game4)
 cApex << c3Apex = Challenge.create!(name: 'True damage', description: 'Deal 250 damage as "legend" in any mode', points: 30, game: game4)
 cApex << c4Apex = Challenge.create!(name: 'Collect bins', description: 'Open 10 supply bins', points: 40, game: game4)
-cApex << c5Apex = Challenge.create!(name: 'Easy damage', description: 'Deal 100 damage with assault rifles', points: 10, game: game4)
+cApex << c5Apex = Challenge.create!(name: 'Easy damage', description: 'Deal 100 damage with assault rifles', points: 60, game: game4)
 
 
 League.all.each do |league|
@@ -162,6 +163,8 @@ League.all.each do |league|
     end
   end
 end
+
+
 
 # ap 'game created'
 
