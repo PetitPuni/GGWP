@@ -1,9 +1,9 @@
-class BroadcastLeagueChallengesJob < ApplicationJob
+class PrestartLeagueJob < ApplicationJob
   queue_as :default
 
   def perform(league)
     # Do something later
     ap "StartLeagueJob: I'm running!"
-    BroadcastLeagueChallenges.call(league: league)
+    PrestartLeagueChallenges.call(league: league)
   end
 end
