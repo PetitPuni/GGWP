@@ -30,6 +30,7 @@ export default class extends Controller {
     console.log(data.user_challenges)
     this.updateRanking(data.ranking)
     this.updateChallenges(data.challenges)
+    console.log( data.user_challenges)
     this.updateUserChallenges(data.user_challenges)
   }
 
