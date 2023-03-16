@@ -102,6 +102,10 @@ table{
   margin-bottom: 20px;
 }
 
+.invite-friends p{
+  justify-content: center;
+}
+
 
 table thead th{
   background: $my-purple;
@@ -290,11 +294,12 @@ margin-right: 5px;
 }
 
 .clipboard-width {
-  align-content: center;
   display: flex;
   gap: 8px;
-  justify-content: center;
   margin-top: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .copy-btn{
