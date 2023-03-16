@@ -8,10 +8,8 @@ export default class extends Controller {
     console.log("Hello, Stimulus!")   
   }
   grey() {
-    console.log("grey")
     this.imgTargets.forEach(img => {
       img.classList.add("grey")
-      console.log(img)
     });
   }
 }
