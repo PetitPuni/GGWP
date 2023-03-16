@@ -7,7 +7,11 @@
             <div class="league-card <%=league.game.name%>-img">
               <p class="league-game"></p>
               <p class="league-name"><%= league.name %></p>
-              <p class="league-player"> <%= league.user_leagues.count %> gamers 🎮</p>
+              <div class='avatar-user'>
+                <% league.user_leagues.each do |userLeague| %>
+                  <img class="friends-avatar" src="<%= userLeague.user.steam_image %>" alt="User Image">
+                <% end %>
+              </div>
             </div>
           <% end %>
         <% end %>

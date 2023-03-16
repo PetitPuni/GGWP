@@ -11,7 +11,8 @@
     // opacity: 0.5;
     border: 4px solid #6A36D5;
     background-color: #6A36D5;
-    border-radius: 4px;
+    border-radius: $border-radius;
+    filter: none;
 }
 
 .label-all {
@@ -22,6 +23,9 @@
     // flex-wrap: wrap;
     margin-bottom: 8px;
     margin-top: 8px;
+}
+.label .grey{
+    filter: brightness(0.5);
 }
 
 @media (min-width: 374px) {  
@@ -39,7 +43,7 @@
 
 .label > img {
     flex-basis: 50%;
-    border-radius: 4px;
+    border-radius: $border-radius;
     order: 2;
     margin: 0;
     float: left;
@@ -73,3 +77,4 @@
     animation: gradient 10s ease infinite;
     opacity: 0.1;
   }
+

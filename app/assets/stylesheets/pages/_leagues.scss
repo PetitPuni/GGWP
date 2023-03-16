@@ -38,7 +38,7 @@
     // margin-right: 40px;
     padding: 25px;
     background-size: cover;
-    border-radius: 20px;
+    border-radius: $border-radius;
   }
 
   .dota-2-img{
@@ -53,8 +53,8 @@
     background-image: url('apex.jpg');
   }
 
-  .lol-img{
-    background-image: url('lol.jpg');
+  .TF2-img{
+    background-image: url('TF2.jpg');
   }
 
 
