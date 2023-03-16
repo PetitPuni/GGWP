@@ -1,5 +1,5 @@
 meta_name: "GGWellPlayed"
 meta_title: "GGWellPlayed - Unleash your competitive spirit and challenge your friends today."
 meta_description: "Unleash your competitive spirit with GGWellPlayed - the ultimate gaming platform for challenging your friends on your favorite games. Take your skills to the next level and dominate the competition as you face off against your friends. Join now and discover the thrill of gaming like never before."
-meta_image: "og:ggwp.jpg" # should exist in `app/assets/images/`
+meta_image: "ogggwp.jpg" # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"   # required for Twitter Cards
