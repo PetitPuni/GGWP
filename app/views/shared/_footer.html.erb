@@ -2,7 +2,11 @@
   <div class="footer-buttons">
     <a href="/leagues" class="footer-button"><i class="fa fa-home"></i></a>
     <a href="/league_user_leagues" class="footer-button"><i class="fa fa-users"></i></a>
-    <a href="/leagues/new" class="footer-button"><i class="fa fa-plus"></i></a>
+    <a href="/leagues/new" class="footer-button">
+     <svg class="fa-plus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+</svg>
+    </a>
     <a href="/my_challenges" class="footer-button"><i class="fa fa-trophy"></i></a>
     <%= link_to "<i class='fa fa-user'></i>".html_safe, current_user.nil? ? root_path : user_path(current_user)  , class: "footer-button" %>
   </div>

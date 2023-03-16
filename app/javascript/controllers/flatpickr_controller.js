@@ -28,6 +28,7 @@ export default class extends Controller {
       dateFormat: "Y-m-d H:i",
       altFormat: "F j, Y H:i",
       time_24hr: true,
+      defaultDate: new Date(),
     })
   }
   
