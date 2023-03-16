@@ -46,7 +46,7 @@ def update_site
     user_league.save
     league.challenges.each do |challenge|
       @score = @score + challenge.score
-      UserLeagueChallenge.create(user_league: @user_league, challenge: challenge, init_user_stat: nil)
+      UserLeagueChallenge.create(user_league: @user_league, challenge: challenge, init_user_stat: 0, end_value: 0, progress: 100, succes: true)
     end
     user_league.update(score: @score)
   end
