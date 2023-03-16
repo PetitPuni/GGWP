@@ -2,8 +2,8 @@
   display: inline-block;
   text-align: center;
   padding: 8px;
-  width: 100%;
-  border-radius: 5px;
+  width: 88vw;
+  border-radius: 8px;
   background-color: #6A36D5;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -24,7 +24,7 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0 2px;
-  border-radius: 5px;
+  border-radius: 8px;
   font-family: "Press Start 2P", sans-serif;
 }
 
@@ -93,7 +93,7 @@ table {
   border-radius: $border-radius;
   border-collapse: collapse;
   overflow: hidden;
-  width: 100%;
+  width: 88vw;
 }
 
 .players-container h3 {
