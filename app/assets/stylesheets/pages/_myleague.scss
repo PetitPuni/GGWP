@@ -55,10 +55,13 @@
   flex-direction: column;
 }
 
-.players-list {
+.players{
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
+  gap: 24px;
   text-align: center;
+  width: 100%;
 }
 
 .leagues-background {
