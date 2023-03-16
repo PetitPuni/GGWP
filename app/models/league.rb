@@ -12,10 +12,10 @@ class League < ApplicationRecord
 
   scope :active, -> { where("start_on <= ? AND end_on >= ?", Time.current + 1.hour, Time.current + 1.hour) }
 
-  before_save do
-    self.start_on = 20.seconds.from_now + 1.hour
-    self.end_on = 40.seconds.from_now + 1.hour
-  end
+  # before_save do
+  #   self.start_on = 20.seconds.from_now + 1.hour
+  #   self.end_on = 40.seconds.from_now + 1.hour
+  # end
 
   after_commit :async_update, on: [:create]
 
