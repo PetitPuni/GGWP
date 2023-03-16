@@ -2,21 +2,21 @@
 <div class="container form" data-controller="flatpickr" >
     <%= simple_form_for(league) do |f| %>
     <h6>Choose a game to be challenged on 💪</h6>
-    <div class= "label-all">
+    <div class= "label-all" data-controller='click-grey'>
         <% @games.each do |game| %>
             <input type="radio" name="league[game_id]" value="<%= game.id %>" id="<%= game.id %>" class="radio">
             <%= f.label :game, for: game.id, class: "label" do %>
-                <%= image_tag game.name %>
+                <%= image_tag game.name, data: {click_grey_target: 'img', action: 'click->click-grey#grey'}%>
             <% end %>
         <% end %>
     </div>
     <%= f.input :name, label: 'League name', placeholder: 'Enter the name of your league here' %>
     <%= f.input :description, label: 'League description', placeholder: 'Try a funky description'%>
-    <%= f.input :start_on, label: 'Your League start on',  as: :string, input_html: { data: { flatpickr_target: "startOn" } }, placeholder: 'Select Date..' %>
+    <%= f.input :start_on, label: 'Your League starts on',  as: :string, input_html: { data: { flatpickr_target: "startOn" } }, placeholder: 'Select Date..' %>
     <%= f.input :end_on, label: 'Your League ends on', as: :string, input_html: { data: { flatpickr_target: "endOn" } }, placeholder: 'Select Date..' %>
     <div class="btn-form">
         <%# <%= link_to 'Back', leagues_path, class: "btn btn-secondary" %>
-        <%= f.submit "Let's Gooo 🚀", class: 'btn btn-primary' %>
+        <%= f.submit "Let's Gooo 🚀", class: 'btn btn-primary full-width-button' %>
     </div>
     <% end %>
 </div>
