@@ -1,6 +1,8 @@
 [data-controller="timer"] {
   display: inline-block;
+  text-align: center;
   padding: 8px;
+  width: 100%;
   border-radius: 5px;
   background-color: #6A36D5;
   margin-top: 20px;
@@ -17,7 +19,6 @@
 [data-timer-target="minutes"],
 [data-timer-target="seconds"] {
   display: inline-block;
-  text-align: center;
   padding: 5px;
   color: white;
   font-size: 16px;
@@ -33,7 +34,8 @@
 [data-timer-target="minutes"]::before,
 [data-timer-target="seconds"]::before {
   content: attr(data-timer-target);
-  display: block;
+  display: flex;
+  justify-content: center;
   font-size: 12px;
   margin-bottom: 5px;
   text-transform: uppercase;
@@ -87,7 +89,7 @@
   padding: 10;
 }
 
-table{
+table {
   border-radius: $border-radius;
   border-collapse: collapse;
   overflow: hidden;
@@ -100,9 +102,14 @@ table{
   padding: 10;
 }
 
-.invite-friends {
-  margin-bottom: 20px;
+.invite-friends-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2vw;
 }
+
 
 .invite-friends p{
   text-align: center;
