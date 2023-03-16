@@ -50,7 +50,15 @@
 
 .btn-form{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    width: 100%;
+}
+
+.full-width-button {
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-size: medium;
 }
 
 .form-background {
