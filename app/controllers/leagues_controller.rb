@@ -58,10 +58,8 @@ class LeaguesController < ApplicationController
       if @user_league.save
         unless @league.challenges.blank?
           @league.challenges.each do |challenge|
-            UserLeagueChallenge.create(user_league: @user_league, challenge: challenge,
-              init_user_stat: nil)
+            UserLeagueChallenge.create(user_league: @user_league, challenge: challenge, init_user_stat: nil)
           end
-          update_stats
         end
         @new_user = render_to_string(partial: "users/user", locals: {user: current_user})
         LeagueChannel.broadcast_to(
@@ -87,4 +85,5 @@ class LeaguesController < ApplicationController
   def set_league
     @league = League.find(params[:id])
   end
+
 end
