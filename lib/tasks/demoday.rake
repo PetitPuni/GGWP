@@ -1,6 +1,6 @@
 namespace :demoday do
   task fake: :environment do
-    league = League.find_by(name: 'totototototo')
+    league = League.find_by(name: 'Hunger Hams')
     if league
       league.update(end_on: Time.current + 1.hour + 30.seconds)
     end
