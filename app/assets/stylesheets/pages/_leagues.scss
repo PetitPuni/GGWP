@@ -64,8 +64,10 @@
 
 
   .league-card > .league-name {
+    margin-top: 18px;
     position: absolute;
     color: #ffffff;
+    
   }
 
 ul {
@@ -79,6 +81,7 @@ ul {
   top: 20px;
   flex-direction: column;
   text-decoration: white;
+  text-shadow: 2px 2px 2px black;
 
 }
 
