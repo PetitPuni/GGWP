@@ -111,10 +111,10 @@ userApex << user4Apex = User.create!(steam_username: 'Titi', steam_image: '/asse
 userApex << user5Apex = User.create!(steam_username: 'Tata', steam_image: '/assets/avatar4.png', steam_id: '0000022')
 
 
-l1 = League.create!(name: 'CSGO', description: 'CSGO', game: game, start_on: Date.today - 2.days, end_on: Date.today - 1.days, token: RandomToken.gen(6))
-l2 = League.create!(name: 'Dota2', description: 'Dota2', game: game2, start_on: Date.today, end_on: Date.today + 10.days, token: RandomToken.gen(6))
-l3 = League.create!(name: 'TeamFortress2', description: 'TF2', game: game3, start_on: Date.today, end_on: Date.tomorrow, token: RandomToken.gen(6))
-l4 = League.create!(name: 'Apex', description: 'Apex', game: game4, start_on: Date.today - 2.days, end_on: Date.tomorrow, token: RandomToken.gen(6))
+l1 = League.create!(name: 'Wacky Wipeout ', description: 'CSGO', game: game, start_on: Date.today - 2.days, end_on: Date.today - 1.days, token: RandomToken.gen(6))
+l2 = League.create!(name: 'Ultimate Uprising', description: 'Dota2', game: game2, start_on: Date.today, end_on: Date.today + 10.days, token: RandomToken.gen(6))
+l3 = League.create!(name: 'Silly Slaughter', description: 'TF2', game: game3, start_on: Date.today, end_on: Date.tomorrow, token: RandomToken.gen(6))
+l4 = League.create!(name: 'Hunger Hams', description: 'Apex', game: game4, start_on: Date.today - 2.days, end_on: Date.tomorrow, token: RandomToken.gen(6))
 
 userCSgo.each do |user|
   UserLeague.create!(user_id: user.id, league_id: l1.id, score: [10, 20, 30, 50, 60].sample)

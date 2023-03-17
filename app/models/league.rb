@@ -6,7 +6,7 @@ class League < ApplicationRecord
   has_many :challenges, -> { distinct }, through: :user_league_challenges
 
   validates :name, presence: true
-  validates :description, presence: true
+  #validates :description, presence: true
   validates :start_on, presence: true
   validates :end_on, presence: true
 
