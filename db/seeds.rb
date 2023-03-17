@@ -111,14 +111,9 @@ userApex << user4Apex = User.create!(steam_username: 'Titi', steam_image: '/asse
 userApex << user5Apex = User.create!(steam_username: 'Tata', steam_image: '/assets/avatar4.png', steam_id: '0000022')
 
 
-l1 = League.create!(name: 'Wacky Wipeout ', description: 'CSGO', game: game, start_on: Date.today - 2.days, end_on: Date.today - 1.days, token: RandomToken.gen(6))
 l2 = League.create!(name: 'Ultimate Uprising', description: 'Dota2', game: game2, start_on: Date.today, end_on: Date.today + 10.days, token: RandomToken.gen(6))
 l3 = League.create!(name: 'Silly Slaughter', description: 'TF2', game: game3, start_on: Date.today, end_on: Date.tomorrow, token: RandomToken.gen(6))
 l4 = League.create!(name: 'Hunger Hams', description: 'Apex', game: game4, start_on: Date.today - 2.days, end_on: Date.tomorrow, token: RandomToken.gen(6))
-
-userCSgo.each do |user|
-  UserLeague.create!(user_id: user.id, league_id: l1.id, score: [10, 20, 30, 50, 60].sample)
-end
 
 
 userDota2.each do |user|
@@ -165,26 +160,64 @@ League.all.each do |league|
 end
 
 ap 'debut seed louis'
-@userlouis = User.create!(steam_id: "76561197979499217")
+userlouis = User.create!(steam_id: "76561197979499217")
+userlouis.update!(created_at: '2023-01-05 16:37:03.372084')
 
-leagues = []
-League.all.each { |league| leagues << league}
-leagues.each do |league|
-  @score = 0
-  @user_league = UserLeague.new
-  @user_league.league = league
-  @user_league.user = @userlouis
-  @user_league.save!
-  ap @user_league
+
+League.all.each do |league|
+  score = 0
+  user_league = UserLeague.create!(league: league, user: userlouis)
+  ap user_league
   league.challenges.each do |challenge|
+    succes = false
     ap challenge.name
-    @score += challenge.points
-    a = UserLeagueChallenge.create!(user_league: @user_league, challenge: challenge, init_user_stat: 0, end_value: 0, progress: 100, succes: true)
+    progress = [30, 45, 60, 75, 100, 100, 100, 100].sample
+    if progress == 100
+      succes = true
+      score += challenge.points
+    end
+    a = UserLeagueChallenge.create!(user_league: user_league, challenge: challenge, init_user_stat: 0, end_value: 0, progress: progress , succes: succes)
     ap a
   end
-  ap @score
-  @user_league.update(score: @score)
+  ap score
+  user_league.update(score: score)
 end
+
+
+challenges = Challenge.all.load
+
+challenge1 = challenges.find {|c| c.name.include?('Shot') && c.name.include?('M4a1-Silencer') }
+challenge1.update!(key: 'Shot 100 with M4a1-Silencer', ennemies: 100, points: 80)
+
+challenge2 = challenges.find {|c| c.name.include?('Hit') && c.name.include?('Bump Mine') }
+challenge2.update!(key: 'Hit 5 with Bump Mine', ennemies: 5, points: 30)
+
+challenge3 = challenges.find {|c| c.name.include?('Shot') && c.name.include?('Mac10') }
+challenge3.update!(key: 'Shot 12 with Mac10', ennemies: 12, points: 40)
+
+challenge4 = challenges.find {|c| c.name.include?('Kill') && c.name.include?('Smoke Grenade') }
+challenge4.update!(key: 'Kill 13 with Smoke Grenade', ennemies: 13, points: 50)
+
+challenge5 = challenges.find {|c| c.name.include?('Hit') && c.name.include?('Knife') }
+challenge5.update!(key: 'Hit 11 with Knife', ennemies: 11, points: 20)
+
+
+current_league = League.create!(name: 'Wacky Wipeout', description: 'CSGO', game: game, start_on: 40.days.from_now, end_on: 41.days.from_now, token: RandomToken.gen(6))
+
+
+userCSgo.first(3).each do |user|
+  UserLeague.create!(user_id: user.id, league_id: current_league.id, score: (rand(10..18) * 10))
+end
+
+
+user_league_louis = UserLeague.create!(user_id: userlouis.id, league_id: current_league.id, score: 200)
+
+UserLeagueChallenge.create!(user_league: user_league_louis, challenge: challenge1, init_user_stat: 0, end_value: 0, progress: 100 , succes: true)
+UserLeagueChallenge.create!(user_league: user_league_louis, challenge: challenge2, init_user_stat: 0, end_value: 0, progress: 80 , succes: false)
+UserLeagueChallenge.create!(user_league: user_league_louis, challenge: challenge3, init_user_stat: 0, end_value: 0, progress: 100 , succes: true)
+UserLeagueChallenge.create!(user_league: user_league_louis, challenge: challenge4, init_user_stat: 0, end_value: 0, progress: 100 , succes: true)
+UserLeagueChallenge.create!(user_league: user_league_louis, challenge: challenge5, init_user_stat: 0, end_value: 0, progress: 20 , succes: false)
+
 
 
 
