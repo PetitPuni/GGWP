@@ -19,7 +19,7 @@ class User < ApplicationRecord
     when 10..20
       "Demi-God 🔱"
     else
-      "Allmighty ❤️‍🔥"
+      "Almighty ❤️‍🔥"
     end
   end
 
