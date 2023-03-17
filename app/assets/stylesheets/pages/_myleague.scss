@@ -204,14 +204,15 @@ opacity: 0.9;
       box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 
       &:after {
-        content: attr(data-progress) "%";
+        // content: attr(data-progress) "%";
         position: absolute;
         right: 0;
         top: -1.5rem;
-        color: #6A36D5;
+        // color: #6A36D5;
         font-size: 1.5rem;
         font-weight: bold;
         text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+
       }
 
 
