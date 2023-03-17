@@ -166,7 +166,7 @@ end
 
 ap 'debut seed louis'
 @userlouis = User.create!(steam_id: "76561197979499217")
-
+@userlouis.update!(created_at: '2023-01-05 16:37:03.372084')
 leagues = []
 League.all.each { |league| leagues << league}
 leagues.each do |league|
@@ -177,9 +177,14 @@ leagues.each do |league|
   @user_league.save!
   ap @user_league
   league.challenges.each do |challenge|
+    succes = false
     ap challenge.name
-    @score += challenge.points
-    a = UserLeagueChallenge.create!(user_league: @user_league, challenge: challenge, init_user_stat: 0, end_value: 0, progress: 100, succes: true)
+    progress = [30, 45, 60, 75, 100, 100, 100, 100].sample
+    if progress == 100
+      succes = true
+      @score += challenge.points
+    end
+    a = UserLeagueChallenge.create!(user_league: @user_league, challenge: challenge, init_user_stat: 0, end_value: 0, progress: progress , succes: succes)
     ap a
   end
   ap @score
