@@ -156,12 +156,34 @@ cApex << c5Apex = Challenge.create!(name: 'Easy damage', description: 'Deal 100 
 
 
 League.all.each do |league|
-  league.challenges.shuffle.take(5).each do |challenge|
+  league.game.challenges.shuffle.take(5).each do |challenge|
     league.user_leagues.each do |user_league|
-      UserLeagueChallenge.create(user_league: user_league, challenge: challenge,
+      UserLeagueChallenge.create!(user_league: user_league, challenge: challenge,
         init_user_stat: 0, end_value: 0)
     end
   end
+end
+
+ap 'debut seed louis'
+@userlouis = User.create!(steam_id: "76561197979499217")
+
+leagues = []
+League.all.each { |league| leagues << league}
+leagues.each do |league|
+  @score = 0
+  @user_league = UserLeague.new
+  @user_league.league = league
+  @user_league.user = @userlouis
+  @user_league.save!
+  ap @user_league
+  league.challenges.each do |challenge|
+    ap challenge.name
+    @score += challenge.points
+    a = UserLeagueChallenge.create!(user_league: @user_league, challenge: challenge, init_user_stat: 0, end_value: 0, progress: 100, succes: true)
+    ap a
+  end
+  ap @score
+  @user_league.update(score: @score)
 end
 
 
