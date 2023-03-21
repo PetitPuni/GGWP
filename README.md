@@ -7,7 +7,8 @@ The interface of GGWellPlayed has been optimized for small screens, making it ea
 
 Some screenshots of the app : 
 
-
-<img width="299" alt="Capture d’écran 2023-03-21 à 11 50 52" src="https://user-images.githubusercontent.com/118454225/226586832-deba0943-982e-4985-8f81-9421f57b8050.png">
-<img width="280" alt="Capture d’écran 2023-03-21 à 11 44 33" src="https://user-images.githubusercontent.com/118454225/226586839-2d034844-9021-482b-bd05-beebbb23b551.png">
 <img width="280" alt="Capture d’écran 2023-03-21 à 11 41 24" src="https://user-images.githubusercontent.com/118454225/226586845-1bc48178-79de-4129-a24a-46231c4607d3.png">
+<img width="280" alt="Capture d’écran 2023-03-21 à 11 44 33" src="https://user-images.githubusercontent.com/118454225/226586839-2d034844-9021-482b-bd05-beebbb23b551.png">
+<img width="299" alt="Capture d’écran 2023-03-21 à 11 50 52" src="https://user-images.githubusercontent.com/118454225/226586832-deba0943-982e-4985-8f81-9421f57b8050.png">
+
+
