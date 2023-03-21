@@ -1,5 +1,5 @@
 class ApplicationService
-  def self.call(*args, **kwargs, &)
-    new(*args, **kwargs, &).send(:call, &)
+  def self.call(...)
+    new(...).send(:call, &)
   end
 end

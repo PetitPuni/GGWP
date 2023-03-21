@@ -10,10 +10,9 @@
 
 # ap '1 = 54 et 2 = 16'
 
-
 def reset
   league = League.find(113)
-  league.update(start_on: 10000.seconds.from_now, end_on: 1000.minute.from_now)
+  league.update(start_on: 10_000.seconds.from_now, end_on: 1000.minute.from_now)
   UserLeagueChallenge.destroy_all
 end
 
@@ -37,7 +36,7 @@ end
 def update_site
   @user = User.find_by(steam_username: "petitpuni")
   leagues = []
-  League.all.each { |league| leagues << league}
+  League.all.each { |league| leagues << league }
   leagues.each do |league|
     @scroe = 0
     user_league = UserLeague.new
@@ -45,24 +44,20 @@ def update_site
     user_league.user = @user
     user_league.save
     league.challenges.each do |challenge|
-      @score = @score + challenge.points
-      UserLeagueChallenge.create(user_league: @user_league, challenge: challenge, init_user_stat: 0, end_value: 0, progress: 100, succes: true)
+      @score += challenge.points
+      UserLeagueChallenge.create(user_league: @user_league, challenge:, init_user_stat: 0, end_value: 0,
+                                 progress: 100, succes: true)
     end
     user_league.update(score: @score)
   end
 end
 
-
 # ap UserLeagueChallenge.find(1119).update(init_user_stat: -50, end_value: -50, progress: 0, succes: false)
 # ap UserLeagueChallenge.find(1054).update(init_user_stat: -50, end_value: -50, progress: 0, succes: false)
 
-
 # ap UserLeague.find(59).user_league_challenges
 
-
 # UpdateLeagueChallenges.call(league: League.last)
-
-
 
 # # options = [
 # #   { action: 'shot', gun: 'nova' },
@@ -72,6 +67,5 @@ end
 # # stats = FetchSteamUserStats.call(steam_id: '76561197981067382', game_id: '730', options: options)
 
 # # ap stats
-
 
 # ap UserLeague.find(59).user_league_challenges

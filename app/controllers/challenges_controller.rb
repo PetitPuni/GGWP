@@ -1,10 +1,9 @@
 class ChallengesController < ApplicationController
+  before_action :set_league
 
-    before_action :set_league
-
-    def index
-      @challenges = @league.user_league_challenges
-    end
+  def index
+    @challenges = @league.user_league_challenges
+  end
 
   def show
     @challenge = Challenge.find(params[:id])
@@ -17,12 +16,10 @@ class ChallengesController < ApplicationController
   end
 end
 
-
 # Faire un tableau avec les kills / Hit
 # Faire un tableau avec les pistolets
 # .sample de chacun des tableaux
 # Save dans la db du challenge les clés (action + pistolets)
-
 
 # Save les stats initial
 

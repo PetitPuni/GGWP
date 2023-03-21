@@ -1,5 +1,4 @@
 class RankingLeagueService < ApplicationService
-
   def initialize(league:)
     @league = league
   end
@@ -21,5 +20,4 @@ class RankingLeagueService < ApplicationService
         .select("users.steam_username, user_leagues.score")
         .order("score DESC")
   end
-
 end
