@@ -17,7 +17,6 @@ class PrestartLeagueChallenges < ApplicationService
     @challenges = @league.game.challenges.shuffle.take(5)
   end
 
-
   def create_user_league_challenges
     @league.user_leagues.each do |user_league|
       user_stats = gets_user_stats(user_league)
@@ -30,7 +29,8 @@ class PrestartLeagueChallenges < ApplicationService
   end
 
   def gets_user_stats(user_league)
-    FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id, options: options_steam_user_stats)
+    FetchSteamUserStats.call(steam_id: user_league.user.steam_id, game_id: @league.game.app_id,
+                             options: options_steam_user_stats)
   end
 
   def options_steam_user_stats

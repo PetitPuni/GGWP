@@ -4,6 +4,6 @@ class PrestartLeagueJob < ApplicationJob
   def perform(league)
     # Do something later
     ap "StartLeagueJob: I'm running!"
-    PrestartLeagueChallenges.call(league: league)
+    PrestartLeagueChallenges.call(league:)
   end
 end

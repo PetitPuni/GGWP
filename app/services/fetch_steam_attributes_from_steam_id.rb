@@ -1,9 +1,9 @@
 # frozen_string_literal: true
+
 require "uri"
 require "net/http"
 
 class FetchSteamAttributesFromSteamId < ApplicationService
-
   API_KEY = ENV.fetch("STEAM_API_KEY")
 
   def initialize(steam_id)
@@ -12,7 +12,7 @@ class FetchSteamAttributesFromSteamId < ApplicationService
 
   def call
     ap url
-    http = Net::HTTP.new(url.host, url.port);
+    http = Net::HTTP.new(url.host, url.port)
     request = Net::HTTP::Get.new(url)
 
     response = http.request(request)

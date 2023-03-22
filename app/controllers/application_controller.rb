@@ -12,9 +12,7 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by(id: session[:user_id])
   end
 
-  def current_user
-    @current_user
-  end
+  attr_reader :current_user
 
   def default_url_options
     { host: ENV["DOMAIN"] || "localhost:3000" }

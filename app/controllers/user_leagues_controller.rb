@@ -24,5 +24,4 @@ class UserLeaguesController < ApplicationController
   end
 end
 
-
 SteamService.call(steam_id: '76561197981067382', game_id: 730)

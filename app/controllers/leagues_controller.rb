@@ -10,8 +10,8 @@ class LeaguesController < ApplicationController
   def show
     @league_challenges = @league.challenges
     @user_challenges = UserLeagueChallenge.joins(user_league: [:league]).includes(:challenge)
-                                     .where(user_leagues: { user_id: current_user, league_id: @league})
-                                     .order('progress DESC')
+                                          .where(user_leagues: { user_id: current_user, league_id: @league })
+                                          .order('progress DESC')
 
     @url = "#{join_league_url}?token=#{@league.token}"
     @users = @league.users
@@ -58,12 +58,12 @@ class LeaguesController < ApplicationController
       if @user_league.save
         unless @league.challenges.blank?
           @league.challenges.each do |challenge|
-            UserLeagueChallenge.create(user_league: @user_league, challenge: challenge, init_user_stat: nil)
+            UserLeagueChallenge.create(user_league: @user_league, challenge:, init_user_stat: nil)
           end
         end
-        @new_user = render_to_string(partial: "users/user", locals: {user: current_user})
+        @new_user = render_to_string(partial: "users/user", locals: { user: current_user })
         LeagueChannel.broadcast_to(
-          @league, { key: "join", data: {user: @new_user}}
+          @league, { key: "join", data: { user: @new_user } }
         )
       else
         flash.alert = "You are already in this league."
@@ -85,5 +85,4 @@ class LeaguesController < ApplicationController
   def set_league
     @league = League.find(params[:id])
   end
-
 end

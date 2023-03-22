@@ -3,7 +3,9 @@
         <div class="players-list">
           <div class="players" data-league-target="players">
             <% @users.each do |user| %>
-             <%= render "users/user", user: user %>
+              <%= link_to user_path(user), data: { bs_toggle: "modal", bs_target: "##{user.steam_username}", bs_whatever: user }  do %> 
+                <%= render "users/user", user: user %>
+              <% end %>
             <% end %>
           </div>
         </div>
