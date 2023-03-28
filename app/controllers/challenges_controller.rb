@@ -1,19 +1,32 @@
 class ChallengesController < ApplicationController
   before_action :set_league
+  before_action :set_challenge, only: [:show]
 
   def index
     @challenges = @league.user_league_challenges
   end
 
   def show
-    @challenge = Challenge.find(params[:id])
+    @details_challenge = UserLeagueChallenge.joins(user_league: :league).includes(:user_league)
+                                            .where(challenge_id: @challenge.id, user_league: { league_id: @league.id })
+                                            .order('progress DESC')
+    respond_to do |format|
+      format.html
+      format.text { render partial: "challenges/show_details_challenge", locals: { details_challenge: @details_challenge}, formats: [:html] }
+    end
   end
+
 
   private
 
   def set_league
     @league = League.find(params[:league_id])
   end
+
+  def set_challenge
+    @challenge = Challenge.find(params[:id])
+  end
+
 end
 
 # Faire un tableau avec les kills / Hit
