@@ -1,18 +1,18 @@
-
 <div data-league-target="userChallenges">
   <% user_challenges.each do |user_challenge| %>
-    <div class="card-challenges">
-      <%#= image_tag challenge.photo %>
-      <h3><%= user_challenge.challenge.name %></h3>
-      <p><%= user_challenge.challenge.description %></p>
-      <div class="progress">
-        <div class="progress-bar <%= user_challenge.progress >= 75 ? "progress-high" : user_challenge.progress >= 50 ? "progress-medium" : "progress-low" %>" style="width: <%= user_challenge.progress %>%;"></div>
-      </div>
-      <div class="card-details">
-        <div>
-          <%= user_challenge.challenge.points %> points
+    <%#= link_to league_challenge_path(league, user_challenge.challenge), data: { bs_toggle: "modal", bs_target: "#chaldetails" }  do %>
+      <div class="card-challenges" data-action="click->league#showDetails" data-cid="<%=user_challenge.challenge_id%>" data-bs-toggle="modal" data-bs-target="#chal<%=user_challenge.id%>">
+        <%#= image_tag challenge.photo %>
+        <h3><%= user_challenge.challenge.name %></h3>
+        <p><%= user_challenge.challenge.description %></p>
+        <div class="progress">
+          <div class="progress-bar <%= user_challenge.progress >= 75 ? "progress-high" : user_challenge.progress >= 50 ? "progress-medium" : "progress-low" %>" style="width: <%= user_challenge.progress %>%;"></div>
+        </div>
+        <div class="card-details">
+          <div>
+            <%= user_challenge.challenge.points %> points
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 </div>

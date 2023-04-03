@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="league"
 export default class extends Controller {
   static values = { leagueId: Number, currentUserId: Number }
-  static targets = ["userChallenges", "ranking", "players", "leagueChallenges"]
+  static targets = ["userChallenges", "ranking", "players", "leagueChallenges", "detailsChallenge"]
 
   initialize() {
     this.received = this.received.bind(this)
@@ -14,6 +14,7 @@ export default class extends Controller {
     console.log("coucou")
     console.log(this.leagueIdValue)
     console.log(this.currentUserIdValue)
+    console.log(this.detailsChallengeTarget)
     this.channel = createConsumer().subscriptions.create(
       { channel: "LeagueChannel", id: this.leagueIdValue },
       { received: this.received }
@@ -60,5 +61,17 @@ export default class extends Controller {
 
   received(json) {
     this[json.key](json.data)
+  }
+
+  showDetails(event) {
+    console.log(event.currentTarget.dataset.cid)
+    const challengeId = event.currentTarget.dataset.cid
+    const url = `/leagues/${this.leagueIdValue}/challenges/${challengeId}`
+    fetch(url, {headers: {"Accept": "text/plain"}})
+      .then(response => response.text())
+      .then((data) => {
+        console.log(data)
+        this.detailsChallengeTarget.outerHTML = data;
+      })
   }
 }

@@ -1,0 +1,14 @@
+<% details_challenge.each do |challenge| %>
+  <div class="card-challenges">
+    <h3><%= challenge.user_league.user.steam_username %></h3>
+    <p><%= challenge.succes? ? "Completed" : "In progress" %></p>
+    <div class="progress">
+      <div class="progress-bar <%= challenge.progress >= 75 ? "progress-high" : challenge.progress >= 50 ? "progress-medium" : "progress-low" %>" style="width: <%= challenge.progress %>%;"></div>
+      </div>
+    <div class="card-details">
+      <div>
+        <%= challenge.progress %> %
+      </div>
+    </div>
+  </div>
+<% end %>

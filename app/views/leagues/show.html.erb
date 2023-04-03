@@ -15,8 +15,8 @@
     <%= render "invite_player" %>
     <%= render "player_list" %>
 
-    <%= render "popup"%>
     <%= render "timer" %>
+
 
     <%#<p><%= @league.game.genre %></p>
     <%#<p><%= @league.game.description %></p>
@@ -26,8 +26,13 @@
   <%= render "league_challenges", challenges: @league_challenges, league: @league %>
 
   <div class="league-space-bottom">
-    <%= render "user_challenges", user_challenges: @user_challenges %>
+    <%= render "user_challenges", user_challenges: @user_challenges, league: @league, details_challenge: @details_challenge%>
   </div>
+
+    <%= render "details_challenge", user_challenges: @user_challenges, details_challenge: @details_challenge, league: @league %>
+
+
+
 
   <%= render "show_friend", users: @users %>
 </div>

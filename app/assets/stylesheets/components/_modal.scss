@@ -1,0 +1,17 @@
+.modal{
+  height: auto;
+  bottom: 0;
+  top: 200px;
+}
+
+.modal-content{
+  top: 300px;
+
+}
+
+.modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 1056;
+  background-color: #FFF;
+}
